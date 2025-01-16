@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    background-color: #14121b;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::selection {
+    background-color: rgba(255, 120, 219, 0.5);
+    color: whitesmoke;
+}
+  
+::-moz-selection {
+    display: none;
+}
+  
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: rgb(22,26,29);
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgb(44,51,58);
+    border-radius: 5px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(89,103,115);
+}
+
+a {
+    text-decoration: none;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f1822;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-primary: #0f1822;
+  --color-primary-transparent: rgba(15, 24, 34, 0.7);
+  --color-primary-light: #091018;
+  --color-secondary: #dcb426;
+}
+.swiper .swiper-pagination-bullet {
+  background-color: var(--color-text) !important;
+}
+
+.swiper .swiper-pagination-bullet-active {
+  background-color: var(--color-secondary) !important;
+}
+@media (prefers-color-scheme: light) {
+  
+}

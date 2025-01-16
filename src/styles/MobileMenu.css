@@ -1,0 +1,133 @@
+.menu {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+    margin-left: auto;
+    margin-right: 1rem;
+    flex: 1;
+    height: fit-content;
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 110;
+}
+
+.line {
+    fill: none;
+    stroke: var(--color-secondary);
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+} 
+
+.menu-main-container {
+    display: flex;
+    position: fixed;
+    height: 0;
+    width: 100%;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+    background-color: #1b172b;
+    border-bottom: #1b172b;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.menu-main-container.menu-main-opened {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    transform: translate(0, 0);
+}
+
+.links {
+    display: block;
+    visibility: hidden;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-main-container.menu-main-opened .links {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+    
+.link-item {
+    display: flex;
+    text-align: center;
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+    line-height: 3rem;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    text-decoration: none;
+    padding: 1.5rem 0;
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.svg-item {
+    opacity: 1;
+    display: block;
+    margin-right: 0.5rem;
+}
+
+.link-item:hover {
+    opacity: 1;
+    color: rgb(29,33,37);
+    background-color: rgb(115,132,150);
+}
+
+.link-item:hover .svg-item {
+    opacity: 1;
+    fill: rgb(29,33,37);
+}

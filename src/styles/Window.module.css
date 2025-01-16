@@ -1,0 +1,8 @@
+.window {
+    width: 100dvw;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}

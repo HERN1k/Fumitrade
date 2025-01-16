@@ -1,0 +1,311 @@
+.container {
+    width: 100dvw;
+    height: 100dvh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.header {
+    width: 100%;
+    height: 8rem;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: -8rem;
+    left: 0;
+    background-color: transparent;
+    z-index: 100;
+    transition: all 0.3s ease-in;
+}
+
+.headerVisible {
+    top: 0;
+    background-color: var(--color-primary);
+}
+
+.headerVisibleWithTransparent {
+    top: 0;
+}
+
+.logoImg {
+    display: block;
+    width: auto;
+    height: 4.5rem;
+    object-fit: contain;
+    flex: 1;
+}
+
+.footer {
+    margin: 2rem 10%; 
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100;
+    text-transform: uppercase;
+}
+
+.footerTop {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: solid 2px whitesmoke;
+    margin-bottom: 1rem;
+}
+
+.footerWorkTogether {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+.footerTitle {
+    font-family: "Montserrat", serif;
+    display: block;
+    font-size: 1.75rem;
+    color: var(--color-text);
+    max-width: 65dvw;
+}
+
+.footerTitleSpan {
+    font-family: "Montserrat", serif; 
+    font-weight: 100;
+    letter-spacing: -5px;
+    color: var(--color-secondary);
+    margin: 0 1rem;
+}
+
+.footerTitleAnchor {
+    color: var(--color-secondary);
+    transition: all 0.25s ease-in;
+}
+
+.footerTitleAnchor:hover {
+    color: var(--color-text);
+}
+
+.footerLogoImg {
+    display: block;
+    height: auto;
+    width: 12dvw;
+    object-fit: contain;
+}
+
+.footerText {
+    font-family: "Montserrat", serif;
+    display: block;
+}
+
+.footerContacts {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    margin-bottom: 3rem;
+    gap: 4rem;
+}
+
+.footerContact {
+    width: fit-content;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    overflow: hidden;
+    gap: 2rem;
+}
+
+.footerContactText {
+    font-family: "Montserrat", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.footerContactAnchor {
+    transition: all 0.25s ease-in;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.footerContactAnchor:hover {
+    color: var(--color-secondary);
+}
+
+.footerFbButton {
+    height: 3.5rem;
+    width: 3.5rem;
+    border: solid 2px var(--color-text);
+    border-radius: 50%;
+    transition: all 0.25s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerFbSvg {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: var(--color-text);
+    transition: all 0.25s ease-in;
+}
+
+.footerFbButton:hover {
+    background-color: var(--color-secondary);
+    border: solid 2px var(--color-secondary);
+}
+
+.footerFbButton:hover .footerFbSvg {
+    fill: var(--color-primary);
+}
+
+.footerBottom {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footerBottomLine {
+    display: block;
+    background-color: var(--color-secondary);
+    height: 1.5rem;
+    width: 2px;
+    border-radius: 25%;
+}
+
+.footerSpan {
+    color: var(--color-secondary);
+    transition: all 0.25s ease-in;
+}
+
+.footerSpan:hover {
+    color: var(--color-text);
+}
+
+.menu {
+    margin: 0 1rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuItem {
+    position: relative;
+    margin: 0 2rem;
+}
+
+.menuText {
+    font-size: 1.3rem;
+    cursor: pointer;
+    font-family: "Nunito", serif;
+    color: var(--color-text);
+}
+
+.menuText:hover {
+    color: var(--color-secondary);
+    transition: all 0.2s ease-in;
+}
+
+.underline {
+    display: block;
+    position: absolute;
+    height: 0.15rem;
+    width: 0;
+    background-color: var(--color-secondary);
+    opacity: 0.8;
+    left: 0;
+    bottom: -0.1rem;
+    border-radius: 50rem;
+    transition: all .25s ease-in;
+    z-index: 100;
+} 
+
+.menuItem:hover .underline {
+    width: calc(100% + 0.1rem);
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: 5rem;
+        padding: 0 0rem 0 2rem;
+    }
+
+    .logoImg {
+        height: 3.5rem;
+    }
+
+    .footer {
+        margin: 2rem 0; 
+    }
+
+    .footerWorkTogether {
+        margin-top: 0rem;
+    }
+    
+    .footerTitle {
+        font-size: 1.25rem;
+        line-height: 2.5rem;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footerTitleSpan {
+        margin: 0;
+    }
+
+
+    
+    .footerLogoImg {
+        display: none;
+    }
+
+    .footerContacts {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 3rem;
+        gap: 4rem;
+    }
+    
+    .footerContact {
+        max-width: 100%;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .footerContactText {
+        text-align: center;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+    }
+    
+    .footerBottomLine {
+        height: 1px;
+        width: 5rem;
+        border-radius: 5px;
+    }
+
+    .footerText {
+        font-size: 0.9rem;
+    }
+}
