@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { PageProps } from "../Types";
+import { IPageProps } from "../Types";
 import Window from "../components/Window";
 import { Link } from "react-router";
 import styles from "../styles/NotFound.module.css";
 
-const NotFoundPage: FC<PageProps> = ({ id }) => {
+const NotFoundPage: FC<IPageProps> = ({ id }) => {
     return (
         <Window id={id}>
             <div className={styles.container}>

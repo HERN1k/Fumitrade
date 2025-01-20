@@ -7,7 +7,6 @@ import "swiper/swiper-bundle.css";
 import "../index.css"
 import { useInView } from "react-intersection-observer";
 import { ISlideTrustUsData, ISlidesTrustUs } from "../Types.ts";
-import { Link } from "react-router";
 
 const Slide: FC<ISlideTrustUsData> = ({ url, imgSrc, alt }) => {
 
