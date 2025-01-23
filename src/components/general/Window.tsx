@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import styles from "../styles/Window.module.css";
-import { IWindowProps } from "../Types.ts";
+import styles from "../../styles/Window.module.css";
+import { IWindowProps } from "../../types.ts";
 
 const Window: FC<IWindowProps> = ({ id, children }) => {
     const [height, setHeight] = useState<number>(() => {

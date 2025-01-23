@@ -1,0 +1,51 @@
+{
+    "appWrapper": {
+        "lets_work_together": "Давайте працювати разом",
+        "our_location": "Наше розташування",
+        "location": "м. Сміла, Черкаська область, 20700",
+        "call_us": "Зателефонуйте нам",
+        "connect": "Підключіться",
+        "created_with_love_by": "Created with love by",
+        "menu": {
+            "services": "Послуги",
+            "about_us": "Про нас",
+            "security": "Безпека",
+            "contacts": "Контакти"
+        }
+    },
+    "notFoundWindow": {
+        "page_not_found": "Ой! Сторінку не знайдено",
+        "you_may_have_entered_the_wrong_address": "Можливо, ви ввели неправильну адресу",
+        "or_the_page_has_been_moved": "або сторінку було переміщено.",
+        "to_the_main_page": "На головну"
+    },
+    "mainWindow": {
+        "typedStrings": {
+            "fumigation_without_compromise": "Фумігація без<br />компромісів",
+            "30 years_on_the_market": "30 років на ринку",
+            "experience_reliability_efficiency": "Досвід<br />Надійність<br />Ефективність"
+        },
+        "about": {
+            "professional_fumigation_and_pest_control": "Професійна фумігація та захист від шкідників",
+            "grain_and_warehouse_protection": "Охорона зерна та складів",
+            "export_cargo_processing": "Обробка експортних вантажів",
+            "pest_control_and_crop_preservation": "Контроль шкідників і збереження культур"
+        }
+    },
+    "descriptionWindow" : {
+        "fumitrade": "FUMITRADE",
+        "leaders_in_fumigation": "лідери у сфері фумігації",
+        "operate_in_the_market_for_over": "Працюємо на ринку понад",
+        "30_years": "30 років",
+        "providing_the_best_fumigation_services": ", надаючи найкращі послуги з фумігації та обробки зернових і олійних культур.",
+        "security": "Безпека",
+        "efficiency": "ефективність",
+        "and": "та",
+        "innovations": "інновації",
+        "this_is_the_basis_of_our_activities": "— це основа нашої діяльності.",
+        "learn_more_about_us": "Дізнатися більше про нас"
+    },
+    "trustUsWindow": {
+        "we_are_trusted": "Нам довіряють"
+    }
+}

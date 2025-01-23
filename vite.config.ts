@@ -8,4 +8,5 @@ export default defineConfig({
     host: "192.168.0.103",
     port: 5173,
   },
+  base: "/Fumitrade"
 })

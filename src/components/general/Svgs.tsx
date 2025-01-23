@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { IBurgerButton } from "../Types";
+import { IBurgerButton } from "../../types.tsx";
 
-export const BurgerButtonSvg : FC<IBurgerButton> = ({ toggleMenu }) => {
+export const BurgerButton : FC<IBurgerButton> = ({ toggleMenu }) => {
     return (
         <button className="menu" id="BurgerMenuButton" onClick={toggleMenu} aria-label="Main Menu">
             <svg width="3rem" height="3rem" viewBox="0 0 100 100">
@@ -13,7 +13,7 @@ export const BurgerButtonSvg : FC<IBurgerButton> = ({ toggleMenu }) => {
     );
 }
 
-export const ZipperSvg : FC<{className: string}> = ({ className }) => {
+export const Zipper : FC<{className: string}> = ({ className }) => {
     return (
         <svg className={className} width="22" height="47" viewBox="0 0 22 47" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5.82217 -0.0020752L0.743164 23.4608H9.12185V46.6271L21.2579 15.4843H13.1797L19.2163 -0.0020752H5.82217Z" fill="#DCB426"></path>
@@ -21,7 +21,7 @@ export const ZipperSvg : FC<{className: string}> = ({ className }) => {
     );
 }
 
-export const FacebookSvg: FC<{className: string}> = ({ className }) => {
+export const Facebook: FC<{className: string}> = ({ className }) => {
     return (
         <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
             <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>

@@ -6,7 +6,6 @@
     width: 100dvw;
     height: 100dvh;
     z-index: -100;
-    background-image: url("/main_picture.jpg");
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
@@ -98,7 +97,7 @@
 .aboutTextItemText {
     display: block;
     width: fit-content;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     height: calc(4rem + 0.5rem);
     padding: 0;
     margin: 0;
@@ -144,7 +143,6 @@
     width: 100dvw;
     height: 100dvh;
     z-index: -100;
-    background-image: url("/second-main-page-picture.webp");
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
@@ -223,14 +221,13 @@
     height: 100dvh;
     width: 100dvw;
     z-index: -100;
-    background-image: url("/world.webp");
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0.35;
+    opacity: 0.2;
 }
 
 .trustUsImg::before {
