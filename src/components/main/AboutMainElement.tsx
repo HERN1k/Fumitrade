@@ -2,12 +2,12 @@ import { FC, useEffect } from "react";
 import styles from "../../styles/MainPage.module.css";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
-import { onChangeViewInAboutMainElement } from "../../scripts/mainPageScripts";
+import { onChangeViewInAboutMainElement, removeLineBreak } from "../../scripts/mainPageScripts";
 
 const AboutMainElement: FC = () => {
 
     const { ref, inView } = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1,
     });
 
@@ -17,20 +17,26 @@ const AboutMainElement: FC = () => {
 
     return (
         <div ref={ref} className={styles.aboutTextItemsContainer}>
-            <h2 className={styles.aboutTextItemText}>
-                {t("mainWindow.about.grain_and_warehouse_protection")}
+            <div className={styles.aboutTextItemText}>
+                { window.innerWidth > 768 
+                ? t("mainWindow.about.disinfection_of_granaries")
+                : removeLineBreak(t("mainWindow.about.disinfection_of_granaries")) }
                 <div className={styles.underlineAboutText} />
-            </h2>
+            </div>
 
-            <h2 className={styles.aboutTextItemText}>
-                {t("mainWindow.about.export_cargo_processing")}
+            <div className={styles.aboutTextItemText}>
+                { window.innerWidth > 768 
+                ? t("mainWindow.about.pest_control")
+                : removeLineBreak(t("mainWindow.about.pest_control")) }
                 <div className={styles.underlineAboutText} />
-            </h2>
+            </div>
 
-            <h2 className={styles.aboutTextItemText}>
-                {t("mainWindow.about.pest_control_and_crop_preservation")}
+            <div className={styles.aboutTextItemText}>
+                { window.innerWidth > 768 
+                ? t("mainWindow.about.export_cargo_processing")
+                : removeLineBreak(t("mainWindow.about.export_cargo_processing")) }
                 <div className={styles.underlineAboutText} />
-            </h2>
+            </div>
         </div>
     );
 }

@@ -36,7 +36,7 @@
 .logoImg {
     display: block;
     width: auto;
-    height: 4.5rem;
+    height: 4rem;
     object-fit: contain;
     flex: 1;
 }
@@ -79,6 +79,7 @@
     font-size: 1.75rem;
     color: var(--color-text);
     max-width: 65dvw;
+    white-space: pre-wrap;
 }
 
 .footerTitleSpan {
@@ -169,7 +170,7 @@
 .footerFbButton:hover {
     background-color: var(--color-secondary);
     border: solid 2px var(--color-secondary);
-}
+} 
 
 .footerFbButton:hover .footerFbSvg {
     fill: var(--color-primary);
@@ -213,6 +214,8 @@
 
 .menuItem {
     position: relative;
+    width: fit-content;
+    height: fit-content;
     margin: 0 2rem;
 }
 
@@ -225,7 +228,7 @@
 
 .menuText:hover {
     color: var(--color-secondary);
-    transition: all 0.2s ease-in;
+    transition: all 0.25s ease-in;
 }
 
 .underline {
@@ -244,6 +247,56 @@
 
 .menuItem:hover .underline {
     width: calc(100% + 0.1rem);
+}
+
+.menuItemDropDownContainer {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: solid 2px var(--color-secondary);
+    background-color: var(--color-text);
+    opacity: 0;
+    transform: translateY(50%);
+    transition: all 0.25s ease-in;
+}
+
+.menuItem:hover .menuItemDropDownContainer {
+    opacity: 1;
+    transform: translateY(calc(100% + 0.5rem));
+}
+
+.menuItemDropDownItem {
+    position: relative;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Montserrat", serif;
+    color: var(--color-primary);
+    font-weight: 600;
+    transition: all 0.25s ease-in;
+    margin: 0.5rem 0;
+    
+}
+
+.menuItemDropDownItem:hover {
+    color: var(--color-secondary);
+}
+
+.menuItemDropDownItem::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-secondary);
+    bottom: 0px;
+    left: 0;
+    transition: all 0.25s ease-in;
+}
+
+.menuItemDropDownItem:hover::after {
+    width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -269,14 +322,13 @@
         line-height: 2.5rem;
         max-width: 100%;
         text-align: center;
+        margin: 0 auto;
     }
 
     .footerTitleSpan {
         margin: 0;
     }
 
-
-    
     .footerLogoImg {
         display: none;
     }

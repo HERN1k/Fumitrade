@@ -11,7 +11,7 @@ const Main: FC<IPageProps> = ({ id }) => {
 
             <DescriptionWindow />
 
-            <TrustUsWindow />
+            {/* <TrustUsWindow /> */}
         </div>
     );
 }

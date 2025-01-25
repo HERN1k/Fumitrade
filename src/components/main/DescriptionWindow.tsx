@@ -6,11 +6,12 @@ import { Link } from "react-router";
 import Constants from "../../constants.ts";
 import { getStaticFile, onChangeViewInDescriptionWindow } from "../../scripts/mainPageScripts.ts";
 import { useTranslation } from "react-i18next";
+import { Arrow } from "../general/Svgs.tsx";
 
 const DescriptionWindow: FC = () => {
 
     const { ref, inView } = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1,
     });
 
@@ -25,7 +26,7 @@ const DescriptionWindow: FC = () => {
             <div ref={ref} className={styles.descriptionTextContainer}>
                 <h2 className={styles.descriptionText} style={{textAlign: "center", transform: "translateX(100%)"}}>
                     <strong>
-                        <span className={styles.span}>{t("descriptionWindow.fumitrade")}</span>
+                        <span className={styles.span}><strong>{t("descriptionWindow.fumitrade")}</strong></span>
                         {" " + t("descriptionWindow.leaders_in_fumigation")}
                     </strong>
                 </h2>
@@ -43,8 +44,13 @@ const DescriptionWindow: FC = () => {
                     {" " + t("descriptionWindow.this_is_the_basis_of_our_activities")}
                 </h2>
 
-                <Link to="/" className={styles.learnMoreButton}>
-                    {t("descriptionWindow.learn_more_about_us")}
+                <Link to="/">
+                    <div className={styles.learnMoreContainer}>
+                        <h2 className={styles.learnMoreText}>{t("descriptionWindow.learn_more_about_us")}</h2>
+                        <div className={styles.learnMoreButton}>
+                            <Arrow className={styles.learnMoreButtonArrowSvg} />
+                        </div>
+                    </div>
                 </Link>
             </div>
         </Window>

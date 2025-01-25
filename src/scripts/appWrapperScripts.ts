@@ -3,6 +3,7 @@ import styles from "../styles/AppWrapper.module.css";
 import PCMenu from "../components/general/PCMenu.tsx";
 import MobileMenu from "../components/general/MobileMenu.tsx";
 import Constants from "../constants.ts";
+import { Dispatch, SetStateAction } from "react";
 
 export const onResize = (args: IAppWrapperOnResizeArgs) => {
     if (window.innerWidth > 768) {
@@ -74,3 +75,5 @@ export const changeDocument = () => {
 
     (document.querySelector('link[rel="icon"]') as HTMLLinkElement).href = getStaticFile(Constants.LOGO_ICON_IMAGE);
 }
+
+export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");

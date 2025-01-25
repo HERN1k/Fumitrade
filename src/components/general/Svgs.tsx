@@ -28,3 +28,11 @@ export const Facebook: FC<{className: string}> = ({ className }) => {
         </svg>
     );
 }
+
+export const Arrow: FC<{className: string}> = ({ className }) => {
+    return (
+        <svg className={className} xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+            <path d="M0.22998 2.67019L6.80301 8.99978L0.22998 15.3294L2.71988 17.7271L11.7828 8.99978L2.71988 0.272505L0.22998 2.67019Z"></path>
+        </svg>
+    );
+}

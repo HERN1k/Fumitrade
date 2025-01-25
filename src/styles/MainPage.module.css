@@ -27,12 +27,12 @@
     display: block;
     position: absolute;
     z-index: 20;
-    top: 40dvh;
+    top: 45dvh;
     left: 10%;
     transform: translateY(-50%);
     font-family: "Roboto Condensed", serif;
-    font-size: 6rem;    
-    line-height: 7rem;
+    font-size: 10dvh;    
+    line-height: 12dvh;
     font-weight: 100;
     color: white;
     opacity: 0.9;
@@ -40,7 +40,7 @@
 
 .aboutTextContainer {
     width: 100%;
-    height: 12rem;
+    height: 10rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -59,13 +59,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem 1rem 1rem 4rem;
+    padding: 1rem;
     background-color: var(--color-primary-light);
 }
 
 .aboutTextTitle {
     display: block;
-    width: 28dvw;
+    width: fit-content;
     font-family: "Montserrat", serif;
     font-weight: 500;
     overflow: hidden;
@@ -73,6 +73,11 @@
     transition: all 0.5s ease-in;
     transform: translateY(100%);
     opacity: 0;
+    font-size: 1.5rem;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    letter-spacing: 1px;
 }
 
 .zipper {
@@ -87,29 +92,41 @@
     width: 66dvw;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-around;
     align-items: center;
-    gap: 10rem;
-    padding: 1rem 5rem;
+    padding: 1rem;
     background-color: var(--color-primary);
 }
 
 .aboutTextItemText {
-    display: block;
+    display: inline-block;
     width: fit-content;
     font-size: 1.25rem;
-    height: calc(4rem + 0.5rem);
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
     padding: 0;
-    margin: 0;
+    margin: 0 1rem;
     font-family: "Montserrat", serif;
     font-weight: 500;
-    overflow: hidden;
     cursor: pointer;
     transition: all 0.5s ease-in;
     position: relative;
     transform: translateY(100%);
     opacity: 0;
     color: var(--color-text);
+}
+
+@media (min-width: 1440px) {
+    .aboutTextTitle {
+        font-size: 1.75rem;
+    }
+    
+    .aboutTextItemText {
+        font-size: 1.35rem;
+    }
 }
 
 .aboutTextItemText:hover {
@@ -124,12 +141,12 @@
 .underlineAboutText {
     display: block;
     position: absolute;
-    height: 0.2rem;
-    width: 10%;
+    height: 2px;
+    width: 1.5rem;
     background-color: var(--color-secondary);
     opacity: 0.8;
     left: 0;
-    bottom: -0.1rem;
+    bottom: -0.75rem;
     border-radius: 50rem;
     transition: all .25s ease-in;
     z-index: 10;
@@ -199,11 +216,14 @@
     padding: 1rem;
     font-size: 2rem;
     font-weight: 500;
-    text-align: left;
     width: 60%;
     line-height: 3rem;
     opacity: 0;
     transition: all 0.5s ease-in;
+    text-align: center;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .trustUsContainer {
@@ -211,10 +231,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     position: relative;
-    gap: 5rem;
 }
 
 .trustUsImg {
@@ -242,7 +261,7 @@
     background: linear-gradient(180deg, var(--color-primary) 0%, rgba(0,0,0,0) 50%, var(--color-primary) 100%);
 }
 
-.trustUsTitle {
+/* .trustUsTitle {
     font-family: "Montserrat", serif;
     font-weight: 600;
     font-size: 3rem;
@@ -250,23 +269,68 @@
     transform: translateY(100%);
     opacity: 0;
     transition: all 0.5s ease-in;
+    margin-top: 2rem;
+}
+
+.trustUsText {
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    text-align: justify;
+    width: 60%;
+    font-style: italic;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+} */
+
+.trustUsContentContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: 1rem;
+    gap: 5rem;
+}
+
+.trustUsText {
+    width: 40dvw;
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    color: var(--color-text);
+    text-align: left;
 }
 
 .swiper {
     display: block;
     height: auto;
-    width: 100dvw;
+    width: 50dvw;
     opacity: 1;
 }
 
 .swiperItem {
-    height: 14dvw;
-    width: 20dvw;
+    height: 30dvh;
+    width: auto;
     position: relative;
-    background-color: rgba(35, 46, 59, 0.5);
+    /* background-color: rgba(35, 46, 59, 0.5); */
     border-radius: 16px;
-    margin: 5rem 3rem;
-    padding: 4rem;
+    /* margin: 5rem 3rem;
+    padding: 4rem; */
+    padding: 1rem;
+    margin: 2rem 1rem;
+    /* background-color: rgba(35, 46, 59, 0.5); */
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -275,7 +339,8 @@
     overflow: hidden;
     transform: translateY(100%);
     opacity: 0;
-    transition: all 0.5s ease-in;
+    transition: all 0.25s ease-in;
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.35));
 }
 
 .swiperImg {
@@ -285,25 +350,58 @@
     object-fit: contain;
 }
 
-.learnMoreButton {
+.learnMoreContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 5rem;
-    font-family: "Montserrat", serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    color: var(--color-text);
-    display: block;
-    padding: 0.5rem 2rem;
-    border: solid 2px var(--color-text);
-    border-radius: 6px;
-    transition: all 0.5s ease-in;
-    box-shadow: inset 0px 0px 6px rgba(255, 255, 255, 0.25);
     transform: translateY(100%);
     opacity: 0;
+    transition: all 0.5s ease-in;
+    gap: 1.5rem;
 }
 
-.learnMoreButton:hover {
+.learnMoreText {
+    font-family: "Montserrat", serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    transition: all 0.25s ease-in;
+}
+
+.learnMoreButton {
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-text);
+    transition: all 0.25s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 5rem;
+    border: solid 1px var(--color-text);
+    border-radius: 50%;
+}
+
+.learnMoreButtonArrowSvg {
+    fill: var(--color-text);
+    transition: all 0.25s ease-in;
+}
+
+.learnMoreContainer:hover .learnMoreButton {
+    background-color: var(--color-secondary);
+    border: solid 1px var(--color-secondary);
+}
+
+.learnMoreContainer:hover .learnMoreButtonArrowSvg {
+    fill: var(--color-primary);
+}
+
+.learnMoreContainer:hover .learnMoreText {
     color: var(--color-secondary);
-    border: solid 2px var(--color-secondary);
 }
 
 @media (max-width: 768px) {
@@ -385,12 +483,13 @@
     .underlineAboutText {
         display: block;
         position: relative;
-        width: 10%;
-        margin-top: 0.5rem;
+        margin-top: 0rem;
+        bottom: -0.5rem;
+        width: 1.5rem;
     } 
     
     .aboutTextItemText:hover .underlineAboutText {
-        width: 10%;
+        width: 1.5rem;
     }
 
     .descriptionTextContainer {
@@ -403,6 +502,10 @@
         padding: 1.5rem;
         font-size: 1.5rem;
         line-height: 2rem;
+    }
+
+    .learnMoreContainer {
+        margin-top: 2.5rem;
     }
 
     .trustUsTitle {

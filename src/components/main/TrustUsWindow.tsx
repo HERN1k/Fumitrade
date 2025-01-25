@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 const TrustUsWindow: FC = () => {
 
     const { ref, inView } = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1,
     });
 
@@ -23,9 +23,14 @@ const TrustUsWindow: FC = () => {
             <div className={styles.trustUsContainer}>
                 <div className={styles.trustUsImg} style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_TRUST_US_IMAGE)})`}} />
 
-                <h1 ref={ref} className={styles.trustUsTitle}>{t("trustUsWindow.we_are_trusted")}</h1>
-
-                <SwiperTrustUs />
+                <div className={styles.trustUsContentContainer}>
+                    <SwiperTrustUs />
+                    
+                    <div>
+                        <h2>Нам довіряють</h2>
+                        <p ref={ref} className={styles.trustUsText}>{t("trustUsWindow.we_are_trusted_text")}</p>
+                    </div>
+                </div>
             </div>
         </Window>
     );

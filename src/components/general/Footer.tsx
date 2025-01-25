@@ -1,14 +1,26 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "../../styles/AppWrapper.module.css";
 import { useTranslation } from "react-i18next";
 import Constants from "../../constants";
-import { formattingPhoneNumber, getStaticFile } from "../../scripts/appWrapperScripts";
+import { formattingPhoneNumber, getStaticFile, onResizeFooter } from "../../scripts/appWrapperScripts";
 import { Link } from "react-router";
 import { Facebook } from "./Svgs";
 
 const Footer: FC = () => {
 
+    const [hyphen, setHyphen] = useState<string>("\n");
+
     const { t } = useTranslation();
+
+    useEffect(() => {
+        onResizeFooter(setHyphen);
+
+        window.addEventListener("resize", () => onResizeFooter(setHyphen));
+        
+        return () => {
+            window.removeEventListener("resize", () => onResizeFooter(setHyphen));
+        }; 
+    }, []);
 
     return (
         <footer className={styles.footer}>
@@ -17,9 +29,7 @@ const Footer: FC = () => {
                     <h1 className={styles.footerTitle}>
                         {t("appWrapper.lets_work_together")}
 
-                        <span className={styles.footerTitleSpan}>
-                            { window.innerWidth > 1500 ? "一一" : " " }
-                        </span>
+                        <span className={styles.footerTitleSpan}>{hyphen}</span>
 
                         <a href={`mailto:${Constants.COMPANY_EMAIL}`} className={styles.footerTitleAnchor}>{Constants.COMPANY_EMAIL}</a>
                     </h1>

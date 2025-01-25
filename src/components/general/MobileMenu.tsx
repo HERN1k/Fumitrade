@@ -27,7 +27,7 @@ const MobileMenu: FC = () => {
                     </Link>
                     <Link to="/">
                         <li className="link-item" onClick={toggleMobileMenu}>
-                            {t("appWrapper.menu.security")}
+                            {t("appWrapper.menu.knowledge_base")}
                         </li>
                     </Link>
                     <Link to="/">

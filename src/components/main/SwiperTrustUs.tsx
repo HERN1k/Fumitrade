@@ -20,11 +20,16 @@ const SwiperTrustUs: FC = () => {
     }, []);
 
     const onResize = () => {
-        if (window.innerWidth > 768) {
-            setSlidesPerView(4);
-        } else {
+        const width = window.innerWidth;
+        if (width >= 1024) {
+            setSlidesPerView(3);
+        } else if (width <= 768 && width > 1023) {
             setSlidesPerView(2);
-        }
+        } else if (width < 767) {
+            setSlidesPerView(2);
+        } else {
+            setSlidesPerView(1);
+        } 
     }
     
     const slides: ISlidesTrustUs = {
