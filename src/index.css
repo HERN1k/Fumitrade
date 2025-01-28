@@ -152,6 +152,7 @@ a {
 .swiper .swiper-pagination-bullet-active {
   background-color: var(--color-secondary) !important;
 }
+
 @media (prefers-color-scheme: light) {
   
 }

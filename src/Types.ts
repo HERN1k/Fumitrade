@@ -26,13 +26,10 @@ export interface ISlidesTrustUs {
 
 export interface IAppWrapperOnResizeArgs {
     setMenu: React.Dispatch<React.SetStateAction<FC>>;
-    headerRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-export interface IAppWrapperOnScrollArgs {
-    containerRef: React.MutableRefObject<HTMLDivElement | null>;
+export interface IAppWrapperOnScrollArgs { 
     scrollPositionRef: React.MutableRefObject<number>;
-    headerRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
 export interface ICreateTyped {

@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: absolute;
     top: -8rem;
     left: 0;
     background-color: transparent;
@@ -217,6 +217,7 @@
     width: fit-content;
     height: fit-content;
     margin: 0 2rem;
+    padding-bottom: 0.5rem;
 }
 
 .menuText {
@@ -234,12 +235,12 @@
 .underline {
     display: block;
     position: absolute;
-    height: 0.15rem;
+    height: 2px;
     width: 0;
     background-color: var(--color-secondary);
     opacity: 0.8;
     left: 0;
-    bottom: -0.1rem;
+    bottom: 0.45rem;
     border-radius: 50rem;
     transition: all .25s ease-in;
     z-index: 100;
@@ -253,18 +254,22 @@
     display: block;
     padding: 0.5rem 1.5rem;
     position: absolute;
-    bottom: 0;
     left: 0;
     border-top: solid 2px var(--color-secondary);
-    background-color: var(--color-text);
+    background-color: rgb(238, 238, 238);
     opacity: 0;
-    transform: translateY(50%);
+    transform: translateY(2.5rem);
     transition: all 0.25s ease-in;
+    z-index: -120;
+    pointer-events: none;
+    white-space: nowrap;
 }
 
 .menuItem:hover .menuItemDropDownContainer {
     opacity: 1;
-    transform: translateY(calc(100% + 0.5rem));
+    transform: translateY(0.4rem);
+    z-index: 120;
+    pointer-events: auto;
 }
 
 .menuItemDropDownItem {
@@ -275,8 +280,10 @@
     color: var(--color-primary);
     font-weight: 600;
     transition: all 0.25s ease-in;
-    margin: 0.5rem 0;
-    
+    margin: 1rem 0;
+    display: block;
+    width: fit-content;
+    padding: 0.2rem 0;
 }
 
 .menuItemDropDownItem:hover {

@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import styles from "../../styles/AppWrapper.module.css";
 import { useTranslation } from "react-i18next";
 import Constants from "../../constants";
-import { formattingPhoneNumber, getStaticFile, onResizeFooter } from "../../scripts/appWrapperScripts";
+import { formattingPhoneNumber, getStaticFile, onResizeFooter, transitionToTop } from "../../scripts/appWrapperScripts";
 import { Link } from "react-router";
 import { Facebook } from "./Svgs";
 
@@ -34,7 +34,7 @@ const Footer: FC = () => {
                         <a href={`mailto:${Constants.COMPANY_EMAIL}`} className={styles.footerTitleAnchor}>{Constants.COMPANY_EMAIL}</a>
                     </h1>
 
-                    <Link to="/">
+                    <Link to="/" viewTransition onClick={transitionToTop}>
                         <img src={getStaticFile(Constants.LOGO_IMAGE)} alt={Constants.COMPANY_NAME} className={styles.footerLogoImg} />
                     </Link>
                 </div>
@@ -70,7 +70,7 @@ const Footer: FC = () => {
 
             <div className={styles.footerBottom}>
                 <p className={styles.footerText}>
-                    <Link to="/">
+                    <Link to="/" viewTransition onClick={transitionToTop}>
                         <span className={styles.footerSpan}>{Constants.COMPANY_NAME + " "}</span> 
                     </Link>
                     &copy;{" " + Constants.YEAR_OF_WEBSITE_CREATION.toString()}

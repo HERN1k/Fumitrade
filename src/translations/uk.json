@@ -14,14 +14,12 @@
             "dropDown": {
                 "complex_processing": "Комплексне оброблення",
                 "aerosol_disinfestation": "Аерозольна дезінсекція",
+                "disinfection_of_granaries": "Фумігація зерносховищ",
                 "fumigation_of_mills": "Фумігація млинів",
                 "fumigation_of_silos": "Фумігація силосів",
                 "fumigation_of_wagons": "Фумігація вагонів",
                 "fumigation_in_containers": "Фумігація в контейнерах",
-                "ship_fumigation": "Суднова фумігація",
-                "": "",
-                "": "",
-                "": ""
+                "ship_fumigation": "Суднова фумігація"
             }
         }
     },

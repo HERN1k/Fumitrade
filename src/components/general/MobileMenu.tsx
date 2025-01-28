@@ -15,22 +15,22 @@ const MobileMenu: FC = () => {
 
             <div id="menuContainer" className="menu-main-container">
                 <ul className="links">
-                    <Link to="/">
+                    <Link to="/" viewTransition>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.services")}
                         </li>
                     </Link>
-                    <Link to="/">
+                    <Link to="/" viewTransition>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.about_us")}
                         </li>
                     </Link>
-                    <Link to="/">
+                    <Link to="/" viewTransition>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.knowledge_base")}
                         </li>
                     </Link>
-                    <Link to="/">
+                    <Link to="/" viewTransition>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.contacts")}
                         </li>

@@ -12,6 +12,9 @@ export default class Constants {
     static readonly YEAR_OF_WEBSITE_CREATION: number = 2025;
     static readonly DOCUMENT_TITLE: string = "Fumitrade";
     static readonly STATIC_FILES_PATH: string = "/Fumitrade/Static/";
+    static readonly ROOT_CONTAINER_ID: string = ":ROOT_CONTAINER_ID:";
+    static readonly HEADER_ID: string = ":HEADER_ID:";
+    static readonly CHANGE_HEADER_VISIBILITY: string = "CHANGE_HEADER_VISIBILITY";
 
     /*     Images     */ 
     static readonly LOGO_ICON_IMAGE: string = "fumitrade_logo.webp";
@@ -21,14 +24,23 @@ export default class Constants {
     static readonly MAIN_PAGE_DESCRIPTION_IMAGE: string = "second-main-page-picture.webp";
     static readonly MAIN_PAGE_TRUST_US_IMAGE: string = "world.webp";
     static readonly PAPER_IMAGE: string = "paper.webp";
+    static readonly SERVICES_HEADER_IMAGE: string = "ServicesHeader.webp";
 
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
+    static readonly SERVICES_PAGE_ID: string = ":SERVICES_PAGE_ID:";
     static readonly NOT_FOUND_PAGE_ID: string = ":NOT_FOUND_PAGE_ID:";
 
     /*     Components     */
     static readonly MAIN_WINDOW_MAIN_PAGE_ID: string = ":MAIN_WINDOW_MAIN_PAGE_ID:";
     static readonly DESCRIPTION_WINDOW_MAIN_PAGE_ID: string = ":DESCRIPTION_WINDOW_MAIN_PAGE_ID:";
     static readonly TRUST_US_WINDOW_MAIN_PAGE_ID: string = ":TRUST_US_WINDOW_MAIN_PAGE_ID:";
-
+    static readonly SERVICES_PAGE_SERVICE_1_ID: string = ":SERVICES_PAGE_SERVICE_1_ID:";
+    static readonly SERVICES_PAGE_SERVICE_2_ID: string = ":SERVICES_PAGE_SERVICE_2_ID:";
+    static readonly SERVICES_PAGE_SERVICE_3_ID: string = ":SERVICES_PAGE_SERVICE_3_ID:";
+    static readonly SERVICES_PAGE_SERVICE_4_ID: string = ":SERVICES_PAGE_SERVICE_4_ID:";
+    static readonly SERVICES_PAGE_SERVICE_5_ID: string = ":SERVICES_PAGE_SERVICE_5_ID:";
+    static readonly SERVICES_PAGE_SERVICE_6_ID: string = ":SERVICES_PAGE_SERVICE_6_ID:";
+    static readonly SERVICES_PAGE_SERVICE_7_ID: string = ":SERVICES_PAGE_SERVICE_7_ID:";
+    static readonly SERVICES_PAGE_SERVICE_8_ID: string = ":SERVICES_PAGE_SERVICE_8_ID:";
 };
