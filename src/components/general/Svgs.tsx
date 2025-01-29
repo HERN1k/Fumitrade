@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MutableRefObject } from "react";
 import { IBurgerButton } from "../../types.tsx";
 
 export const BurgerButton : FC<IBurgerButton> = ({ toggleMenu }) => {
@@ -29,10 +29,20 @@ export const Facebook: FC<{className: string}> = ({ className }) => {
     );
 }
 
-export const Arrow: FC<{className: string}> = ({ className }) => {
+export const Arrow: FC<{ className: string }> = ({ className }) => {
     return (
         <svg className={className} xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
             <path d="M0.22998 2.67019L6.80301 8.99978L0.22998 15.3294L2.71988 17.7271L11.7828 8.99978L2.71988 0.272505L0.22998 2.67019Z"></path>
+        </svg>
+    );
+}
+
+export const ArrowDown: FC<{className: string}> = ({ className }) => {
+    return (
+        <svg className={className} fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xmlSpace="preserve">
+            <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+                c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+                s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
         </svg>
     );
 }

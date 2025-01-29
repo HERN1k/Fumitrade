@@ -27,7 +27,7 @@ const AppWrapper: FC = () => {
             window.removeEventListener("resize", () => onResize({ setMenu: setMenu }));
         }; 
     }, []);
-
+ 
     return (
         <div ref={containerRef} className={styles.container} id={Constants.ROOT_CONTAINER_ID}>
             <header className={styles.header} id={Constants.HEADER_ID}>  

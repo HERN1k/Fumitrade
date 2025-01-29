@@ -261,33 +261,6 @@
     background: linear-gradient(180deg, var(--color-primary) 0%, rgba(0,0,0,0) 50%, var(--color-primary) 100%);
 }
 
-/* .trustUsTitle {
-    font-family: "Montserrat", serif;
-    font-weight: 600;
-    font-size: 3rem;
-    color: var(--color-text);
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 0.5s ease-in;
-    margin-top: 2rem;
-}
-
-.trustUsText {
-    font-family: "Montserrat", serif;
-    font-weight: 500;
-    font-size: 1.5rem;
-    color: var(--color-text);
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 0.5s ease-in;
-    text-align: justify;
-    width: 60%;
-    font-style: italic;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-    word-break: break-word;
-} */
-
 .trustUsContentContainer {
     display: flex;
     flex-direction: row;

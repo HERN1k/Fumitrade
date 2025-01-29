@@ -37,3 +37,11 @@ export interface ICreateTyped {
     typedRef: React.MutableRefObject<HTMLDivElement | null>;
     strings: string[];
 }
+
+export interface IServiceProps {
+    id: string;
+    imgSrc: string;
+    title: string;
+    description: string;
+    
+}

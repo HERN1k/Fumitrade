@@ -16,30 +16,30 @@ const PCMenu: FC = () => {
                     <h2 className={styles.menuText}>{t("appWrapper.menu.services")}</h2>
                     <div className={styles.underline} />
                 </Link>
-
+ 
                 <div className={styles.menuItemDropDownContainer}>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_1_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_1_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.complex_processing")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_2_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_2_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.aerosol_disinfestation")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_3_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_3_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.disinfection_of_granaries")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_4_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_4_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_of_mills")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_5_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_5_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_of_silos")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_6_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_6_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_of_wagons")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_7_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_7_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_in_containers")}</div>
                     </Link>
-                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_8_ID)}>
+                    <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_8_ID, Constants.SCROLL_DISPLAY_BAR_HEIGHT)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.ship_fumigation")}</div>
                     </Link>
                 </div>

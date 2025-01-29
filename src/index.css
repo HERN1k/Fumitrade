@@ -144,6 +144,8 @@ a {
   --color-primary-transparent: rgba(15, 24, 34, 0.7);
   --color-primary-light: #091018;
   --color-secondary: #dcb426;
+
+  --color-header: #091018;
 }
 .swiper .swiper-pagination-bullet {
   background-color: var(--color-text) !important;
@@ -155,4 +157,4 @@ a {
 
 @media (prefers-color-scheme: light) {
   
-}
+} 

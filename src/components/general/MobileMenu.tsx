@@ -15,7 +15,7 @@ const MobileMenu: FC = () => {
 
             <div id="menuContainer" className="menu-main-container">
                 <ul className="links">
-                    <Link to="/" viewTransition>
+                    <Link to="/services" viewTransition>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.services")}
                         </li>

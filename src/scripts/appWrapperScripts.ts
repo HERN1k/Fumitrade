@@ -4,6 +4,7 @@ import PCMenu from "../components/general/PCMenu.tsx";
 import MobileMenu from "../components/general/MobileMenu.tsx";
 import Constants from "../constants.ts";
 import { Dispatch, SetStateAction } from "react";
+import { s } from "motion/react-client";
 
 export const onResize = (args: IAppWrapperOnResizeArgs) => {
     const headerElement = document.getElementById(Constants.HEADER_ID);
@@ -20,35 +21,27 @@ export const onResize = (args: IAppWrapperOnResizeArgs) => {
 }
 
 export const onScroll = (args: IAppWrapperOnScrollArgs) => {
-
-    let changeHeaderVisibility = sessionStorage.getItem(Constants.CHANGE_HEADER_VISIBILITY);
-
-    if (!changeHeaderVisibility) {
-        sessionStorage.setItem(Constants.CHANGE_HEADER_VISIBILITY, true.toString());
-        changeHeaderVisibility = true.toString();
+    if (getHeaderActiveState()) {
+        const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
+        const headerElement = document.getElementById(Constants.HEADER_ID);
+    
+        if (!headerElement || !rootElement) return;
+    
+        const currentScrollPosition = rootElement.scrollTop || 0;
+    
+        if (currentScrollPosition === 0 || args.scrollPositionRef.current === 0) {
+            headerElement.classList.remove(styles.headerVisible);
+            headerElement.classList.add(styles.headerVisibleWithTransparent);
+        } else if (currentScrollPosition > args.scrollPositionRef.current) {
+            headerElement.classList.remove(styles.headerVisible);
+            headerElement.classList.remove(styles.headerVisibleWithTransparent);
+        } else if (currentScrollPosition < args.scrollPositionRef.current) {
+            headerElement.classList.remove(styles.headerVisibleWithTransparent);
+            headerElement.classList.add(styles.headerVisible);
+        }
+    
+        args.scrollPositionRef.current = currentScrollPosition;
     }
-
-    if (changeHeaderVisibility === false.toString()) return;
-
-    const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
-    const headerElement = document.getElementById(Constants.HEADER_ID);
-
-    if (!headerElement || !rootElement) return;
-
-    const currentScrollPosition = rootElement.scrollTop || 0;
-
-    if (currentScrollPosition === 0 || args.scrollPositionRef.current === 0) {
-        headerElement.classList.remove(styles.headerVisible);
-        headerElement.classList.add(styles.headerVisibleWithTransparent);
-    } else if (currentScrollPosition > args.scrollPositionRef.current) {
-        headerElement.classList.remove(styles.headerVisible);
-        headerElement.classList.remove(styles.headerVisibleWithTransparent);
-    } else if (currentScrollPosition < args.scrollPositionRef.current) {
-        headerElement.classList.remove(styles.headerVisibleWithTransparent);
-        headerElement.classList.add(styles.headerVisible);
-    }
-
-    args.scrollPositionRef.current = currentScrollPosition;
 };
 
 export const getStaticFile: (name: string) => string = (name: string) => {
@@ -94,53 +87,56 @@ export const changeDocument = () => {
 
 export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");
 
-export const scrollToElement = (element: HTMLElement | null): Promise<void> => {
-    return new Promise((resolve) => {
-        const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
-
-        if (!element || !rootElement) {
-            resolve();
-            return;
-        }
-
-        const elementPosition = element.offsetTop;
-        rootElement.scrollTo({
-            top: elementPosition,
-            behavior: "smooth",
-        });
-
-        const checkScroll = () => {
-            const currentScrollPosition = rootElement.scrollTop;
-
-            if (Math.abs(currentScrollPosition - elementPosition) < 1) {
-                resolve();
-            } else {
-                requestAnimationFrame(checkScroll);
-            }
-        };
-
-        requestAnimationFrame(checkScroll);
-    });
-}
-
-export const transitionTo: (id: string) => void = (id: string) => {
-    setTimeout(async () => {
+export const scrollToElement = (element: HTMLElement | null, margin: number | null): Promise<void> => {
+    return new Promise((resolve, reject) => {
         try {
-            sessionStorage.setItem(Constants.CHANGE_HEADER_VISIBILITY, false.toString());
+            const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
 
-            const element = document.getElementById(id);
+            if (!element || !rootElement) {
+                resolve();
+                return;
+            }
 
-            const headerElement = document.getElementById(Constants.HEADER_ID);
-    
-            if (!headerElement) return;
-    
-            headerElement.classList.remove(styles.headerVisible);
-            headerElement.classList.remove(styles.headerVisibleWithTransparent);
+            const elementPosition = element.offsetTop;
+            const targetPosition = elementPosition - (margin || 0);
 
-            await scrollToElement(element);
-        } finally {
-            sessionStorage.setItem(Constants.CHANGE_HEADER_VISIBILITY, true.toString());
+            rootElement.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+            });
+
+            const interval = setInterval(() => {
+                const currentScrollPosition = rootElement.scrollTop;
+                
+                if (Math.abs(currentScrollPosition - targetPosition) < 1) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 50);
+        } catch (e) {
+            console.error(e);
+
+            reject(e);
         }
+    });
+};
+
+export const transitionTo = (id: string, margin: number | null) => {
+    setTimeout(async () => {
+        setHeaderActiveState(false);
+
+        const element = document.getElementById(id);
+
+        const headerElement = document.getElementById(Constants.HEADER_ID);
+
+        if (!headerElement) return;
+
+        headerElement.classList.remove(styles.headerVisible);
+        headerElement.classList.remove(styles.headerVisibleWithTransparent);
+
+        await scrollToElement(element, margin)
+            .catch((e) => console.error(e))
+            .finally(() => setHeaderActiveState(true));
     }, 100);
 }
 
@@ -150,4 +146,24 @@ export const transitionToTop = () => {
 
         rootElement?.scrollTo({ top: 0, behavior: "smooth" });
     }, 100);
+}
+
+export const setHeaderActiveState = (isActive: boolean) => {
+    var header = document.getElementById(Constants.HEADER_ID);
+
+    if (!header) return;
+
+    header.setAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE, isActive.toString());
+
+    console.log(isActive);
+}
+
+export const getHeaderActiveState = (): boolean => {
+    var header = document.getElementById(Constants.HEADER_ID);
+
+    if (!header) return false;
+
+    const status = header.getAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE);
+
+    return status !== null ? status === "true" : true;
 }

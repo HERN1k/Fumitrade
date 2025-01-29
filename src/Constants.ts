@@ -15,6 +15,9 @@ export default class Constants {
     static readonly ROOT_CONTAINER_ID: string = ":ROOT_CONTAINER_ID:";
     static readonly HEADER_ID: string = ":HEADER_ID:";
     static readonly CHANGE_HEADER_VISIBILITY: string = "CHANGE_HEADER_VISIBILITY";
+    static readonly HEADER_ACTIVE_ATTRIBUTE: string = "header-active";
+    static readonly SCROLL_DISPLAY_BAR_HEIGHT: number = 5;
+
 
     /*     Images     */ 
     static readonly LOGO_ICON_IMAGE: string = "fumitrade_logo.webp";
@@ -25,6 +28,14 @@ export default class Constants {
     static readonly MAIN_PAGE_TRUST_US_IMAGE: string = "world.webp";
     static readonly PAPER_IMAGE: string = "paper.webp";
     static readonly SERVICES_HEADER_IMAGE: string = "ServicesHeader.webp";
+    static readonly SERVICES_PAGE_SERVICE_1_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_2_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_3_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_4_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_5_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_6_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_7_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_8_IMAGE: string = "main_picture.jpg";
 
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
