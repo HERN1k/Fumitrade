@@ -1,15 +1,4 @@
-.servicesContainer {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
-    position: relative;
-}
-
 .headerContainer {
-    margin: 0;
     height: 32rem;
     width: 100dvw;
     background-size: cover;
@@ -26,7 +15,7 @@
 .headerContainer::before {
     content: "";
     width: 100%;
-    height: 32rem;
+    height: 32.5rem;
     z-index: 10;
     position: absolute;
     top: 0;
@@ -100,22 +89,13 @@
     }
 
     .navigationTitle {
-        font-size: 2rem;
-    }
-
-    .navigationText { 
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 1440px) {
-    .navigationTitle {
         font-size: 1.75rem;
         max-width: 50dvw;
         width: 50dvw;
     }
 
     .navigationText { 
+        font-size: 1rem;
         max-width: 40dvw;
         width: 40dvw;
     }
@@ -135,28 +115,54 @@
     .navigationTitle {
         font-size: 2rem;
         max-width: 100%;
-        width: 100%;
-        margin: 0;
+        width: 90%;
+        margin: 0 auto;
         padding: 0 2rem;
         margin-bottom: 0.5rem;
-        text-align: left;
+        text-align: center;
+        
     }
 
     .navigationText { 
         font-size: 1.1rem;
         max-width: 100%;
-        width: 100%;
+        width: 90%;
         padding: 0 2rem;
-        margin: 0;
-        text-align: left;
+        margin: 0 auto;
+        margin-top: 2rem;
+        text-align: center;
+    }
+}
+
+.servicesContainer {
+    display: grid;
+    position: relative;
+    margin: 0 auto;
+    max-width: 80%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+@media (max-width: 1440px) {
+    .servicesContainer {
+        grid-template-columns: 1fr;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicesContainer {
+        grid-template-columns: 1fr;
+        margin-top: 0;
     }
 }
 
 .serviceContainer {
-    height: auto;
-    min-height: 10rem;
-    width: 60%;
-    border-radius: 1rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
@@ -165,12 +171,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 5rem 8rem;
+    padding: 4rem 6rem;
     cursor: pointer;
     gap: 3rem;
     transition: all 0.25s ease-in;
-    transform: scale(0.5);
+    transform: scale(0.75);
     opacity: 0.5;
+    scroll-margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .serviceContainer {
+        padding: 3rem 3rem;
+    }
 }
 
 .serviceInView {
@@ -185,7 +198,6 @@
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 1rem;
     transition: all 0.25s ease-in-out;
 }
 
@@ -193,34 +205,55 @@
     background: rgba(0, 0, 0, 0.1);
 }
 
-.popupTitle {
+.serviceTitle {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: pre-line;
     font-family: "Montserrat", serif;
-    font-size: 3rem;
+    font-size: 2.25rem;
+    line-height: 2.75rem;
     color: white;
-    line-height: 3rem;
     font-weight: 700;
     text-transform: uppercase;
     z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.popupText {
+.serviceText {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: pre-line;
     font-family: "Montserrat", serif;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     color: var(--color-secondary);
-    line-height: 1.35rem;
-    width: 50%;
+    line-height: 1.75rem;
+    width: 75%;
     font-weight: 500;
     text-transform: uppercase;
     z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.popupButton {
+@media (max-width: 1440px) {
+    .serviceText {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .serviceTitle {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .serviceText {
+        width: 100%;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}
+
+.serviceButton {
     color: var(--color-text);
     transition: all 0.25s ease-in;
     display: flex;
@@ -234,18 +267,30 @@
     z-index: 1;
 }
 
-.popupButtonArrowSvg {
+.serviceButtonArrowSvg {
     fill: var(--color-text);
     transition: all 0.25s ease-in;
 } 
 
-.popupButtonHover {
+.serviceButtonHover {
     background-color: var(--color-secondary);
     border: solid 1px var(--color-secondary);
 }
 
-.popupButtonArrowSvgHover {
+.serviceButtonArrowSvgHover {
     fill: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .serviceButton {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .serviceButtonArrowSvg {
+        height: 1.25rem;
+        width: 1.25rem;
+    }
 }
 
 .modalBackdrop {
@@ -265,7 +310,278 @@
 .modalContainer {
     background-color: var(--color-primary);
     height: fit-content;
+    max-height: calc(100% - 3rem);
     width: 80%;
-    border-radius: 0.5rem;
-    padding: 2rem;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.smokeContainer {
+    width: 100dvw;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.75s linear;
+}
+
+@media (max-width: 768px) {
+    .modalContainer {
+        width: calc(100% - 2rem);
+        flex-direction: column;
+        height: calc(100dvh - 3rem);
+        max-height: 100dvh;
+    }
+}
+
+.nextModalButton {
+    position: fixed;
+    top: 50%;
+    height: 4rem;
+    width: 4rem;
+    border: solid 1px var(--color-text);
+    border-radius: 50%;
+    transform: translateX(50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.25;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+    scale: 1;
+}
+
+.nextModalButton:hover {
+    opacity: 1;
+}
+
+.nextModalButton:active {
+    scale: 0.95;
+}
+
+.nextModalArrowSvg {
+    display: block;
+    height: 1.1rem;
+    width: 1.1rem;
+    fill: var(--color-text);
+}
+
+.modalImage {
+    width: auto;
+    height: 100%;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    flex: 0.5;
+}
+
+.modalContent {
+    padding: 5rem 2rem;
+    flex: 1;
+    width: 66dvw;
+    max-height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+    .modalImage {
+        width: 100%;
+        height: auto;
+        background-repeat: no-repeat; 
+        background-position: center center; 
+        background-size: cover;
+        background-size: 150%;
+    }
+
+    .modalContent {
+        padding: 2rem 2rem;
+        width: 100%;
+    }
+}
+
+.modalTitle {
+    display: block;
+    white-space: pre-line;
+    text-transform: uppercase;
+    width: fit-content;
+    font-family: "Montserrat", serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    color: var(--color-text);
+    transition: all 0.25s ease-in;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.modalDescription {
+    display: block;
+    width: fit-content;
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--color-text);
+    transition: all 0.25s ease-in;
+    margin-bottom: 2rem;
+    opacity: 1;
+    text-align: justify;
+    padding-right: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .modalTitle {
+        white-space: nowrap;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .modalDescription {
+        padding-right: 0rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.modalDescriptionItemsContainer {
+    display: block;
+    width: fit-content;
+    list-style: none;
+    padding: 0;
+}
+
+.modalDescriptionItem {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.9;
+    position: relative;
+    padding-left: 2rem; 
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.modalDescriptionItem::before {
+    content: "✔";
+    margin-right: 1rem;
+    color: var(--color-secondary);
+}
+
+.modalContactContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 5rem;
+    transition: all 0.1s ease-in;
+    gap: 1.5rem;
+    width: fit-content;
+}
+
+.modalContactText {
+    font-family: "Montserrat", serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    transition: all 0.25s ease-in;
+    text-transform: uppercase;
+    transform: scaleY(1.05);
+}
+
+.modalContactButton {
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-secondary);
+    transition: all 0.25s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 5rem;
+    border: solid 1px var(--color-secondary);
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .modalContactContainer {
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    .modalContactText {
+        font-size: 1.25rem;
+    }
+
+    .modalContactButton {
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+}
+
+.modalContactButtonArrowSvg {
+    fill: var(--color-primary);
+    transition: all 0.25s ease-in;
+}
+
+.modalContactContainer:active {
+    transform: translateY(2px);
+}
+
+.modalContactContainer:hover .modalContactButton {
+    background-color: transparent;
+    border: solid 1px var(--color-text);
+}
+
+.modalContactContainer:hover .modalContactButtonArrowSvg {
+    fill: var(--color-text);
+}
+
+.modalContactContainer:hover .modalContactText {
+    color: var(--color-text);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modalCloseSvg {
+    display: block;
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    fill: var(--color-text);
+    transition: all 0.25s ease-in;
+    cursor: pointer;
+}
+
+.modalCloseSvg:hover {
+    fill: var(--color-secondary);
+}
+
+.modalCloseSvg:active {
+    transform: scale(0.9);
 }

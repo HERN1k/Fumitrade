@@ -92,6 +92,10 @@ html {
     background-color: #14121b;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 ::selection {
@@ -154,7 +158,3 @@ a {
 .swiper .swiper-pagination-bullet-active {
   background-color: var(--color-secondary) !important;
 }
-
-@media (prefers-color-scheme: light) {
-  
-} 

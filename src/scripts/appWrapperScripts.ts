@@ -4,7 +4,6 @@ import PCMenu from "../components/general/PCMenu.tsx";
 import MobileMenu from "../components/general/MobileMenu.tsx";
 import Constants from "../constants.ts";
 import { Dispatch, SetStateAction } from "react";
-import { s } from "motion/react-client";
 
 export const onResize = (args: IAppWrapperOnResizeArgs) => {
     const headerElement = document.getElementById(Constants.HEADER_ID);
@@ -87,7 +86,7 @@ export const changeDocument = () => {
 
 export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");
 
-export const scrollToElement = (element: HTMLElement | null, margin: number | null): Promise<void> => {
+export const scrollToElement = (element: HTMLElement | null): Promise<void> => {
     return new Promise((resolve, reject) => {
         try {
             const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
@@ -97,22 +96,34 @@ export const scrollToElement = (element: HTMLElement | null, margin: number | nu
                 return;
             }
 
-            const elementPosition = element.offsetTop;
-            const targetPosition = elementPosition - (margin || 0);
+            const elementPosition = element.getBoundingClientRect().top + rootElement.scrollTop;
+            const targetPosition = elementPosition;
 
-            rootElement.scrollTo({
-                top: targetPosition,
-                behavior: "smooth",
+            const observer = new ResizeObserver(() => {
+                element.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                let iterations = 0;
+
+                const interval = setInterval(() => {
+                    iterations++;
+
+                    if (iterations == 20) {
+                        clearInterval(interval);
+                        resolve();
+                    }
+
+                    const currentScrollPosition = rootElement.scrollTop;
+                    
+                    if (Math.abs(currentScrollPosition - targetPosition) < 1) {
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }, 50);
+            
+                observer.disconnect();
             });
-
-            const interval = setInterval(() => {
-                const currentScrollPosition = rootElement.scrollTop;
-                
-                if (Math.abs(currentScrollPosition - targetPosition) < 1) {
-                    clearInterval(interval);
-                    resolve();
-                }
-            }, 50);
+            
+            observer.observe(element);
         } catch (e) {
             console.error(e);
 
@@ -121,10 +132,10 @@ export const scrollToElement = (element: HTMLElement | null, margin: number | nu
     });
 };
 
-export const transitionTo = (id: string, margin: number | null) => {
+export const transitionTo = (id: string) => {
     setTimeout(async () => {
         setHeaderActiveState(false);
-
+ 
         const element = document.getElementById(id);
 
         const headerElement = document.getElementById(Constants.HEADER_ID);
@@ -134,7 +145,7 @@ export const transitionTo = (id: string, margin: number | null) => {
         headerElement.classList.remove(styles.headerVisible);
         headerElement.classList.remove(styles.headerVisibleWithTransparent);
 
-        await scrollToElement(element, margin)
+        await scrollToElement(element)
             .catch((e) => console.error(e))
             .finally(() => setHeaderActiveState(true));
     }, 100);
@@ -154,8 +165,6 @@ export const setHeaderActiveState = (isActive: boolean) => {
     if (!header) return;
 
     header.setAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE, isActive.toString());
-
-    console.log(isActive);
 }
 
 export const getHeaderActiveState = (): boolean => {

@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router";
 import { changeDocument, getStaticFile, onResize, onScroll, transitionToTop } from "../../scripts/appWrapperScripts.ts";
 import Constants from "../../constants.ts";
 import Footer from "./Footer.tsx";
+import Smoke from "../services/Smoke.tsx";
 
 const AppWrapper: FC = () => {
     

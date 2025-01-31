@@ -28,14 +28,14 @@ export default class Constants {
     static readonly MAIN_PAGE_TRUST_US_IMAGE: string = "world.webp";
     static readonly PAPER_IMAGE: string = "paper.webp";
     static readonly SERVICES_HEADER_IMAGE: string = "ServicesHeader.webp";
-    static readonly SERVICES_PAGE_SERVICE_1_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_2_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_3_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_4_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_5_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_6_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_7_IMAGE: string = "main_picture.jpg";
-    static readonly SERVICES_PAGE_SERVICE_8_IMAGE: string = "main_picture.jpg";
+    static readonly SERVICES_PAGE_SERVICE_1_IMAGE: string = "service_1_main_image.jpg";
+    static readonly SERVICES_PAGE_SERVICE_2_IMAGE: string = "service_2_main_image.jpg";
+    static readonly SERVICES_PAGE_SERVICE_3_IMAGE: string = "service_3_main_image.jpg";
+    static readonly SERVICES_PAGE_SERVICE_4_IMAGE: string = "service_4_main_image.jpg";
+    static readonly SERVICES_PAGE_SERVICE_5_IMAGE: string = "service_5_main_image.jpg";
+    static readonly SERVICES_PAGE_SERVICE_6_IMAGE: string = "service_6_main_image.webp";
+    static readonly SERVICES_PAGE_SERVICE_7_IMAGE: string = "service_7_main_image.webp";
+    static readonly SERVICES_PAGE_SERVICE_8_IMAGE: string = "service_8_main_image.jpg";
 
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import Typed from "typed.js";
 
 export interface IWindowProps {
@@ -43,5 +43,24 @@ export interface IServiceProps {
     imgSrc: string;
     title: string;
     description: string;
-    
+    modalOpen: boolean;
+    previousServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
+    thisServiceModalSetter: Dispatch<SetStateAction<boolean>>;
+    nextServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
+}
+
+export interface IParseServiceDescriptionProps {
+    description: string;
+    setMainDescription: Dispatch<SetStateAction<string>>;
+    setDescriptionItems: Dispatch<SetStateAction<string[]>>;
+}
+
+export interface IServiceModalProps {
+    handleClose: () => void;
+    modalOpen: boolean;
+    imgSrc: string;
+    title: string;
+    description: string;
+    previousServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
+    nextServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
 }
