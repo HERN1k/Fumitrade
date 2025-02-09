@@ -1,16 +1,26 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, RefObject, useEffect, useRef, useState } from "react";
 import MainWindow from "../components/main/MainWindow.tsx";
 import { IPageProps } from "../types.ts";
 import DescriptionWindow from "../components/main/DescriptionWindow.tsx";
-import TrustUsWindow from "../components/main/TrustUsWindow.tsx";
 import Constants from "../constants.ts";
 import { motion, useSpring, useScroll } from "motion/react";
+import { useTranslation } from "react-i18next";
+import CountersWindow from "../components/main/CountersWindow.tsx";
+import TrustUsWindow from "../components/main/TrustUsWindow.tsx";
+import ServicesWindow from "../components/main/ServicesWindow.tsx";
 
 const Main: FC<IPageProps> = ({ id }) => {
 
-    const rootElementRef = useRef<HTMLDivElement | null>(null);
+    const rootElementRef = useRef<HTMLElement | null>(null);
+    const [containerRef, setContainerRef] = useState<RefObject<HTMLElement | null> | null>(null);
 
-    const { scrollYProgress } = useScroll({container: rootElementRef});
+    useEffect(() => {
+        rootElementRef.current = document.getElementById(Constants.ROOT_CONTAINER_ID) as HTMLElement;
+
+        setContainerRef({ current: rootElementRef.current });
+    }, []);
+
+    const { scrollYProgress } = useScroll(containerRef ? { container: containerRef } : {});
 
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -18,8 +28,10 @@ const Main: FC<IPageProps> = ({ id }) => {
         restDelta: 0.001,
     });
 
-    useEffect(() => {
-        rootElementRef.current = document.getElementById(Constants.ROOT_CONTAINER_ID) as HTMLDivElement;
+    const { t } = useTranslation();
+
+    useEffect(() => { 
+        document.title = t("appWrapper.documentTitles.main");
     }, []);
 
     return (
@@ -42,7 +54,11 @@ const Main: FC<IPageProps> = ({ id }) => {
  
             <DescriptionWindow />
 
-            {/* <TrustUsWindow /> */}
+            <ServicesWindow />
+
+            <CountersWindow />
+
+            <TrustUsWindow />
         </div>
     );
 }

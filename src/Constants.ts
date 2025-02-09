@@ -16,26 +16,41 @@ export default class Constants {
     static readonly HEADER_ID: string = ":HEADER_ID:";
     static readonly CHANGE_HEADER_VISIBILITY: string = "CHANGE_HEADER_VISIBILITY";
     static readonly HEADER_ACTIVE_ATTRIBUTE: string = "header-active";
+    static readonly SCROLL_TO_TOP_ACTIVE_ATTRIBUTE: string = "scroll-to-top";
     static readonly SCROLL_DISPLAY_BAR_HEIGHT: number = 5;
 
+    /*     General images     */ 
+    static readonly ICON_IMAGE: string = "General/ico.webp";
+    static readonly LOGO_IMAGE: string = "General/logo.webp";
+    static readonly NOT_FOUND_IMAGE: string = "General/not-found.svg";
 
-    /*     Images     */ 
-    static readonly LOGO_ICON_IMAGE: string = "fumitrade_logo.webp";
-    static readonly LOGO_IMAGE: string = "fumitrade_main_logo.webp";
-    static readonly NOT_FOUND_IMAGE: string = "not-found.svg";
-    static readonly MAIN_PAGE_MAIN_IMAGE: string = "main_picture.jpg";
-    static readonly MAIN_PAGE_DESCRIPTION_IMAGE: string = "second-main-page-picture.webp";
-    static readonly MAIN_PAGE_TRUST_US_IMAGE: string = "world.webp";
-    static readonly PAPER_IMAGE: string = "paper.webp";
-    static readonly SERVICES_HEADER_IMAGE: string = "ServicesHeader.webp";
-    static readonly SERVICES_PAGE_SERVICE_1_IMAGE: string = "service_1_main_image.jpg";
-    static readonly SERVICES_PAGE_SERVICE_2_IMAGE: string = "service_2_main_image.jpg";
-    static readonly SERVICES_PAGE_SERVICE_3_IMAGE: string = "service_3_main_image.jpg";
-    static readonly SERVICES_PAGE_SERVICE_4_IMAGE: string = "service_4_main_image.jpg";
-    static readonly SERVICES_PAGE_SERVICE_5_IMAGE: string = "service_5_main_image.jpg";
-    static readonly SERVICES_PAGE_SERVICE_6_IMAGE: string = "service_6_main_image.webp";
-    static readonly SERVICES_PAGE_SERVICE_7_IMAGE: string = "service_7_main_image.webp";
-    static readonly SERVICES_PAGE_SERVICE_8_IMAGE: string = "service_8_main_image.jpg";
+    /*     Main page images     */
+    static readonly MAIN_PAGE_MAIN_IMAGE: string = "MainPage/main_bg.webp";
+    static readonly MAIN_PAGE_DESCRIPTION_IMAGE: string = "MainPage/description_bg.webp";
+    static readonly MAIN_PAGE_TRUST_US_IMAGE: string = "MainPage/trust_us_bg.webp";
+    static readonly COMPANY_AGROCO_LOGO_IMAGE: string = "MainPage/Companies/agroco.webp";
+    static readonly COMPANY_AGRODAR_LOGO_IMAGE: string = "MainPage/Companies/agro-dar.webp";
+    static readonly COMPANY_AGROTRADE_LOGO_IMAGE: string = "MainPage/Companies/agrotrade.webp";
+    static readonly COMPANY_ALTERAAZTECA_LOGO_IMAGE: string = "MainPage/Companies/altera-azteca.webp";
+    static readonly COMPANY_DUNAGRARIAN_LOGO_IMAGE: string = "MainPage/Companies/dunagrarian.webp";
+    static readonly COMPANY_HORS_LOGO_IMAGE: string = "MainPage/Companies/hors.webp";
+    static readonly COMPANY_KIVSHOVATA_LOGO_IMAGE: string = "MainPage/Companies/kivshovata.webp";
+    static readonly COMPANY_MAIS_LOGO_IMAGE: string = "MainPage/Companies/mais.webp";
+    static readonly COMPANY_NEWELEVATOR_LOGO_IMAGE: string = "MainPage/Companies/new-elevator.webp";
+    static readonly COMPANY_NIBULON_LOGO_IMAGE: string = "MainPage/Companies/nibulon.webp";
+    static readonly COMPANY_PRODEXIM_LOGO_IMAGE: string = "MainPage/Companies/prodexim.webp";
+    static readonly COMPANY_RAMBURS_LOGO_IMAGE: string = "MainPage/Companies/ramburs.webp";
+
+    /*     Services page images     */
+    static readonly SERVICES_HEADER_IMAGE: string = "Services/services_bg.webp";
+    static readonly SERVICES_PAGE_SERVICE_1_IMAGE: string = "Services/service_1.webp";
+    static readonly SERVICES_PAGE_SERVICE_2_IMAGE: string = "Services/service_2.webp";
+    static readonly SERVICES_PAGE_SERVICE_3_IMAGE: string = "Services/service_3.webp";
+    static readonly SERVICES_PAGE_SERVICE_4_IMAGE: string = "Services/service_4.webp";
+    static readonly SERVICES_PAGE_SERVICE_5_IMAGE: string = "Services/service_5.webp";
+    static readonly SERVICES_PAGE_SERVICE_6_IMAGE: string = "Services/service_6.webp";
+    static readonly SERVICES_PAGE_SERVICE_7_IMAGE: string = "Services/service_7.webp";
+    static readonly SERVICES_PAGE_SERVICE_8_IMAGE: string = "Services/service_8.webp";
 
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
@@ -45,7 +60,9 @@ export default class Constants {
     /*     Components     */
     static readonly MAIN_WINDOW_MAIN_PAGE_ID: string = ":MAIN_WINDOW_MAIN_PAGE_ID:";
     static readonly DESCRIPTION_WINDOW_MAIN_PAGE_ID: string = ":DESCRIPTION_WINDOW_MAIN_PAGE_ID:";
+    static readonly SERVICES_WINDOW_MAIN_PAGE_ID: string = ":SERVICES_WINDOW_MAIN_PAGE_ID:";
     static readonly TRUST_US_WINDOW_MAIN_PAGE_ID: string = ":TRUST_US_WINDOW_MAIN_PAGE_ID:";
+    static readonly COUNTERS_WINDOW_MAIN_PAGE_ID: string = ":COUNTERS_WINDOW_MAIN_PAGE_ID:";
     static readonly SERVICES_PAGE_SERVICE_1_ID: string = ":SERVICES_PAGE_SERVICE_1_ID:";
     static readonly SERVICES_PAGE_SERVICE_2_ID: string = ":SERVICES_PAGE_SERVICE_2_ID:";
     static readonly SERVICES_PAGE_SERVICE_3_ID: string = ":SERVICES_PAGE_SERVICE_3_ID:";

@@ -70,7 +70,7 @@ const Footer: FC = () => {
 
             <div className={styles.footerBottom}>
                 <p className={styles.footerText}>
-                    <Link to="/" viewTransition onClick={transitionToTop}>
+                    <Link to="/" viewTransition onClick={transitionToTop}> 
                         <span className={styles.footerSpan}>{Constants.COMPANY_NAME + " "}</span> 
                     </Link>
                     &copy;{" " + Constants.YEAR_OF_WEBSITE_CREATION.toString()}

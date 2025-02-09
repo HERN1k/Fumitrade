@@ -17,7 +17,7 @@
     left: 0;
     background-color: transparent;
     z-index: 1000;
-    transition: all 0.25s ease-in;
+    transition: all 0.25s ease-in; 
 }
 
 .headerMobile {
@@ -46,14 +46,14 @@
 }
 
 .footer {
-    margin: 2rem 10%; 
-    padding: 1rem; 
+    padding: 3rem 10%; 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     z-index: 100;
     text-transform: uppercase;
+    background-color: var(--color-primary);
 }
 
 .footerTop {
@@ -225,9 +225,10 @@
 }
 
 .menuText {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     cursor: pointer;
-    font-family: "Nunito", serif;
+    font-family: "Montserrat", serif;
+    font-weight: 500;
     color: var(--color-text);
 }
 
@@ -321,7 +322,7 @@
     }
 
     .footer {
-        margin: 2rem 0; 
+        margin-bottom: 1rem; 
     }
 
     .footerWorkTogether {

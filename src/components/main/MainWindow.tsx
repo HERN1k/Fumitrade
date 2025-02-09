@@ -7,6 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { createTyped, destroyTyped, getStaticFile } from "../../scripts/mainPageScripts.ts";
 import AboutMain from "./AboutMain.tsx";
 import { useTranslation } from "react-i18next";
+import { ensureHeaderVisible } from "../../scripts/appWrapperScripts.ts";
 
 const MainWindow: FC = () => {
 
@@ -15,13 +16,15 @@ const MainWindow: FC = () => {
     
     const { ref, inView } = useInView({
         triggerOnce: false,
-        threshold: 0.1,
+        threshold: 0.3,
     });
 
     const { t } = useTranslation();
 
     useEffect(() => {
         if (inView) {
+            ensureHeaderVisible();
+
             createTyped({
                 typed: typed,
                 typedRef: typedRef,
@@ -39,8 +42,8 @@ const MainWindow: FC = () => {
     }, [inView]);
 
     return (
-        <Window id={Constants.MAIN_WINDOW_MAIN_PAGE_ID}> 
-            <div className={styles.mainPageContainer} ref={ref}>
+        <Window ref={ref} sticky id={Constants.MAIN_WINDOW_MAIN_PAGE_ID}> 
+            <div className={styles.mainPageContainer}>
                 <div className={styles.mainPageImage} style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_MAIN_IMAGE)})`}} />
                 
                 <div className={styles.sloganText}>

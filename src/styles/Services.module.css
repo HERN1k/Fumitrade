@@ -5,11 +5,13 @@
     background-position: center 60%;
     background-repeat: no-repeat;
     z-index: -100;
-    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .headerContainer::before {
@@ -120,7 +122,6 @@
         padding: 0 2rem;
         margin-bottom: 0.5rem;
         text-align: center;
-        
     }
 
     .navigationText { 
@@ -134,28 +135,45 @@
     }
 }
 
+.servicesContent {
+    margin-top: 32rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: var(--color-primary);
+    position: relative;
+    box-shadow: 0 -2px 2px var(--color-primary);
+}
+
 .servicesContainer {
     display: grid;
     position: relative;
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 70dvw;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
 }
 
 @media (max-width: 1440px) {
+    .servicesContent {
+        margin-top: 24rem;
+    }
+
     .servicesContainer {
         grid-template-columns: 1fr;
         margin-top: 1rem;
+        max-width: 75dvw;
     }
 }
 
 @media (max-width: 768px) {
+    .servicesContent {
+        margin-top: 32rem;
+    }
+
     .servicesContainer {
         grid-template-columns: 1fr;
         margin-top: 0;
+        max-width: 80dvw;
     }
 }
 
@@ -171,18 +189,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 4rem 6rem;
+    padding: 8rem 6rem 4rem 6rem;
     cursor: pointer;
-    gap: 3rem;
     transition: all 0.25s ease-in;
-    transform: scale(0.75);
-    opacity: 0.5;
     scroll-margin-top: 5px;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
     .serviceContainer {
         padding: 3rem 3rem;
+        border-radius: 0.8rem;
+        
     }
 }
 
@@ -199,10 +217,17 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.25s ease-in-out;
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .serviceFogging {
+        border-radius: 0.8rem;
+    }
 }
 
 .serviceFoggingHover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.25);
 }
 
 .serviceTitle {
@@ -210,28 +235,43 @@
     overflow-wrap: break-word;
     white-space: pre-line;
     font-family: "Montserrat", serif;
-    font-size: 2.25rem;
-    line-height: 2.75rem;
+    font-size: 3rem;
+    line-height: 3.25rem;
     color: white;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     z-index: 1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3rem;
+    text-shadow: 0px 0px 4px rgba(122, 122, 122, 0.5);
 }
 
 .serviceText {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: pre-line;
+    white-space: nowrap;
     font-family: "Montserrat", serif;
     font-size: 1.25rem;
     color: var(--color-secondary);
-    line-height: 1.75rem;
+    line-height: 1.25rem;
     width: 75%;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     z-index: 1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 0px 2px rgba(122, 122, 122, 0.5);
+    padding-left: 2rem;
+    position: relative;
+    letter-spacing: 0.05rem;
+    margin-bottom: 1.5rem;
+}
+
+.serviceText::before {
+    content: "";
+    height: 2px;
+    width: 1.5rem;
+    display: block;
+    position: absolute;
+    top: calc(calc(1.25rem - 2px) / 2);
+    left: 0;
+    z-index: 1;
+    background-color: var(--color-secondary);
 }
 
 @media (max-width: 1440px) {
@@ -244,12 +284,27 @@
     .serviceTitle {
         font-size: 2rem;
         line-height: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .serviceText {
-        width: 100%;
-        font-size: 1.25rem;
-        line-height: 1.75rem;
+        width: 90%;
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+
+    .serviceText::before {
+        content: "";
+        height: 2px;
+        width: 1rem;
+        display: block;
+        position: absolute;
+        top: calc(calc(1.6rem - 2px) / 2);
+        left: 0;
+        z-index: 1;
+        background-color: var(--color-secondary);
     }
 }
 
@@ -294,18 +349,24 @@
 }
 
 .modalBackdrop {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.05);
     position: fixed;
     width: 100dvw;
     height: 100dvh;
     top: 0;
     left: 0;
-    z-index: 1000000;
+    z-index: 1001;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 768px) {
+    .modalBackdrop {
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+} 
 
 .modalContainer {
     background-color: var(--color-primary);
@@ -317,17 +378,17 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    z-index: 1010;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .smokeContainer {
     width: 100dvw;
     height: 100dvh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
-    transition: all 0.75s linear;
+    transition: all 0.25s linear;
 }
 
 @media (max-width: 768px) {
@@ -409,13 +470,13 @@
 
 .modalTitle {
     display: block;
-    white-space: pre-line;
+    white-space: nowrap;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
     text-transform: uppercase;
-    width: fit-content;
     font-family: "Montserrat", serif;
     font-weight: 700;
-    font-size: 3.5rem;
-    line-height: 3.5rem;
     color: var(--color-text);
     transition: all 0.25s ease-in;
     margin-bottom: 2rem;
@@ -434,7 +495,6 @@
     opacity: 1;
     text-align: justify;
     padding-right: 4rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 768px) {
@@ -468,7 +528,6 @@
     position: relative;
     padding-left: 2rem; 
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .modalDescriptionItem::before {
@@ -492,7 +551,7 @@
 .modalContactText {
     font-family: "Montserrat", serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
     color: var(--color-secondary);
     transition: all 0.25s ease-in;
     text-transform: uppercase;
@@ -554,18 +613,6 @@
     color: var(--color-text);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .modalCloseSvg {
     display: block;
     position: absolute;
@@ -576,6 +623,7 @@
     fill: var(--color-text);
     transition: all 0.25s ease-in;
     cursor: pointer;
+    filter: drop-shadow(0 0px 2px rgba(0, 0, 0, 0.25));
 }
 
 .modalCloseSvg:hover {

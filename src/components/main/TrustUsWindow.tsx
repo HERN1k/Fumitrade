@@ -1,37 +1,41 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import Window from "../general/Window.tsx";
-import styles from "../../styles/MainPage.module.css";
-import { useInView } from "react-intersection-observer";
 import Constants from "../../constants.ts";
+import styles from "../../styles/MainPage.module.css";
+import AnimationInView from "./AnimationInView.tsx";
 import SwiperTrustUs from "./SwiperTrustUs.tsx";
-import { getStaticFile, onChangeViewInTrustUsWindow } from "../../scripts/mainPageScripts.ts";
 import { useTranslation } from "react-i18next";
+import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 
 const TrustUsWindow: FC = () => {
 
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        threshold: 0.1,
-    });
-
     const { t } = useTranslation();
 
-    useEffect(() => onChangeViewInTrustUsWindow(inView), [inView]);
-
     return (
-        <Window id={Constants.TRUST_US_WINDOW_MAIN_PAGE_ID}>
-            <div className={styles.trustUsContainer}>
-                <div className={styles.trustUsImg} style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_TRUST_US_IMAGE)})`}} />
+        <Window id={Constants.TRUST_US_WINDOW_MAIN_PAGE_ID} sticky className={styles.trustUsWindow}>
+            <div 
+                className={styles.trustUsBG}
+                style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_TRUST_US_IMAGE)})`}} />
 
-                <div className={styles.trustUsContentContainer}>
-                    <SwiperTrustUs />
-                    
-                    <div>
-                        <h2>Нам довіряють</h2>
-                        <p ref={ref} className={styles.trustUsText}>{t("trustUsWindow.we_are_trusted_text")}</p>
-                    </div>
-                </div>
-            </div>
+            <AnimationInView delay={500} style={{ 
+                    height: "fit-content", 
+                    marginTop: window.innerWidth > 767 ? "5rem" : "2rem"
+                }}>
+                <h2 className={styles.trustUsTitle}>
+                    {t("trustUsWindow.we_are_trusted_title_1")}
+                    <span className={styles.trustUsSpan}>
+                        {t("trustUsWindow.we_are_trusted_title_2")}
+                    </span>
+                    {t("trustUsWindow.we_are_trusted_title_3")}
+                </h2>
+            </AnimationInView> 
+
+            <AnimationInView delay={500} style={{ 
+                    height: "fit-content",
+                    marginBottom: "3rem"
+                }}>
+                <SwiperTrustUs />
+            </AnimationInView>
         </Window>
     );
 }

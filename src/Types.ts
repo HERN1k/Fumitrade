@@ -1,9 +1,12 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, MutableRefObject, ReactNode, SetStateAction } from "react";
+import { SwiperRef } from "swiper/react";
 import Typed from "typed.js";
 
 export interface IWindowProps {
     id: string;
     children: React.ReactNode;
+    sticky?: boolean;
+    className?: string;
 }
 
 export interface IPageProps {
@@ -44,9 +47,10 @@ export interface IServiceProps {
     title: string;
     description: string;
     modalOpen: boolean;
-    previousServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
-    thisServiceModalSetter: Dispatch<SetStateAction<boolean>>;
-    nextServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
+    closeModal: () => void,
+    previousModalOpen: (() => void) | null;
+    thisModalOpen: () => void;
+    nextModalOpen: (() => void) | null;
 }
 
 export interface IParseServiceDescriptionProps {
@@ -61,6 +65,48 @@ export interface IServiceModalProps {
     imgSrc: string;
     title: string;
     description: string;
-    previousServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
-    nextServiceModalSetter: Dispatch<SetStateAction<boolean>> | null;
+    previousModalOpen: (() => void) | null;
+    nextModalOpen: (() => void) | null;
+}
+
+export interface ICounterProps {
+    min: number;
+    max: number;
+    textAfter?: string; 
+    timeout?: number;
+    className: string;
+}
+
+export interface IAnimationInViewProps {
+    children: ReactNode; 
+    delay: number; 
+    style: any;
+    threshold?: number;
+    duration?: number;
+}
+
+export interface IChartData {
+    x: number;
+    y: number;
+}
+
+export interface IUseScrollTrackerProps {
+    scrollContainerId?: string;
+}
+
+export interface IUseScrollTrackerResult {
+    scrollDir: "up" | "down" | null;
+    scrollProgress: number | null;
+}
+
+export interface IChangeServicesWindowScrollProps {
+    root: MutableRefObject<HTMLDivElement | null>;
+    swiper: MutableRefObject<SwiperRef | null>;
+}
+
+export interface IServiceInMainPageProps {
+    id: string;
+    imgSrc: string;
+    title: string;
+    description: string;
 }

@@ -1,23 +1,45 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IPageProps, IServiceProps } from "../types.ts";
 import ServicesHeader from "../components/services/ServicesHeader.tsx";
 import Service from "../components/services/Service.tsx";
 import Constants from "../constants.ts";
 import styles from "../styles/Services.module.css";
 import { useTranslation } from "react-i18next";
+import Smoke from "../components/services/Smoke.tsx";
 
 const Services: FC<IPageProps> = ({ id }) => {
 
-    const [service_1_ModalOpen, setService_1_ModalOpen] = useState<boolean>(false);
-    const [service_2_ModalOpen, setService_2_ModalOpen] = useState<boolean>(false);
-    const [service_3_ModalOpen, setService_3_ModalOpen] = useState<boolean>(false);
-    const [service_4_ModalOpen, setService_4_ModalOpen] = useState<boolean>(false);
-    const [service_5_ModalOpen, setService_5_ModalOpen] = useState<boolean>(false);
-    const [service_6_ModalOpen, setService_6_ModalOpen] = useState<boolean>(false);
-    const [service_7_ModalOpen, setService_7_ModalOpen] = useState<boolean>(false);
-    const [service_8_ModalOpen, setService_8_ModalOpen] = useState<boolean>(false);
-
+    const [modalInView, setModalInView] = useState<boolean>(false);
+    
     const { t } = useTranslation();
+
+    useEffect(() => { document.title = t("appWrapper.documentTitles.services") }, []);
+
+    const [modals, setModals] = useState<Record<string, boolean>>({
+        service_1: false,
+        service_2: false,
+        service_3: false,
+        service_4: false,
+        service_5: false,
+        service_6: false,
+        service_7: false,
+        service_8: false,
+    });
+
+    const openModal = (serviceKey: string, isNew: boolean = false) => {
+        if (isNew) {
+            setModalInView(true);
+        }
+
+        setModals(prev => Object.fromEntries(Object.keys(prev)
+            .map(key => serviceKey === key ? [key, true] : [key, false])));
+    };
+
+    const closeModal = () => {
+        setModalInView(false);
+
+        setModals(prev => Object.fromEntries(Object.keys(prev).map(key => [key, false])));
+    };
 
     const servicesCollection: IServiceProps[] = [
         {
@@ -25,99 +47,112 @@ const Services: FC<IPageProps> = ({ id }) => {
             imgSrc: Constants.SERVICES_PAGE_SERVICE_1_IMAGE,
             title: t("servicesWindow.services.service_1.title"),
             description: t("servicesWindow.services.service_1.description"),
-            modalOpen: service_1_ModalOpen,
-            previousServiceModalSetter: null,
-            thisServiceModalSetter: setService_1_ModalOpen,
-            nextServiceModalSetter: setService_2_ModalOpen
+            modalOpen: modals.service_1,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_8"),
+            thisModalOpen: () => openModal("service_1", true), 
+            nextModalOpen: () => openModal("service_2") 
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_2_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_2_IMAGE,
             title: t("servicesWindow.services.service_2.title"),
             description: t("servicesWindow.services.service_2.description"),
-            modalOpen: service_2_ModalOpen,
-            previousServiceModalSetter: setService_1_ModalOpen,
-            thisServiceModalSetter: setService_2_ModalOpen,
-            nextServiceModalSetter: setService_3_ModalOpen
+            modalOpen: modals.service_2,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_1"),
+            thisModalOpen: () => openModal("service_2", true), 
+            nextModalOpen: () => openModal("service_3")
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_3_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_3_IMAGE,
             title: t("servicesWindow.services.service_3.title"),
             description: t("servicesWindow.services.service_3.description"),
-            modalOpen: service_3_ModalOpen,
-            previousServiceModalSetter: setService_2_ModalOpen,
-            thisServiceModalSetter: setService_3_ModalOpen,
-            nextServiceModalSetter: setService_4_ModalOpen
+            modalOpen: modals.service_3,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_2"),
+            thisModalOpen: () => openModal("service_3", true), 
+            nextModalOpen: () => openModal("service_4")
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_4_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_4_IMAGE,
             title: t("servicesWindow.services.service_4.title"),
             description: t("servicesWindow.services.service_4.description"),
-            modalOpen: service_4_ModalOpen,
-            previousServiceModalSetter: setService_3_ModalOpen,
-            thisServiceModalSetter: setService_4_ModalOpen,
-            nextServiceModalSetter: setService_5_ModalOpen
+            modalOpen: modals.service_4,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_3"),
+            thisModalOpen: () => openModal("service_4", true), 
+            nextModalOpen: () => openModal("service_5")
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_5_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_5_IMAGE,
             title: t("servicesWindow.services.service_5.title"),
             description: t("servicesWindow.services.service_5.description"),
-            modalOpen: service_5_ModalOpen,
-            previousServiceModalSetter: setService_4_ModalOpen,
-            thisServiceModalSetter: setService_5_ModalOpen,
-            nextServiceModalSetter: setService_6_ModalOpen
+            modalOpen: modals.service_5,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_4"),
+            thisModalOpen: () => openModal("service_5", true), 
+            nextModalOpen: () => openModal("service_6")
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_6_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_6_IMAGE,
             title: t("servicesWindow.services.service_6.title"),
             description: t("servicesWindow.services.service_6.description"),
-            modalOpen: service_6_ModalOpen,
-            previousServiceModalSetter: setService_5_ModalOpen,
-            thisServiceModalSetter: setService_6_ModalOpen,
-            nextServiceModalSetter: setService_7_ModalOpen
+            modalOpen: modals.service_6,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_5"),
+            thisModalOpen: () => openModal("service_6", true), 
+            nextModalOpen: () => openModal("service_7")
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_7_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_7_IMAGE,
             title: t("servicesWindow.services.service_7.title"),
             description: t("servicesWindow.services.service_7.description"),
-            modalOpen: service_7_ModalOpen,
-            previousServiceModalSetter: setService_6_ModalOpen,
-            thisServiceModalSetter: setService_7_ModalOpen,
-            nextServiceModalSetter: setService_8_ModalOpen
+            modalOpen: modals.service_7,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_6"),
+            thisModalOpen: () => openModal("service_7", true), 
+            nextModalOpen: () => openModal("service_8")
         },
         {
             id: Constants.SERVICES_PAGE_SERVICE_8_ID,
             imgSrc: Constants.SERVICES_PAGE_SERVICE_8_IMAGE,
             title: t("servicesWindow.services.service_8.title"),
             description: t("servicesWindow.services.service_8.description"),
-            modalOpen: service_8_ModalOpen,
-            previousServiceModalSetter: setService_7_ModalOpen,
-            thisServiceModalSetter: setService_8_ModalOpen,
-            nextServiceModalSetter: null
+            modalOpen: modals.service_8,
+            closeModal: closeModal,
+            previousModalOpen: () => openModal("service_7"),
+            thisModalOpen: () => openModal("service_8", true), 
+            nextModalOpen: () => openModal("service_1")
         }
     ];
 
     return (
         <div id={id}>
+            { window.innerWidth > 768 ? <Smoke inView={modalInView} /> : null }
+            
             <ServicesHeader />
 
-            <div className={styles.servicesContainer}>
-                {servicesCollection.map((item, index) => 
-                    <Service 
-                        key={index}
-                        id={item.id}
-                        imgSrc={item.imgSrc}
-                        title={item.title}
-                        description={item.description}
-                        modalOpen={item.modalOpen}
-                        previousServiceModalSetter={item.previousServiceModalSetter}
-                        thisServiceModalSetter={item.thisServiceModalSetter}
-                        nextServiceModalSetter={item.nextServiceModalSetter} />)}
+            <div className={styles.servicesContent}>
+                <div className={styles.servicesContainer}>
+                    {servicesCollection.map((item, index) => 
+                        <Service 
+                            key={index}
+                            id={item.id}
+                            imgSrc={item.imgSrc}
+                            title={item.title}
+                            description={item.description}
+                            closeModal={item.closeModal}
+                            modalOpen={item.modalOpen}
+                            previousModalOpen={item.previousModalOpen}
+                            thisModalOpen={item.thisModalOpen} 
+                            nextModalOpen={item.nextModalOpen} />)}
+                </div>
             </div>
         </div>
     );

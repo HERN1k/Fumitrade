@@ -6,6 +6,14 @@
         "call_us": "Зателефонуйте нам",
         "connect": "Підключіться",
         "created_with_love_by": "Created with love by",
+        "documentTitles" : {
+            "page_not_found": "Сторінку не знайдено",
+            "main": "Fumitrade",
+            "services": "Послуги",
+            "about_us": "Про нас",
+            "knowledge_base": "База знань",
+            "contacts": "Контакти"
+        },
         "menu": {
             "services": "Послуги",
             "about_us": "Про нас",
@@ -43,22 +51,29 @@
         }
     },
     "descriptionWindow" : {
-        "fumitrade": "FUMITRADE",
-        "leaders_in_fumigation": "лідери у сфері фумігації",
-        "operate_in_the_market_for_over": "Працюємо на ринку понад",
-        "30_years": "30 років",
-        "providing_the_best_fumigation_services": ", надаючи найкращі послуги з фумігації та обробки зернових і олійних культур.",
-        "security": "Безпека",
-        "efficiency": "ефективність",
-        "and": "та",
-        "innovations": "інновації",
-        "this_is_the_basis_of_our_activities": "— це основа нашої діяльності.",
-        "learn_more_about_us": "Дізнатися більше"
+        "title": "У FUMITRADE ми не просто експерти з фумігації – ми прокладаємо шлях у сфері захисту агропродукції",
+        "text": "Наш досвід налічує понад 30 років, і за цей час ми стали лідерами у фумігації та обробці зернових і олійних культур. Безпека, ефективність та інновації завжди були в основі нашої роботи, і ми продовжуємо вдосконалювати галузь, забезпечуючи найвищі стандарти якості.",
+        "button": "Дізнатися\nбільше"
+    },
+    "servicesWindowInMainPage": {
+        "title": "Популярні послуги",
+        "swiperLastItemDescription": "Хочете побачити більше?",
+        "swiperLastItemTitle": "Всі проекти"
     },
     "trustUsWindow": {
-        "we_are_trusted_text": "Ми вдячні нашим клієнтам за довіру і можливість розвиватися разом із ними. Це дозволяє нам постійно вдосконалювати наші послуги та зміцнювати репутацію на ринку.",
-        "quoteTitle": "Джон Д.Рокфеллер",
-        "quoteText": "Здобудьте власну репутацію, і вона почне працювати на вас."
+        "we_are_trusted_title_1": "Нам довіряють провідні аграрні та промислові компанії\nпо",
+        "we_are_trusted_title_2": " всій Україні ",
+        "we_are_trusted_title_3": "та за її межами",
+        "we_are_trusted_text": "Ми беремося як за великі, так і за малі проєкти, забезпечуючи ефективність і надійність, яку інші не можуть запропонувати"
+    },
+    "countersWindow": {
+        "we_are_in_numbers": "Наша ефективність у цифрах",
+        "we_have_processed": "Ми обробили в 2024",
+        "regular_customers": "Постійних клієнтів",
+        "percentage_of_successful_treatments": "Успішних обробок",
+        "years_on_the_market": "Роки на ринку",
+        "eco_friendly_solutions": "Екологічно чистих рішень",
+        "percentage_of_satisfied_customers": "Задоволених клієнтів"
     },
     "servicesWindow": {
         "reliable_solutions_for_your_business": "Надійні рішення для вашого бізнесу",

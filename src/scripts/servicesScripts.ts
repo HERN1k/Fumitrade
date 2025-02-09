@@ -86,17 +86,22 @@ export const onResizeModal = (setDisplayPropery: Dispatch<SetStateAction<string>
 }
 
 export const onPreviousModalClick = (args: IServiceModalProps) => {
-    args.handleClose();
-
     setTimeout(() => {
-        args.previousServiceModalSetter ? args.previousServiceModalSetter(true) : null;
-    }, 250)
+        if (args.previousModalOpen) args.previousModalOpen();
+    }, 100)
 };
 
 export const onNextModalClick = (args: IServiceModalProps) => {
-    args.handleClose();
-
     setTimeout(() => {
-        args.nextServiceModalSetter ? args.nextServiceModalSetter(true) : null;
-    }, 250)
+        if (args.nextModalOpen) args.nextModalOpen();
+    }, 100)
+};
+
+export const onScrollServicesHeader = () => {
+    var rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID) as HTMLDivElement | null;
+    var element = document.getElementsByClassName(styles.headerContainer)[0] as HTMLDivElement | null;
+
+    if (element && rootElement) {
+        element.style.transform = `translateY(-${rootElement.scrollTop / 2}px)`;
+    }
 };

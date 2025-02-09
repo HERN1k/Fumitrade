@@ -4,7 +4,6 @@ import { Link, Outlet } from "react-router";
 import { changeDocument, getStaticFile, onResize, onScroll, transitionToTop } from "../../scripts/appWrapperScripts.ts";
 import Constants from "../../constants.ts";
 import Footer from "./Footer.tsx";
-import Smoke from "../services/Smoke.tsx";
 
 const AppWrapper: FC = () => {
     
@@ -15,8 +14,6 @@ const AppWrapper: FC = () => {
 
     useEffect(() => {
         changeDocument();
-
-        (document.getElementById(Constants.HEADER_ID))?.classList.add(styles.headerVisibleWithTransparent);
 
         onResize({ setMenu: setMenu });
 
@@ -42,7 +39,7 @@ const AppWrapper: FC = () => {
             <main className={styles.main}>
                 <Outlet />
             </main>
-            
+             
             <Footer />
         </div>
     );

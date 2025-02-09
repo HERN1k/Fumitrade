@@ -81,7 +81,7 @@ export const toggleMobileMenu: () => void = () => {
 export const changeDocument = () => {
     document.title = Constants.DOCUMENT_TITLE;
 
-    (document.querySelector('link[rel="icon"]') as HTMLLinkElement).href = getStaticFile(Constants.LOGO_ICON_IMAGE);
+    (document.querySelector('link[rel="icon"]') as HTMLLinkElement).href = getStaticFile(Constants.ICON_IMAGE);
 }
 
 export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");
@@ -125,41 +125,101 @@ export const scrollToElement = (element: HTMLElement | null): Promise<void> => {
             
             observer.observe(element);
         } catch (e) {
-            console.error(e);
+            reject(e);
+        }
+    });
+};
 
+export const scrollToTop = (): Promise<void> => {
+    return new Promise((resolve, reject) => {
+        try {
+            const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
+
+            if (!rootElement) {
+                resolve();
+                return;
+            }
+
+            rootElement.scrollTo({ top: 0, behavior: "smooth" });
+
+            let iterations = 0;
+
+            const interval = setInterval(() => {
+                iterations++;
+
+                if (iterations == 20) {
+                    clearInterval(interval);
+                    resolve();
+                }
+
+                const currentScrollPosition = rootElement.scrollTop;
+                
+                if (currentScrollPosition < 1) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 50);
+        } catch (e) {
             reject(e);
         }
     });
 };
 
 export const transitionTo = (id: string) => {
+    if (getAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE)) return;
+
     setTimeout(async () => {
         setHeaderActiveState(false);
  
         const element = document.getElementById(id);
 
+        const root = document.getElementById(Constants.ROOT_CONTAINER_ID);
+
         const headerElement = document.getElementById(Constants.HEADER_ID);
 
-        if (!headerElement) return;
+        if (!root || !headerElement || !element) return;
 
         headerElement.classList.remove(styles.headerVisible);
         headerElement.classList.remove(styles.headerVisibleWithTransparent);
 
         await scrollToElement(element)
-            .catch((e) => console.error(e))
+            .catch((error) => console.error(error))
             .finally(() => setHeaderActiveState(true));
     }, 100);
 }
 
 export const transitionToTop = () => {
-    setTimeout(() => {
-        const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
+    setTimeout(async () => {
+        setAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE, true);
 
-        rootElement?.scrollTo({ top: 0, behavior: "smooth" });
+        var root = document.getElementById(Constants.ROOT_CONTAINER_ID);
+
+        if (root) root.scrollTop = 0;
+        
+        setAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE, false);
     }, 100);
 }
 
+export const ensureHeaderVisible = () => {
+    const headerElement = document.getElementById(Constants.HEADER_ID);
+
+    if (!headerElement) return;
+
+    setTimeout(() => {
+        headerElement.classList.remove(styles.headerVisible);
+
+        if (!headerElement.classList.contains(styles.headerVisibleWithTransparent)) {
+            headerElement.classList.add(styles.headerVisibleWithTransparent);
+        }
+    }, 250);
+}
+
 export const setHeaderActiveState = (isActive: boolean) => {
+
+    if (isActive === undefined) {
+        throw new Error("Parameter isActive is null.");
+    }
+
     var header = document.getElementById(Constants.HEADER_ID);
 
     if (!header) return;
@@ -172,7 +232,37 @@ export const getHeaderActiveState = (): boolean => {
 
     if (!header) return false;
 
-    const status = header.getAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE);
+    const state = header.getAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE);
 
-    return status !== null ? status === "true" : true;
+    return state !== null ? state === "true" : true;
+}
+
+export const setAttributeState = (attr: string, state: boolean) => {
+
+    if (attr === "" || attr === undefined) {
+        throw new Error("Parameter attr is null.");
+    }
+
+    if (state === undefined) {
+        throw new Error("Parameter state is null.");
+    }
+
+    document.body.setAttribute(attr, state.toString());
+}
+
+export const getAttributeState = (attr: string): boolean => {
+
+    if (attr === "" || attr === undefined) {
+        throw new Error("Parameter attr is null.");
+    }
+
+    const state = document.body.getAttribute(attr);
+
+    if (state === null) {
+        setAttributeState(attr, false);
+
+        return false;
+    }
+
+    return state === "true" ? true : false;
 }

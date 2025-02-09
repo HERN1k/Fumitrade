@@ -4,7 +4,6 @@ import { FC, useEffect, useState } from "react";
 import styles from "../../styles/Services.module.css";
 import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 import { Arrow, Close } from "../general/Svgs.tsx";
-import Smoke from "./Smoke.tsx";
 import { addLineBreaks, onNextModalClick, onPreviousModalClick, onResizeModal, parseServiceDescription } from "../../scripts/servicesScripts.ts";
 import { IServiceModalProps } from "../../types.ts";
 import { Link } from "react-router";
@@ -13,11 +12,9 @@ import { useTranslation } from "react-i18next";
 const dropIn = {
     hidden: {
         y: "-100vh",
-        opacity: 0,
     },
     visible: {
         y: "0",
-        opacity: 1,
         transition: {
             duration: 0.1,
             type: "spring",
@@ -27,7 +24,6 @@ const dropIn = {
     },
     exit: {
         y: "100vh",
-        opacity: 0,
     },
 };
 
@@ -40,7 +36,7 @@ const Modal: FC<IServiceModalProps> = (args) => {
     const { t } = useTranslation();
     
     useEffect(() => { 
-        var description = args.description;
+        var description = args.description; 
 
         parseServiceDescription({ 
             description, 
@@ -64,26 +60,24 @@ const Modal: FC<IServiceModalProps> = (args) => {
             {args.modalOpen && 
                 <Backdrop onClick={args.handleClose}>
                     <>
-                      <Smoke />
-
                       <div 
                           className={styles.nextModalButton}
                           style={{ 
-                              display: args.previousServiceModalSetter ? modalButtonDisplayPropery : "none",
+                              display: args.previousModalOpen ? modalButtonDisplayPropery : "none",
                               left: "5%",
                               transform: "rotate(180deg) translateX(50%)"
                           }}
-                          onClick={() => onPreviousModalClick(args)}>
+                          onClick={(e) => { e.stopPropagation(); onPreviousModalClick(args); }}>
                           <Arrow className={styles.nextModalArrowSvg} />
                       </div>
 
                       <div 
                         className={styles.nextModalButton}
                           style={{ 
-                              display: args.nextServiceModalSetter ? modalButtonDisplayPropery : "none",
+                              display: args.nextModalOpen ? modalButtonDisplayPropery : "none",
                               right: "5%"
                           }}
-                          onClick={() => onNextModalClick(args)}>
+                          onClick={(e) => { e.stopPropagation();  onNextModalClick(args) }}>
                           <Arrow className={styles.nextModalArrowSvg} />
                       </div>
 
@@ -114,11 +108,11 @@ const Modal: FC<IServiceModalProps> = (args) => {
 
                               <Link to="/">
                                   <div className={styles.modalContactContainer}>
-                                      <h2 className={styles.modalContactText}>{t("servicesWindow.modal.order")}</h2>
                                       <div className={styles.modalContactButton}>
                                           <Arrow className={styles.modalContactButtonArrowSvg} />
                                       </div>
-                                  </div>
+                                      <h2 className={styles.modalContactText}>{t("servicesWindow.modal.order")}</h2>
+                                  </div> 
                               </Link>
                           </div>
                       </motion.div>

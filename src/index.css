@@ -89,7 +89,7 @@ html {
 }
 
 html {
-    background-color: #14121b;
+    background-color: #0f1822;
     scrollbar-width: none;
     -ms-overflow-style: none;
     user-select: none;
@@ -99,7 +99,7 @@ html {
 }
 
 ::selection {
-    background-color: rgba(255, 120, 219, 0.5);
+    background-color: rgba(249, 87, 255, 0.5);
     color: whitesmoke;
 }
   
@@ -130,12 +130,13 @@ a {
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  font-family: Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.87); 
   background-color: #0f1822;
 
   font-synthesis: none;
@@ -150,6 +151,16 @@ a {
   --color-secondary: #dcb426;
 
   --color-header: #091018;
+
+  --swiper-scrollbar-border-radius: 10px;
+  --swiper-scrollbar-top: auto;
+  --swiper-scrollbar-bottom: -2rem;
+  --swiper-scrollbar-left: 0;
+  --swiper-scrollbar-right: auto;
+  --swiper-scrollbar-sides-offset: 1%;
+  --swiper-scrollbar-bg-color: var(--color-header);
+  --swiper-scrollbar-drag-bg-color: var(--color-text);
+  --swiper-scrollbar-size: 8px;
 }
 .swiper .swiper-pagination-bullet {
   background-color: var(--color-text) !important;
