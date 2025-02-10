@@ -6,7 +6,7 @@ import Constants from "../../constants.ts";
 import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 import { useTranslation } from "react-i18next";
 import { Arrow } from "../general/Svgs.tsx";
-import AnimationInView from "./AnimationInView.tsx";
+import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
 
 const DescriptionWindow: FC = () => {
 
@@ -27,16 +27,25 @@ const DescriptionWindow: FC = () => {
             
             <div className={styles.descriptionContainer}>
                 <div className={styles.descriptionTextContainer}>
-                    <AnimationInView delay={500} style={style}>
+                    <AppearanceAnimation 
+                        initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                        delay={500} 
+                        style={style}>
                         <h1 className={styles.descriptionTitle}>{t("descriptionWindow.title")}</h1>
-                    </AnimationInView> 
+                    </AppearanceAnimation> 
 
-                    <AnimationInView delay={500} style={style}>
+                    <AppearanceAnimation 
+                        initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                        delay={500} 
+                        style={style}>
                         <p className={styles.descriptionText}>{t("descriptionWindow.text")}</p>
-                    </AnimationInView>
+                    </AppearanceAnimation>
                 </div>
 
-                <AnimationInView delay={500} style={style}>
+                <AppearanceAnimation 
+                    initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                    delay={500} 
+                    style={style}>
                     <Link to="/about">
                         <div className={styles.learnMoreContainer}>
                             <div className={styles.learnMoreButton}>
@@ -45,7 +54,7 @@ const DescriptionWindow: FC = () => {
                             <h2 className={styles.learnMoreText}>{t("descriptionWindow.button")}</h2>
                         </div>
                     </Link>
-                </AnimationInView>
+                </AppearanceAnimation>
             </div>
         </Window>
     );

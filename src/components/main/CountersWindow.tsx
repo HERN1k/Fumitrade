@@ -4,10 +4,10 @@ import Constants from "../../constants.ts";
 import Counter from "./Counter.tsx";
 import styles from "../../styles/MainPage.module.css"
 import { useTranslation } from "react-i18next";
-import AnimationInView from "./AnimationInView.tsx";
 import { LineChart, ResponsiveContainer, Line, CartesianGrid } from "recharts";
 import { useInView } from "react-intersection-observer";
 import { chartData, halfArray } from "../../scripts/mainPageScripts.ts";
+import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
 
 const CountersWindow: FC = () => {
 
@@ -47,13 +47,20 @@ const CountersWindow: FC = () => {
         <Window id={Constants.COUNTERS_WINDOW_MAIN_PAGE_ID} sticky className={styles.countersWindow}>
             { charts }
 
-            <AnimationInView delay={500} style={{ height: "fit-content" }}>
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={500} 
+                style={{ height: "fit-content" }}>
                 <h2 className={styles.countersTitle}>
                     {t("countersWindow.we_are_in_numbers")}
                 </h2>
-            </AnimationInView>
+            </AppearanceAnimation>
 
-            <AnimationInView delay={500} style={{ height: "fit-content" }} threshold={0.5}>
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={500} 
+                style={{ height: "fit-content" }} 
+                threshold={0.5}>
                 <div className={styles.countersContent}>
                     <div className={styles.counterContainer}>
                         <p className={styles.counterTitle}>
@@ -133,7 +140,7 @@ const CountersWindow: FC = () => {
                             className={styles.counterNumbers} />
                     </div>
                 </div>
-            </AnimationInView>
+            </AppearanceAnimation>
         </Window>
     );
 }

@@ -3,7 +3,7 @@ import styles from "../styles/MainPage.module.css";
 import { IChangeServicesWindowScrollProps, IChartData, ICreateTyped, ISlidesTrustUs } from "../types.tsx";
 import Constants from "../constants.ts";
 import { Dispatch, SetStateAction } from "react";
-import { getAttributeState, getHeaderActiveState } from "./appWrapperScripts.ts";
+import { getAttributeState } from "./appWrapperScripts.ts";
 
 export const getStaticFile: (name: string) => string = (name: string) => {
     return Constants.STATIC_FILES_PATH + name;
@@ -274,20 +274,22 @@ export const trustUsSlides: ISlidesTrustUs = {
 };
 
 export const lockServicesWindowScroll = ({ root, swiper }: IChangeServicesWindowScrollProps) => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 900) return;
 
     if (getAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE)) return;
     
-    if (root.current && swiper.current) {
-        root.current.style.overflow = "hidden";
-
-        swiper.current.swiper.enable(); 
-    }
+    setTimeout(() => {
+        if (root.current && swiper.current) {
+            root.current.style.overflow = "hidden";
+    
+            swiper.current.swiper.enable(); 
+        }
+    }, 250);
 }
 
 export const unlockServicesWindowScroll = ({ root, swiper }: IChangeServicesWindowScrollProps) => {
-    if (window.innerWidth < 768) return;
-    
+    if (window.innerWidth < 900) return;
+
     if (root.current && swiper.current) {
         swiper.current.swiper.disable();
 

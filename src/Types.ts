@@ -1,6 +1,7 @@
 import { Dispatch, FC, MutableRefObject, ReactNode, SetStateAction } from "react";
 import { SwiperRef } from "swiper/react";
 import Typed from "typed.js";
+import { TranslateOnAxis } from "./scripts/appWrapperScripts.ts";
 
 export interface IWindowProps {
     id: string;
@@ -109,4 +110,13 @@ export interface IServiceInMainPageProps {
     imgSrc: string;
     title: string;
     description: string;
+}
+
+export interface IAppearanceAnimationProps {
+    children: ReactNode;
+    initialPosition: TranslateOnAxis;
+    threshold?: number;
+    delay?: number;
+    duration?: number;
+    style?: any;
 }

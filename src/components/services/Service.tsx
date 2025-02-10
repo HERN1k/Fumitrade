@@ -6,6 +6,8 @@ import { Arrow } from "../general/Svgs.tsx";
 import { useInView } from "react-intersection-observer";
 import Modal from "./Modal.tsx";
 import { useSpring, animated, config } from "@react-spring/web";
+import Constants from "../../constants.ts";
+import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
 
 const Service: FC<IServiceProps> = (args) => {
 
@@ -58,7 +60,7 @@ const Service: FC<IServiceProps> = (args) => {
             window.removeEventListener("resize", onResize);
         }; 
     }, []);
-
+    
     return (
         <>
             <Modal 
@@ -69,36 +71,41 @@ const Service: FC<IServiceProps> = (args) => {
                 description={args.description}
                 previousModalOpen={args.previousModalOpen}
                 nextModalOpen={args.nextModalOpen} /> 
-
-            <animated.div 
-                ref={ref} 
-                style={{ 
-                    ...fadeInAnimation, 
-                    transform: isMobile ? "" : xys.to(trans),
-                    willChange: isMobile ? "" : "transform",
-                }}
-                onMouseLeave={handleMouseLeave}
-                onMouseMove={handleMouseMove}>
-                <div 
-                    id={args.id}
-                    ref={containerRef}
-                    className={styles.serviceContainer}  
-                    style={{ backgroundImage: `url(${getStaticFile(args.imgSrc)})` }}
-                    onMouseEnter={() => onServiceHover(containerRef.current)}
-                    onMouseLeave={() => onServiceHover(containerRef.current)}
-                    onClick={args.thisModalOpen}>
-                    <div className={styles.serviceFogging} />
-                    <p className={styles.serviceText}>
-                        {trimWithDots(args.description, 25)}
-                    </p>
-                    <h1 className={styles.serviceTitle}>
-                        {addLineBreaks(args.title)}
-                    </h1> 
-                    <div className={styles.serviceButton}>
-                        <Arrow className={styles.serviceButtonArrowSvg} />
+            
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={100} 
+                style={{ width: "100%" }}>
+                <animated.div 
+                    ref={ref} 
+                    style={{ 
+                        ...fadeInAnimation, 
+                        transform: isMobile ? "" : xys.to(trans),
+                        willChange: isMobile ? "" : "transform",
+                    }}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseMove={handleMouseMove}>
+                    <div 
+                        id={args.id}
+                        ref={containerRef}
+                        className={styles.serviceContainer}  
+                        style={{ backgroundImage: `url(${getStaticFile(args.imgSrc)})` }}
+                        onMouseEnter={() => onServiceHover(containerRef.current)}
+                        onMouseLeave={() => onServiceHover(containerRef.current)}
+                        onClick={args.thisModalOpen}>
+                        <div className={styles.serviceFogging} />
+                        <p className={styles.serviceText}>
+                            {trimWithDots(args.description, 25)}
+                        </p>
+                        <h1 className={styles.serviceTitle}>
+                            {addLineBreaks(args.title)}
+                        </h1> 
+                        <div className={styles.serviceButton}>
+                            <Arrow className={styles.serviceButtonArrowSvg} />
+                        </div>
                     </div>
-                </div>
-            </animated.div>
+                </animated.div>
+            </AppearanceAnimation>
         </>
     );
 }

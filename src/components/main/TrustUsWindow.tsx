@@ -2,10 +2,10 @@ import { FC } from "react";
 import Window from "../general/Window.tsx";
 import Constants from "../../constants.ts";
 import styles from "../../styles/MainPage.module.css";
-import AnimationInView from "./AnimationInView.tsx";
 import SwiperTrustUs from "./SwiperTrustUs.tsx";
 import { useTranslation } from "react-i18next";
 import { getStaticFile } from "../../scripts/mainPageScripts.ts";
+import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
 
 const TrustUsWindow: FC = () => {
 
@@ -17,7 +17,10 @@ const TrustUsWindow: FC = () => {
                 className={styles.trustUsBG}
                 style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_TRUST_US_IMAGE)})`}} />
 
-            <AnimationInView delay={500} style={{ 
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={500} 
+                style={{ 
                     height: "fit-content", 
                     marginTop: window.innerWidth > 767 ? "5rem" : "2rem"
                 }}>
@@ -28,14 +31,17 @@ const TrustUsWindow: FC = () => {
                     </span>
                     {t("trustUsWindow.we_are_trusted_title_3")}
                 </h2>
-            </AnimationInView> 
+            </AppearanceAnimation> 
 
-            <AnimationInView delay={500} style={{ 
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={500} 
+                style={{ 
                     height: "fit-content",
                     marginBottom: "3rem"
                 }}>
                 <SwiperTrustUs />
-            </AnimationInView>
+            </AppearanceAnimation>
         </Window>
     );
 }

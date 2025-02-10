@@ -1,3 +1,5 @@
+import { TranslateOnAxis } from "./scripts/appWrapperScripts.ts";
+
 export default class Constants {
 
     /*     General     */ 
@@ -17,7 +19,8 @@ export default class Constants {
     static readonly CHANGE_HEADER_VISIBILITY: string = "CHANGE_HEADER_VISIBILITY";
     static readonly HEADER_ACTIVE_ATTRIBUTE: string = "header-active";
     static readonly SCROLL_TO_TOP_ACTIVE_ATTRIBUTE: string = "scroll-to-top";
-    static readonly SCROLL_DISPLAY_BAR_HEIGHT: number = 5;
+    static readonly SCROLL_DISPLAY_BAR_HEIGHT: number = 4;
+    static readonly BASE_APPEARANCE_ANIMATION: TranslateOnAxis = new TranslateOnAxis(2, "rem", "Y");
 
     /*     General images     */ 
     static readonly ICON_IMAGE: string = "General/ico.webp";
@@ -61,8 +64,9 @@ export default class Constants {
     static readonly MAIN_WINDOW_MAIN_PAGE_ID: string = ":MAIN_WINDOW_MAIN_PAGE_ID:";
     static readonly DESCRIPTION_WINDOW_MAIN_PAGE_ID: string = ":DESCRIPTION_WINDOW_MAIN_PAGE_ID:";
     static readonly SERVICES_WINDOW_MAIN_PAGE_ID: string = ":SERVICES_WINDOW_MAIN_PAGE_ID:";
-    static readonly TRUST_US_WINDOW_MAIN_PAGE_ID: string = ":TRUST_US_WINDOW_MAIN_PAGE_ID:";
     static readonly COUNTERS_WINDOW_MAIN_PAGE_ID: string = ":COUNTERS_WINDOW_MAIN_PAGE_ID:";
+    static readonly TRUST_US_WINDOW_MAIN_PAGE_ID: string = ":TRUST_US_WINDOW_MAIN_PAGE_ID:";
+    static readonly QUOTE_WINDOW_MAIN_PAGE_ID: string = ":QUOTE_WINDOW_MAIN_PAGE_ID:";
     static readonly SERVICES_PAGE_SERVICE_1_ID: string = ":SERVICES_PAGE_SERVICE_1_ID:";
     static readonly SERVICES_PAGE_SERVICE_2_ID: string = ":SERVICES_PAGE_SERVICE_2_ID:";
     static readonly SERVICES_PAGE_SERVICE_3_ID: string = ":SERVICES_PAGE_SERVICE_3_ID:";

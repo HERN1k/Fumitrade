@@ -1,4 +1,4 @@
-import { FC, MutableRefObject } from "react";
+import { FC } from "react";
 import { IBurgerButton } from "../../types.tsx";
 
 export const BurgerButton : FC<IBurgerButton> = ({ toggleMenu }) => {

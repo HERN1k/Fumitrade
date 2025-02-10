@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { transitionTo } from "../../scripts/appWrapperScripts";
 import Constants from "../../constants";
 import { removeLineBreak } from "../../scripts/mainPageScripts";
-import AnimationInView from "./AnimationInView";
+import AppearanceAnimation from "../general/AppearanceAnimation";
 
 const AboutMainElement: FC = () => {
 
@@ -20,7 +20,10 @@ const AboutMainElement: FC = () => {
 
     return (
         <div className={styles.aboutTextItemsContainer}>
-            <AnimationInView delay={window.innerWidth > 768 ? 1250 : 500} style={style}>
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={window.innerWidth > 768 ? 1250 : 500} 
+                style={style}>
                 <Link 
                     to="/services" 
                     viewTransition 
@@ -31,9 +34,12 @@ const AboutMainElement: FC = () => {
                         : removeLineBreak(t("mainWindow.about.disinfection_of_granaries")) }
                     <div className={styles.underlineAboutText} />
                 </Link>
-            </AnimationInView>
+            </AppearanceAnimation>
 
-            <AnimationInView delay={window.innerWidth > 768 ? 1500 : 500} style={style}>
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={window.innerWidth > 768 ? 1500 : 500} 
+                style={style}>
                 <Link 
                     to="/services"
                     viewTransition 
@@ -44,9 +50,12 @@ const AboutMainElement: FC = () => {
                         : removeLineBreak(t("mainWindow.about.pest_control")) }
                     <div className={styles.underlineAboutText} />
                 </Link>
-            </AnimationInView>
+            </AppearanceAnimation>
 
-            <AnimationInView delay={window.innerWidth > 768 ? 1750 : 500} style={style}>
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={window.innerWidth > 768 ? 1750 : 500} 
+                style={style}>
                 <Link 
                     to="/services"
                     viewTransition 
@@ -57,7 +66,7 @@ const AboutMainElement: FC = () => {
                         : removeLineBreak(t("mainWindow.about.export_cargo_processing")) }
                     <div className={styles.underlineAboutText} />
                 </Link>
-            </AnimationInView>
+            </AppearanceAnimation>
         </div>
     );
 }

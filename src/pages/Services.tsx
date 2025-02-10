@@ -6,6 +6,7 @@ import Constants from "../constants.ts";
 import styles from "../styles/Services.module.css";
 import { useTranslation } from "react-i18next";
 import Smoke from "../components/services/Smoke.tsx";
+import ScrollIndicator from "../components/general/ScrollIndicator.tsx";
 
 const Services: FC<IPageProps> = ({ id }) => {
 
@@ -135,8 +136,10 @@ const Services: FC<IPageProps> = ({ id }) => {
     return (
         <div id={id}>
             { window.innerWidth > 768 ? <Smoke inView={modalInView} /> : null }
+
+            <ScrollIndicator />
             
-            <ServicesHeader />
+            <ServicesHeader /> 
 
             <div className={styles.servicesContent}>
                 <div className={styles.servicesContainer}>
