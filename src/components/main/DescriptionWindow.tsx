@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Window from "../general/Window.tsx";
 import styles from "../../styles/MainPage.module.css";
 import { Link } from "react-router";
@@ -7,6 +7,7 @@ import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 import { useTranslation } from "react-i18next";
 import { Arrow } from "../general/Svgs.tsx";
 import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
+import Header from "../../scripts/header.ts";
 
 const DescriptionWindow: FC = () => {
 

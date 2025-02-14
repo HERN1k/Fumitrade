@@ -1,20 +1,22 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, lazy } from "react";
 import { IPageProps, IServiceProps } from "../types.ts";
-import ServicesHeader from "../components/services/ServicesHeader.tsx";
 import Service from "../components/services/Service.tsx";
 import Constants from "../constants.ts";
 import styles from "../styles/Services.module.css";
 import { useTranslation } from "react-i18next";
-import Smoke from "../components/services/Smoke.tsx";
-import ScrollIndicator from "../components/general/ScrollIndicator.tsx";
+const ScrollIndicator = lazy(() => import("../components/general/ScrollIndicator.tsx"));
+const ServicesHeader = lazy(() => import("../components/services/ServicesHeader.tsx"));
+import { Helmet } from "react-helmet-async";
+import { 
+    getCanonicalUrlForHelmet, 
+    getKeywordsForHelmet, 
+    getPhotoUriForHelmet 
+} from "../scripts/appWrapperScripts.ts";
+import Header from "../scripts/header.ts";
 
 const Services: FC<IPageProps> = ({ id }) => {
 
-    const [modalInView, setModalInView] = useState<boolean>(false);
-    
     const { t } = useTranslation();
-
-    useEffect(() => { document.title = t("appWrapper.documentTitles.services") }, []);
 
     const [modals, setModals] = useState<Record<string, boolean>>({
         service_1: false,
@@ -27,18 +29,16 @@ const Services: FC<IPageProps> = ({ id }) => {
         service_8: false,
     });
 
-    const openModal = (serviceKey: string, isNew: boolean = false) => {
-        if (isNew) {
-            setModalInView(true);
-        }
+    useEffect(() => { 
+        Header.ensureVisible();
+    }, []);
 
+    const openModal = (serviceKey: string) => {
         setModals(prev => Object.fromEntries(Object.keys(prev)
             .map(key => serviceKey === key ? [key, true] : [key, false])));
     };
 
     const closeModal = () => {
-        setModalInView(false);
-
         setModals(prev => Object.fromEntries(Object.keys(prev).map(key => [key, false])));
     };
 
@@ -51,7 +51,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_1,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_8"),
-            thisModalOpen: () => openModal("service_1", true), 
+            thisModalOpen: () => openModal("service_1"), 
             nextModalOpen: () => openModal("service_2") 
         },
         {
@@ -62,7 +62,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_2,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_1"),
-            thisModalOpen: () => openModal("service_2", true), 
+            thisModalOpen: () => openModal("service_2"), 
             nextModalOpen: () => openModal("service_3")
         },
         {
@@ -73,7 +73,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_3,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_2"),
-            thisModalOpen: () => openModal("service_3", true), 
+            thisModalOpen: () => openModal("service_3"), 
             nextModalOpen: () => openModal("service_4")
         },
         {
@@ -84,7 +84,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_4,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_3"),
-            thisModalOpen: () => openModal("service_4", true), 
+            thisModalOpen: () => openModal("service_4"), 
             nextModalOpen: () => openModal("service_5")
         },
         {
@@ -95,7 +95,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_5,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_4"),
-            thisModalOpen: () => openModal("service_5", true), 
+            thisModalOpen: () => openModal("service_5"), 
             nextModalOpen: () => openModal("service_6")
         },
         {
@@ -106,7 +106,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_6,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_5"),
-            thisModalOpen: () => openModal("service_6", true), 
+            thisModalOpen: () => openModal("service_6"), 
             nextModalOpen: () => openModal("service_7")
         },
         {
@@ -117,7 +117,7 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_7,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_6"),
-            thisModalOpen: () => openModal("service_7", true), 
+            thisModalOpen: () => openModal("service_7"), 
             nextModalOpen: () => openModal("service_8")
         },
         {
@@ -128,36 +128,50 @@ const Services: FC<IPageProps> = ({ id }) => {
             modalOpen: modals.service_8,
             closeModal: closeModal,
             previousModalOpen: () => openModal("service_7"),
-            thisModalOpen: () => openModal("service_8", true), 
+            thisModalOpen: () => openModal("service_8"), 
             nextModalOpen: () => openModal("service_1")
         }
     ];
 
     return (
-        <div id={id}>
-            { window.innerWidth > 768 ? <Smoke inView={modalInView} /> : null }
+        <>
+            <Helmet>
+                <title>{t("pages_helmet.services.title")}</title>
+                <link rel="canonical" href={getCanonicalUrlForHelmet(t("pages_helmet.services.canonicalPath"))} />
+                <meta name="description" content={t("pages_helmet.services.description")} />
+                <meta name="keywords" content={getKeywordsForHelmet(t("pages_helmet.services.keywords"))} />
+                <meta name="robots" content={Constants.ROBOTS_INDEX} />
+                <meta property="og:type" content={t("pages_helmet.services.openGraphType")} />
+                <meta property="og:url" content={getCanonicalUrlForHelmet(t("pages_helmet.services.canonicalPath"))} />
+                <meta property="og:site_name" content={Constants.COMPANY_NAME} />
+                <meta property="og:title" content={t("pages_helmet.services.title")} />
+                <meta property="og:description" content={t("pages_helmet.services.description")} />
+                <meta property="og:image" content={getPhotoUriForHelmet(Constants.LOGO_IMAGE)} />
+            </Helmet>
 
-            <ScrollIndicator />
-            
-            <ServicesHeader /> 
+            <div id={id}>
+                <ScrollIndicator />
+                
+                <ServicesHeader />  
 
-            <div className={styles.servicesContent}>
-                <div className={styles.servicesContainer}>
-                    {servicesCollection.map((item, index) => 
-                        <Service 
-                            key={index}
-                            id={item.id}
-                            imgSrc={item.imgSrc}
-                            title={item.title}
-                            description={item.description}
-                            closeModal={item.closeModal}
-                            modalOpen={item.modalOpen}
-                            previousModalOpen={item.previousModalOpen}
-                            thisModalOpen={item.thisModalOpen} 
-                            nextModalOpen={item.nextModalOpen} />)}
+                <div className={styles.servicesContent}>
+                    <div className={styles.servicesContainer}>
+                        {servicesCollection.map((item, index) => 
+                            <Service 
+                                key={index}
+                                id={item.id}
+                                imgSrc={item.imgSrc}
+                                title={item.title}
+                                description={item.description}
+                                closeModal={item.closeModal}
+                                modalOpen={item.modalOpen}
+                                previousModalOpen={item.previousModalOpen}
+                                thisModalOpen={item.thisModalOpen} 
+                                nextModalOpen={item.nextModalOpen} />)}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

@@ -7,7 +7,6 @@ import { useInView } from "react-intersection-observer";
 import { createTyped, destroyTyped, getStaticFile } from "../../scripts/mainPageScripts.ts";
 import AboutMain from "./AboutMain.tsx";
 import { useTranslation } from "react-i18next";
-import { ensureHeaderVisible } from "../../scripts/appWrapperScripts.ts";
 
 const MainWindow: FC = () => {
 
@@ -15,7 +14,7 @@ const MainWindow: FC = () => {
     const typed = useRef<Typed | null>(null);
     
     const { ref, inView } = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.3,
     });
 
@@ -23,8 +22,6 @@ const MainWindow: FC = () => {
 
     useEffect(() => {
         if (inView) {
-            ensureHeaderVisible();
-
             createTyped({
                 typed: typed,
                 typedRef: typedRef,
@@ -34,15 +31,13 @@ const MainWindow: FC = () => {
                     t("mainWindow.typedStrings.experience_reliability_efficiency"),
                 ]
             });
-        } else {
-            destroyTyped(typed);
-        } 
+        }
 
-        return () => destroyTyped(typed);   
+        return () => destroyTyped(typed);    
     }, [inView]);
 
     return (
-        <Window ref={ref} sticky id={Constants.MAIN_WINDOW_MAIN_PAGE_ID}> 
+        <Window ref={ref} id={Constants.MAIN_WINDOW_MAIN_PAGE_ID}> 
             <div className={styles.mainPageContainer}>
                 <div className={styles.mainPageImage} style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_MAIN_IMAGE)})`}} />
                 

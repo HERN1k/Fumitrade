@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { transitionTo } from "../../scripts/appWrapperScripts.ts";
 
 const Window = forwardRef<HTMLDivElement, IWindowProps>(({ id, children, sticky = false, className = "" }, ref) => {
+    
     const [height, setHeight] = useState<number>(() => {
         const innerHeight = window.innerHeight;
         return innerHeight <= 0 ? 300 : innerHeight;
@@ -30,7 +31,7 @@ const Window = forwardRef<HTMLDivElement, IWindowProps>(({ id, children, sticky 
             if (inView) {
                 if (window.innerWidth > 768) {
                     transitionTo(id);
-                }
+                } 
             }
         }
     }, [inView]);

@@ -1,27 +1,33 @@
 import { FC, useEffect, useRef, useState } from "react";
 import styles from "../../styles/AppWrapper.module.css";
 import { Link, Outlet } from "react-router";
-import { changeDocument, getStaticFile, onResize, onScroll, transitionToTop } from "../../scripts/appWrapperScripts.ts";
+import {  
+    getStaticFile, 
+    onResize, 
+    transitionToTop 
+} from "../../scripts/appWrapperScripts.ts";
 import Constants from "../../constants.ts";
 import Footer from "./Footer.tsx";
+import Header from "../../scripts/header.ts";
 
 const AppWrapper: FC = () => {
     
-    const scrollPositionRef = useRef<number>(0);
     const containerRef = useRef<HTMLDivElement | null>(null);
-
+    
     const [Menu, setMenu] = useState<FC>(() => () => <></>);
 
-    useEffect(() => {
-        changeDocument();
+    useEffect(() => { 
+        Header.setElements(
+            document.getElementById(Constants.ROOT_CONTAINER_ID), 
+            document.getElementById(Constants.HEADER_ID));
 
         onResize({ setMenu: setMenu });
 
-        containerRef.current?.addEventListener("scroll", () => onScroll({ scrollPositionRef: scrollPositionRef }));
+        containerRef.current?.addEventListener("scroll", Header.onScroll); 
         window.addEventListener("resize", () => onResize({ setMenu: setMenu }));
 
         return () => {
-            containerRef.current?.removeEventListener("scroll", () => onScroll({ scrollPositionRef: scrollPositionRef }));
+            containerRef.current?.removeEventListener("scroll", Header.onScroll);
             window.removeEventListener("resize", () => onResize({ setMenu: setMenu }));
         }; 
     }, []);

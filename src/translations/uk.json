@@ -31,6 +31,49 @@
             }
         }
     },
+    "pages_helmet": {
+        "page_not_found": {
+            "title": "Fumitrade | Сторінку не знайдено",
+            "description": "Сторінку не знайдено",
+            "keywords": "Сторінку не знайдено",
+            "openGraphType": "website"
+        },
+        "main": {
+            "title": "Fumitrade | Головна",
+            "canonicalPath": "",
+            "description": "Професійна дезінсекція без компромісів! Fumitrade – понад 30 років досвіду у сфері дезінсекції, захисту агропродукції та фумігації зернових і олійних культур.",
+            "keywords": "Головна, Головна сторінка",
+            "openGraphType": "website"
+        }, 
+        "services": {
+            "title": "Fumitrade | Послуги",
+            "canonicalPath": "services",
+            "description": "Послуги з фумігації та дезінсекції від Fumitrade. Захист агропродукції, боротьба зі шкідниками, аерозольна дезінсекція, фумігація елеваторів, складів, вагонів та контейнерів.",
+            "keywords": "Послуги, Послуги з дезінсекції, Послуги з фумігації",
+            "openGraphType": "website"
+        },
+        "about_us": {
+            "title": "Fumitrade | Про нас",
+            "canonicalPath": "about-us",
+            "description": "Fumitrade – експерти у сфері фумігації та дезінсекції. Понад 30 років досвіду, безпечні та ефективні методи боротьби зі шкідниками в аграрному секторі.",
+            "keywords": "Про нас, ми",
+            "openGraphType": "website"
+        },
+        "knowledge_base": {
+            "title": "Fumitrade | База знань",
+            "canonicalPath": "knowledge-base",
+            "description": "Корисна база знань про фумігацію, дезінсекцію та боротьбу зі шкідниками. Експертні поради, статті та корисна інформація від Fumitrade.",
+            "keywords": "База знань, данні, знання",
+            "openGraphType": "website"
+        },
+        "contacts": {
+            "title": "Fumitrade | Контакти",
+            "canonicalPath": "contacts",
+            "description": "Зв’яжіться з Fumitrade! Ми допоможемо вам у питаннях фумігації та дезінсекції. Адреса, телефон, email – вся контактна інформація в одному місці.",
+            "keywords": "Контакти, контакти, розташування, номер, номер телефону, карта",
+            "openGraphType": "website"
+        }
+    },
     "notFoundWindow": {
         "page_not_found": "Ой! Сторінку не знайдено",
         "you_may_have_entered_the_wrong_address": "Можливо, ви ввели неправильну адресу",
@@ -39,14 +82,14 @@
     },
     "mainWindow": {
         "typedStrings": {
-            "fumigation_without_compromise": "Фумігація без<br />компромісів",
+            "fumigation_without_compromise": "Дезінсекція без<br />компромісів",
             "30 years_on_the_market": "30 років на ринку",
             "experience_reliability_efficiency": "Досвід<br />Надійність<br />Ефективність"
         },
         "about": {
-            "professional_fumigation": "Професійна фумігація\nбез пересипання",
+            "professional_fumigation": "Професійна дезінсекція\nбез компромісів",
             "disinfection_of_granaries": "Фумігація\nзерносховищ",
-            "export_cargo_processing": "Обробка\nекспортних вантажів",
+            "export_cargo_processing": "Комплексна обробка\nекспортних вантажів",
             "pest_control": "Боротьба\nз гризунами"
         }
     },
@@ -117,4 +160,3 @@
         }
     }
 }
-

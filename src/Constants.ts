@@ -3,6 +3,9 @@ import { TranslateOnAxis } from "./scripts/appWrapperScripts.ts";
 export default class Constants {
 
     /*     General     */ 
+    static readonly BASE_URL: string = "http://dev.hern1k.xyz"
+    static readonly BASE_URL_UNDER_PATH: string = "/Fumitrade/"
+
     static readonly COMPANY_NAME: string = "Fumitrade";
     static readonly COMPANY_EMAIL: string = "fumitrade.ua@gmail.com";
     static readonly COMPANY_FIRST_PHONE_NUMBER: string = "+38 (050) 606-26-15";
@@ -21,6 +24,12 @@ export default class Constants {
     static readonly SCROLL_TO_TOP_ACTIVE_ATTRIBUTE: string = "scroll-to-top";
     static readonly SCROLL_DISPLAY_BAR_HEIGHT: number = 4;
     static readonly BASE_APPEARANCE_ANIMATION: TranslateOnAxis = new TranslateOnAxis(2, "rem", "Y");
+    static readonly ROBOTS_INDEX: string = "index, follow";
+    static readonly ROBOTS_NOINDEX: string = "noindex, nofollow";
+    static readonly BASE_KEYWORDS_HELMET: string = "Fumitrade, Фумітрейд, Фумитрейд, fumitrade.com.ua, fumitrade.ua, fumitrade.ua@gmail.com, ";
+    static readonly KEYWORDS_HELMET_UA: string = "дезінсекція, фумігація, знищення шкідників, ";
+    static readonly KEYWORDS_HELMET_RU: string = "дезинсекция, фумигация, уничтожение вредителей, ";
+    static readonly KEYWORDS_HELMET_EN: string = "disinsection, fumigation, pest control, ";
 
     /*     General images     */ 
     static readonly ICON_IMAGE: string = "General/ico.webp";
@@ -59,8 +68,12 @@ export default class Constants {
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
     static readonly SERVICES_PAGE_ID: string = ":SERVICES_PAGE_ID:";
     static readonly NOT_FOUND_PAGE_ID: string = ":NOT_FOUND_PAGE_ID:";
+    static readonly ABOUT_US_PAGE_ID: string = ":ABOUT_US_PAGE_ID:";
+    static readonly KNOWLEDGE_BASE_PAGE_ID: string = ":KNOWLEDGE_BASE_PAGE_ID:";
+    static readonly CONTACTS_PAGE_ID: string = ":CONTACTS_PAGE_ID:";
 
     /*     Components     */
+    static readonly GENERAL_LOADING_ID: string = ":GENERAL_LOADING_ID:";
     static readonly MAIN_WINDOW_MAIN_PAGE_ID: string = ":MAIN_WINDOW_MAIN_PAGE_ID:";
     static readonly DESCRIPTION_WINDOW_MAIN_PAGE_ID: string = ":DESCRIPTION_WINDOW_MAIN_PAGE_ID:";
     static readonly SERVICES_WINDOW_MAIN_PAGE_ID: string = ":SERVICES_WINDOW_MAIN_PAGE_ID:";

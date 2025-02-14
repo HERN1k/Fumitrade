@@ -1,9 +1,10 @@
-import { IAppWrapperOnResizeArgs, IAppWrapperOnScrollArgs } from "../types.ts";
+import { IAppWrapperOnResizeArgs } from "../types.ts";
 import styles from "../styles/AppWrapper.module.css";
 import PCMenu from "../components/general/PCMenu.tsx";
 import MobileMenu from "../components/general/MobileMenu.tsx";
 import Constants from "../constants.ts";
 import { Dispatch, SetStateAction } from "react";
+import Header from "./header.ts";
 
 export const onResize = (args: IAppWrapperOnResizeArgs) => {
     const headerElement = document.getElementById(Constants.HEADER_ID);
@@ -12,39 +13,39 @@ export const onResize = (args: IAppWrapperOnResizeArgs) => {
 
     if (window.innerWidth > 768) {
         args.setMenu(() => PCMenu);
-        headerElement.classList.remove(styles.headerMobile);
+
+        if (headerElement.classList.contains(styles.headerMobile)) {
+            headerElement.classList.remove(styles.headerMobile);
+        }
     } else {
         args.setMenu(() => MobileMenu);
-        headerElement.classList.add(styles.headerMobile);
+
+        if (!headerElement.classList.contains(styles.headerMobile)) {
+            headerElement.classList.add(styles.headerMobile);
+        }
     }
 }
 
-export const onScroll = (args: IAppWrapperOnScrollArgs) => {
-    if (getHeaderActiveState()) {
-        const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
-        const headerElement = document.getElementById(Constants.HEADER_ID);
-    
-        if (!headerElement || !rootElement) return;
-    
-        const currentScrollPosition = rootElement.scrollTop || 0;
-    
-        if (currentScrollPosition === 0 || args.scrollPositionRef.current === 0) {
-            headerElement.classList.remove(styles.headerVisible);
-            headerElement.classList.add(styles.headerVisibleWithTransparent);
-        } else if (currentScrollPosition > args.scrollPositionRef.current) {
-            headerElement.classList.remove(styles.headerVisible);
-            headerElement.classList.remove(styles.headerVisibleWithTransparent);
-        } else if (currentScrollPosition < args.scrollPositionRef.current) {
-            headerElement.classList.remove(styles.headerVisibleWithTransparent);
-            headerElement.classList.add(styles.headerVisible);
-        }
-    
-        args.scrollPositionRef.current = currentScrollPosition;
-    }
-};
+export const getStaticFile = (photoName: string): string => {
+    return Constants.STATIC_FILES_PATH + photoName;
+}
 
-export const getStaticFile: (name: string) => string = (name: string) => {
-    return Constants.STATIC_FILES_PATH + name;
+export const getPhotoUriForHelmet = (photoName: string): string => {
+    return Constants.BASE_URL + Constants.STATIC_FILES_PATH + photoName;
+}
+
+export const getCanonicalUrlForHelmet = (path: string): string => {
+    return Constants.BASE_URL + Constants.BASE_URL_UNDER_PATH + path;
+}
+
+export const getKeywordsForHelmet = (keywords: string) : string => {
+    return (
+        Constants.BASE_KEYWORDS_HELMET + 
+        Constants.KEYWORDS_HELMET_UA + 
+        Constants.KEYWORDS_HELMET_RU + 
+        Constants.KEYWORDS_HELMET_EN +
+        keywords
+    );
 }
 
 export const formattingPhoneNumber: (phoneNumber: string) => string = (phoneNumber: string) => {
@@ -76,12 +77,6 @@ export const toggleMobileMenu: () => void = () => {
             window.removeEventListener("touchmove", preventDefault);
         }
     }
-}
-
-export const changeDocument = () => {
-    document.title = Constants.DOCUMENT_TITLE;
-
-    (document.querySelector('link[rel="icon"]') as HTMLLinkElement).href = getStaticFile(Constants.ICON_IMAGE);
 }
 
 export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");
@@ -130,141 +125,36 @@ export const scrollToElement = (element: HTMLElement | null): Promise<void> => {
     });
 };
 
-export const scrollToTop = (): Promise<void> => {
-    return new Promise((resolve, reject) => {
-        try {
-            const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
-
-            if (!rootElement) {
-                resolve();
-                return;
-            }
-
-            rootElement.scrollTo({ top: 0, behavior: "smooth" });
-
-            let iterations = 0;
-
-            const interval = setInterval(() => {
-                iterations++;
-
-                if (iterations == 20) {
-                    clearInterval(interval);
-                    resolve();
-                }
-
-                const currentScrollPosition = rootElement.scrollTop;
-                
-                if (currentScrollPosition < 1) {
-                    clearInterval(interval);
-                    resolve();
-                }
-            }, 50);
-        } catch (e) {
-            reject(e);
-        }
-    });
-};
-
 export const transitionTo = (id: string) => {
-    if (getAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE)) return;
-
     setTimeout(async () => {
-        setHeaderActiveState(false);
- 
-        const element = document.getElementById(id);
+        Header.setNoVisible();
 
-        const root = document.getElementById(Constants.ROOT_CONTAINER_ID);
+        Header.block();
 
-        const headerElement = document.getElementById(Constants.HEADER_ID);
-
-        if (!root || !headerElement || !element) return;
-
-        headerElement.classList.remove(styles.headerVisible);
-        headerElement.classList.remove(styles.headerVisibleWithTransparent);
+        var element = document.getElementById(id);
 
         await scrollToElement(element)
             .catch((error) => console.error(error))
-            .finally(() => setHeaderActiveState(true));
-    }, 100);
-}
-
-export const transitionToTop = () => {
-    setTimeout(async () => {
-        setAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE, true);
-
-        var root = document.getElementById(Constants.ROOT_CONTAINER_ID);
-
-        if (root) root.scrollTop = 0;
-        
-        setAttributeState(Constants.SCROLL_TO_TOP_ACTIVE_ATTRIBUTE, false);
-    }, 100);
-}
-
-export const ensureHeaderVisible = () => {
-    const headerElement = document.getElementById(Constants.HEADER_ID);
-
-    if (!headerElement) return;
-
-    setTimeout(() => {
-        headerElement.classList.remove(styles.headerVisible);
-
-        if (!headerElement.classList.contains(styles.headerVisibleWithTransparent)) {
-            headerElement.classList.add(styles.headerVisibleWithTransparent);
-        }
+            .finally(() => Header.unBlock());
     }, 250);
 }
 
-export const setHeaderActiveState = (isActive: boolean) => {
+export const transitionToTop = () => {
+    setTimeout(() => {
+        try {
+            Header.setVisibleWithTransparent();
 
-    if (isActive === undefined) {
-        throw new Error("Parameter isActive is null.");
-    }
+            Header.block();
 
-    var header = document.getElementById(Constants.HEADER_ID);
+            var root = document.getElementById(Constants.ROOT_CONTAINER_ID);
 
-    if (!header) return;
-
-    header.setAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE, isActive.toString());
-}
-
-export const getHeaderActiveState = (): boolean => {
-    var header = document.getElementById(Constants.HEADER_ID);
-
-    if (!header) return false;
-
-    const state = header.getAttribute(Constants.HEADER_ACTIVE_ATTRIBUTE);
-
-    return state !== null ? state === "true" : true;
-}
-
-export const setAttributeState = (attr: string, state: boolean) => {
-
-    if (attr === "" || attr === undefined) {
-        throw new Error("Parameter attr is null.");
-    }
-
-    if (state === undefined) {
-        throw new Error("Parameter state is null.");
-    }
-
-    document.body.setAttribute(attr, state.toString());
-}
-
-export const getAttributeState = (attr: string): boolean => {
-
-    if (attr === "" || attr === undefined) {
-        throw new Error("Parameter attr is null.");
-    }
-
-    const state = document.body.getAttribute(attr);
-
-    if (state === null) {
-        setAttributeState(attr, false);
-
-        return false;
-    }
-
-    return state === "true" ? true : false;
+            if (root) {
+                root.scrollTop = 0;
+            }
+        } finally {
+            Header.unBlock();
+        }
+    }, 50);
 }
 
 export class TranslateOnAxis {

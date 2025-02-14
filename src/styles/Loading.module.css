@@ -1,0 +1,107 @@
+
+.loaderContainer {
+    display: flex;
+    height: 100dvh;
+    width: 100dvw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000000;
+    background-color: #0f1822;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.25s ease-in-out;
+}
+
+.loaderConteinerInView {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.title {
+    text-align: center;
+    width: fit-content;
+    display: inline-grid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    line-height: 2rem;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", "Arial", serif;
+    font-weight: 600;
+    color: azure;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.title:before,
+.title:after {
+    content: "Fumitrade";
+    grid-area: 1/1;
+    -webkit-mask-size: 100% 5px,100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: titleAnimation-1 1s infinite;
+}
+
+.title:before {
+    -webkit-mask-image: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+}
+
+.title:after {
+    -webkit-mask-image: linear-gradient(#000 0 0);
+    animation: titleAnimation-1  1s infinite, titleAnimation-2 .2s infinite cubic-bezier(0.5,200,0.5,-200);
+}
+
+@keyframes titleAnimation-1{
+    0%   { -webkit-mask-position: 0 20px,  0 0 }
+    20%  { -webkit-mask-position: 0 8px ,  0 0 }
+    40%  { -webkit-mask-position: 0 100%,  0 0 }
+    60%  { -webkit-mask-position: 0 3px ,  0 0 }
+    80%  { -webkit-mask-position: 0 15px,  0 0 }
+    100% { -webkit-mask-position: 0 0   ,  0 0 }
+  }
+  @keyframes titleAnimation-2{
+    100% { transform: translate(0.1px) } 
+}
+
+.loader {
+    width: 16rem;
+    height: 4rem;
+    display: grid;
+    color: rgb(200, 200, 200);
+    position: relative;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    grid-area: 1/1;
+    --c:#0000 calc(100%/3),rgb(200, 200, 200) 0 calc(2*100%/3),#0000 0;
+    --c1:linear-gradient(90deg,var(--c));
+    --c2:linear-gradient( 0deg,var(--c));
+    background: var(--c1),var(--c2),var(--c1),var(--c2);
+    background-size: 300% 3px,3px 300%;
+    background-repeat: no-repeat;
+    animation: loaderAnimation 1.5s infinite;
+}
+
+.loader:after {
+    animation-delay: -.75s;
+}
+
+@keyframes loaderAnimation {
+    0%      { background-position:  50%   0,  100% 100%,  0    100%,  0 0 }
+    25%     { background-position:  0     0,  100% 50%,   0    100%,  0 0 }
+    50%     { background-position:  0     0,  100% 0,     50%  100%,  0 0 }
+    75%     { background-position:  0     0,  100% 0,     100% 100%,  0 50% }
+    75.01%  { background-position:  100%  0,  100% 0,     100% 100%,  0 50% }
+    100%    { background-position:  50%   0,  100% 0,     100% 100%,  0 100% }
+}

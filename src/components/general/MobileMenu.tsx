@@ -20,21 +20,21 @@ const MobileMenu: FC = () => {
                             {t("appWrapper.menu.services")}
                         </li>
                     </Link>
-                    <Link to="/" viewTransition onClick={transitionToTop}>
+                    <Link to="/about-us" viewTransition onClick={transitionToTop}>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.about_us")}
                         </li>
                     </Link>
-                    <Link to="/" viewTransition onClick={transitionToTop}>
+                    <Link to="/knowledge-base" viewTransition onClick={transitionToTop}>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.knowledge_base")}
                         </li>
                     </Link>
-                    <Link to="/" viewTransition onClick={transitionToTop}>
+                    <Link to="/contacts" viewTransition onClick={transitionToTop}>
                         <li className="link-item" onClick={toggleMobileMenu}>
                             {t("appWrapper.menu.contacts")}
                         </li>
-                    </Link>
+                    </Link> 
                 </ul>
             </div>
         </div>

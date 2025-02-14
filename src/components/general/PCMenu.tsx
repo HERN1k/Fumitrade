@@ -16,7 +16,7 @@ const PCMenu: FC = () => {
                     <h2 className={styles.menuText}>{t("appWrapper.menu.services")}</h2>
                     <div className={styles.underline} />
                 </Link>
- 
+  
                 <div className={styles.menuItemDropDownContainer}>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_1_ID)}>
                         <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.complex_processing")}</div>
@@ -45,19 +45,19 @@ const PCMenu: FC = () => {
                 </div>
             </li>
             <li className={styles.menuItem}>
-                <Link to="/" viewTransition onClick={transitionToTop}>
+                <Link to="/about-us" viewTransition onClick={transitionToTop}>
                     <h2 className={styles.menuText}>{t("appWrapper.menu.about_us")}</h2>
                     <div className={styles.underline} />
                 </Link>
             </li>
             <li className={styles.menuItem}>
-                <Link to="/" viewTransition onClick={transitionToTop}>
+                <Link to="/knowledge-base" viewTransition onClick={transitionToTop}>
                     <h2 className={styles.menuText}>{t("appWrapper.menu.knowledge_base")}</h2>
                     <div className={styles.underline} />
                 </Link>
             </li>
             <li className={styles.menuItem}>
-                <Link to="/" viewTransition onClick={transitionToTop}>
+                <Link to="/contacts" viewTransition onClick={transitionToTop}>
                     <h2 className={styles.menuText}>{t("appWrapper.menu.contacts")}</h2>
                     <div className={styles.underline} />
                 </Link>

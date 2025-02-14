@@ -89,7 +89,7 @@ const ServicesWindow: FC = () => {
         unlockServicesWindowScroll({
             root: rootElementRef,
             swiper: swiperElementRef
-        });
+        }); 
 
         if (id) {
             transitionTo(id);
