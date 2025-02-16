@@ -26,7 +26,7 @@ const NotFound: FC<IPageProps> = ({ id }) => {
 
     return (
         <>
-            <Helmet>
+            <Helmet key={window.location.pathname}>
                 <title>{t("pages_helmet.page_not_found.title")}</title>
                 <meta name="description" content={t("pages_helmet.page_not_found.description")} />
                 <meta name="keywords" content={getKeywordsForHelmet(t("pages_helmet.page_not_found.keywords"))} />

@@ -9,6 +9,7 @@ import {
 } from "../scripts/appWrapperScripts.ts";
 import Constants from "../constants.ts";
 import Header from "../scripts/header.ts";
+import MicroMarkup from "../components/general/MicroMarkup.tsx";
 const ScrollIndicator = lazy(() => import("../components/general/ScrollIndicator.tsx"));
 
 const KnowledgeBase: FC<IPageProps> = ({ id }) => {
@@ -21,7 +22,7 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
 
     return (
         <>  
-            <Helmet>
+            <Helmet key={window.location.pathname}>
                 <title>{t("pages_helmet.knowledge_base.title")}</title>
                 <link rel="canonical" href={getCanonicalUrlForHelmet(t("pages_helmet.knowledge_base.canonicalPath"))} />
                 <meta name="description" content={t("pages_helmet.knowledge_base.description")} />
@@ -34,6 +35,30 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
                 <meta property="og:description" content={t("pages_helmet.knowledge_base.description")} />
                 <meta property="og:image" content={getPhotoUriForHelmet(Constants.LOGO_IMAGE)} />
             </Helmet>
+
+            <MicroMarkup json={
+                JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "Що таке фумігація?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Фумігація — це процес знезараження сільськогосподарських культур за допомогою газових препаратів."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Як часто потрібно проводити дезінсекцію?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Рекомендовано проводити профілактичну дезінсекцію не рідше одного разу на півроку."
+                            }
+                        }
+                    ]
+                })} />
 
             <div id={id}>
                 <ScrollIndicator />

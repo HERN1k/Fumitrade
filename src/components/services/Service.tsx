@@ -22,7 +22,7 @@ const Service: FC<IServiceProps> = (args) => {
 
     const fadeInAnimation = useSpring({
         opacity: inView ? 1 : 0.5,
-        transform: inView ? "scale(1)" : "scale(0.8)",
+        transform: inView ? "scale(1)" : "scale(0.8)", 
         config: { tension: 220, friction: 20 },
         delay: inView ? 250 : 0,
         duration: 500

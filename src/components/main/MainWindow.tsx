@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Constants from "../../constants.ts";
 import Window from "../general/Window.tsx";
 import styles from "../../styles/MainPage.module.css";
@@ -39,8 +39,18 @@ const MainWindow: FC = () => {
     return (
         <Window ref={ref} id={Constants.MAIN_WINDOW_MAIN_PAGE_ID}> 
             <div className={styles.mainPageContainer}>
-                <div className={styles.mainPageImage} style={{backgroundImage: `url(${getStaticFile(Constants.MAIN_PAGE_MAIN_IMAGE)})`}} />
-                
+
+                <div className={styles.mainVideoBGContainer}>
+                    <video
+                        className={styles.mainVideoBG}
+                        muted
+                        loop
+                        autoPlay
+                        playsInline>
+                        <source src={getStaticFile(Constants.MAIN_PAGE_MAIN_VIDEO)} type="video/mp4" />
+                    </video>
+                </div>
+
                 <div className={styles.sloganText}>
                     <span ref={typedRef} />
                 </div> 

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 import styles from "../../styles/Services.module.css";
+import { IServiceModalBackdropProps } from "../../types.ts";
 
-const Backdrop: FC<{ children: JSX.Element, onClick: () => void }> = ({ children, onClick }) => {
- 
+const Backdrop: FC<IServiceModalBackdropProps> = ({ children, onClick }) => {
     return (
         <motion.div
             onClick={onClick}

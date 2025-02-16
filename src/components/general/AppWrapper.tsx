@@ -9,6 +9,7 @@ import {
 import Constants from "../../constants.ts";
 import Footer from "./Footer.tsx";
 import Header from "../../scripts/header.ts";
+import CookiePopup from "./CookiePopup.tsx";
 
 const AppWrapper: FC = () => {
     
@@ -44,6 +45,8 @@ const AppWrapper: FC = () => {
             
             <main className={styles.main}>
                 <Outlet />
+
+                <CookiePopup />
             </main>
              
             <Footer />

@@ -1,0 +1,374 @@
+.window {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem 10%;
+    gap: 2rem;
+}
+
+.imageBG {
+    width: 100dvw;
+    height: 100dvh;
+    z-index: -100;
+    background-repeat: no-repeat; 
+    background-position: center 25%; 
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.imageBG::after {
+    content: "";
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--color-primary) 100%);
+}
+
+.imageBG::before {
+    content: "";
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary-transparent);
+}
+
+.textConatiner {
+    display: block;
+    position: relative;
+    width: 50%;
+}
+
+.mainTitle {
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    white-space: pre-wrap;
+    font-size: 3.25rem;
+    line-height: 3.75rem;
+    letter-spacing: 1px;
+    color: whitesmoke;
+    text-transform: uppercase;
+    margin-bottom: 7.5rem;
+}
+
+.contactsConatiner {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    gap: 5rem;
+}
+
+.contactConatiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    gap: 1rem;
+    width: fit-content;
+    max-width: 20rem;
+}
+
+.contactTitle {
+    font-family: "Montserrat", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+}
+
+.contactText {
+    font-family: "Montserrat", serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.contactAnchor {
+    transition: all 0.25s ease-in;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.contactAnchor:hover {
+    color: var(--color-secondary);
+}
+
+@media (max-width: 1440px) and (min-width: 769px) {
+    .mainTitle {
+        font-weight: 800;
+        font-size: 2.5rem;
+        line-height: 3rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .contactsConatiner {
+        gap: 2rem;
+    }
+
+    .contactConatiner {
+        gap: 1rem;
+        max-width: 18rem;
+    }
+    
+    .contactTitle {
+        font-size: 1.15rem;
+    }
+    
+    .contactText {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 769px) {
+    .window {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 3rem;
+        padding-top: 8rem;
+    }
+
+    .textConatiner {
+        width: 100%;
+    }
+
+    .contactAnchor:hover {
+        color: unset;
+    }
+
+    .mainTitle {
+        font-weight: 800;
+        font-size: 2.5rem;
+        line-height: 3rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .contactsConatiner {
+        gap: 2rem;
+        max-width: 100%;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contactConatiner {
+        gap: 1rem;
+        max-width: 100%;
+        width: 100%;
+        padding: 0 1rem;
+        align-items: center;
+    }
+
+    .contactTitle {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    
+    .contactText {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+}
+
+
+
+.mailConatiner {
+    width: 50%;
+    padding-left: 7.5dvw;
+    padding-top: 12rem;
+}
+
+.inputContainer {
+    margin-bottom: 3rem;
+}
+
+.inputLabel {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    font-family: "Montserrat", serif;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.inputLabelSpan {
+    font-size: 1.1rem;
+    font-family: "Montserrat", serif;
+    font-weight: 600;
+    margin-left: 4px;
+    color: var(--color-secondary);
+}
+
+.inputSpan {
+    font-size: 1rem;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    color: #ff7979ce;
+}
+
+.input {
+    display: block;
+    height: 2.25rem;
+    padding: 0;
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 1.5rem;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: solid 1px var(--color-text);
+    caret-color: var(--color-text);
+    color: var(--color-text);
+    transition: all 0.25s ease-in-out;
+}
+
+.input:focus {
+    border-bottom: solid 1px var(--color-secondary);
+}
+
+.textarea {
+    display: block;
+    height: 5rem;
+    padding: 0;
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: solid 1px var(--color-text);
+    caret-color: var(--color-text);
+    color: var(--color-text);
+    transition: all 0.25s ease-in-out;
+}
+
+.textarea:focus {
+    border-bottom: solid 1px var(--color-secondary);
+}
+
+.submitContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.submitContainer:active {
+    transform: scale(0.98);
+}
+
+.submitText {
+    font-family: "Montserrat", serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--color-text);
+    transition: all 0.25s ease-in;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.submitButton {
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-secondary);
+    transition: all 0.25s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 5rem;
+    border: solid 1px var(--color-text);
+    border-radius: 50%;
+}
+
+.submitButtonArrowSvg {
+    fill: var(--color-text);
+    transition: all 0.25s ease-in;
+}
+
+.submitContainer:hover .submitButton {
+    background-color: var(--color-secondary);
+    border: solid 1px var(--color-secondary);
+}
+
+.submitContainer:hover .submitButtonArrowSvg {
+    fill: var(--color-primary);
+}
+
+.submitContainer:hover .submitText {
+    color: var(--color-secondary);
+}
+
+@media (max-width: 769px) {
+    .mailConatiner {
+        width: 100%;
+        padding: 8rem 1rem;
+    }
+    
+    .inputContainer {
+        margin-bottom: 3rem;
+    }
+
+    .inputLabel {
+        font-size: 1.15rem;
+    }
+    
+    .inputLabelSpan {
+        font-size: 1.15rem;
+        margin-left: 3px;
+    }
+
+    .submitContainer {
+        gap: 1.5rem;
+        width: 80dvw;
+        height: 80dvw;
+        margin-top: 2rem;
+    }
+    
+    .submitText {
+        font-size: 1.25rem;
+    }
+    
+    .submitButton {
+        height: 7rem;
+        width: 7rem;
+    }
+
+    .submitContainer:hover .submitButton {
+        background-color: transparent;
+        border: solid 1px var(--color-text);
+    }
+    
+    .submitContainer:hover .submitButtonArrowSvg {
+        fill: var(--color-text);
+    }
+    
+    .submitContainer:hover .submitText {
+        color: var(--color-text);
+    }
+}

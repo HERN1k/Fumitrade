@@ -10,7 +10,7 @@ const Counter: FC<ICounterProps> = ({ min, max, textAfter, timeout = 500, classN
         threshold: 0.2,
     });
 
-    const [props, set] = useSpring(() => ({ 
+    const [props, api] = useSpring(() => ({ 
         number: 0,
         from: { number: 0 }, 
         config: { duration: 3000, easing: easings.easeInOutExpo }
@@ -18,7 +18,7 @@ const Counter: FC<ICounterProps> = ({ min, max, textAfter, timeout = 500, classN
 
     useEffect(() => {
         if (inView) {
-            setTimeout(() => set({ number: max, from: { number: min } }), timeout);
+            setTimeout(() => api.start({ number: max, from: { number: min } }), timeout);
         }
     }, [inView]);
 

@@ -345,7 +345,7 @@
 }
 
 .modalBackdrop {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.66);
     position: fixed;
     width: 100dvw;
     height: 100dvh;
@@ -360,12 +360,12 @@
 
 @media (max-width: 768px) {
     .modalBackdrop {
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 0, 0, 0.66);
     }
 } 
 
 .modalContainer {
-    background-color: var(--color-primary);
+    background-color: var(--color-modal-bg);
     height: fit-content;
     max-height: calc(100% - 3rem);
     width: 80%;
@@ -376,6 +376,63 @@
     align-items: center;
     z-index: 1010;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modalLinkContainer {
+    display: block;
+    position: relative;
+    height: fit-content;
+    margin-top: 5rem;
+}
+
+.modalContactLink {
+    display: block; 
+    width: fit-content; 
+    margin: 0 auto; 
+    position: relative;
+}
+
+.modalShareSvg {
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+    position: absolute;
+    bottom: calc(calc(100% / 2) - 1.5rem);
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.modalShareSvg:active {
+    transform: scale(0.95);
+}
+
+.swalTitle {
+    font-family: "Montserrat", serif;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    font-weight: 300;
+}
+
+@media (max-width: 768px) {
+    .modalLinkContainer {
+        margin-top: 2rem;
+    }
+}
+
+.modalContainerShadow {
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    right: 0;
+    width: 54dvw;
+    height: 5rem;
+    background: linear-gradient(to top, var(--color-modal-bg) 33%, transparent);
+    pointer-events: none;
 }
 
 .smokeContainer {
@@ -419,14 +476,14 @@
 }
 
 .nextModalButton:active {
-    scale: 0.95;
+    scale: 0.95; 
 }
 
 .nextModalArrowSvg {
     display: block;
     height: 1.1rem;
     width: 1.1rem;
-    fill: var(--color-text);
+    fill: white;
 }
 
 .modalImage {
@@ -445,7 +502,10 @@
     width: 66dvw;
     max-height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
     scrollbar-width: none;
+    display: block;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -459,9 +519,28 @@
     }
 
     .modalContent {
-        padding: 2rem 2rem;
+        padding: 3rem 2rem 4rem 2rem;
         width: 100%;
     }
+
+    .modalContainerShadow {
+        width: 100%;
+    }
+}
+
+.modalCompanyName {
+    display: block;
+    white-space: nowrap;
+    font-size: 2.2rem;
+    line-height: 2.2rem;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: "Montserrat", serif;
+    font-weight: 700;
+    color: var(--color-text);
+    transition: all 0.25s ease-in;
+    margin-bottom: 1rem;
+    padding-left: 3rem;
 }
 
 .modalTitle {
@@ -469,42 +548,67 @@
     white-space: nowrap;
     font-size: 2.5rem;
     line-height: 2.5rem;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    color: var(--color-text);
-    transition: all 0.25s ease-in;
+    padding-left: 3rem;
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+    color: var(--color-modal-bg);
+    text-shadow: 
+        -1px -1px 0 var(--color-secondary),  
+         1px -1px 0 var(--color-secondary),  
+        -1px  1px 0 var(--color-secondary),  
+         1px  1px 0 var(--color-secondary); 
+}
+
+.modalLine {
+    display: block;
+    height: 1px;
+    width: calc(100% - 6rem);
+    border-top: solid 1px white;
+    margin-left: 3rem;
+    opacity: 0.5;
 }
 
 .modalDescription {
     display: block;
     width: fit-content;
-    font-family: "Montserrat", serif;
-    font-weight: 500;
-    font-size: 1.2rem;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 300;
+    font-size: 1.35rem;
+    line-height: 1.85rem;
+    letter-spacing: 0.5px;
     color: var(--color-text);
     transition: all 0.25s ease-in;
-    margin-bottom: 2rem;
+    margin: 2rem 3rem;
     opacity: 1;
-    text-align: justify;
-    padding-right: 4rem;
+    text-align: left;
 }
 
 @media (max-width: 768px) {
+    .modalCompanyName {
+        font-size: 2rem;
+        line-height: 2rem;
+        padding-left: 1rem;
+    }
+    
     .modalTitle {
-        white-space: nowrap;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-        text-align: center;
         width: 100%;
+        white-space: wrap;
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        padding-left: 1rem;
+    }
+    
+    .modalLine {
+        width: calc(100% - 2rem);
+        margin-left: 1rem;
     }
 
     .modalDescription {
-        padding-right: 0rem;
-        margin-bottom: 1rem;
+        margin: 2rem 1rem;
     }
 }
 
@@ -512,24 +616,42 @@
     display: block;
     width: fit-content;
     list-style: none;
-    padding: 0;
 }
 
 .modalDescriptionItem {
-    font-family: "Montserrat", serif;
-    font-weight: 400;
-    font-size: 1.1rem;
-    color: var(--color-text);
-    opacity: 0.9;
+    display: block;
     position: relative;
-    padding-left: 2rem; 
-    margin-bottom: 0.5rem;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    color: var(--color-text);
+    position: relative;
+    padding-left: 7rem;
+    margin-bottom: 1rem;
 }
 
-.modalDescriptionItem::before {
-    content: "✔";
-    margin-right: 1rem;
-    color: var(--color-secondary);
+.modalDescriptionItemSvg {
+    display: block;
+    height: 1.2rem;
+    width: 1.2rem;
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 5rem;
+}
+
+@media (max-width: 768px) {
+    .modalDescriptionItem {
+        padding-left: 5rem;
+    }
+    
+    .modalDescriptionItemSvg {
+        left: 3rem;
+    }
 }
 
 .modalContactContainer {
@@ -538,7 +660,6 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    margin-top: 5rem;
     transition: all 0.1s ease-in;
     gap: 1.5rem;
     width: fit-content;
@@ -552,6 +673,15 @@
     transition: all 0.25s ease-in;
     text-transform: uppercase;
     transform: scaleY(1.05);
+    white-space: wrap;
+    white-space: pre-line;
+}
+
+.modalContactButtonLine {
+    border: solid 1px var(--color-secondary);
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.25s ease-in;
 }
 
 .modalContactButton {
@@ -573,7 +703,6 @@
 
 @media (max-width: 768px) {
     .modalContactContainer {
-        margin-top: 2rem;
         gap: 1rem;
     }
 
@@ -585,6 +714,10 @@
         height: 4.5rem;
         width: 4.5rem;
     }
+}
+
+.modalContactContainer:hover .modalContactButtonLine {
+    border: solid 1px transparent;
 }
 
 .modalContactButtonArrowSvg {
@@ -620,6 +753,7 @@
     transition: all 0.25s ease-in;
     cursor: pointer;
     filter: drop-shadow(0 0px 2px rgba(0, 0, 0, 0.25));
+    z-index: 10;
 }
 
 .modalCloseSvg:hover {

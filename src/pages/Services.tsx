@@ -4,20 +4,23 @@ import Service from "../components/services/Service.tsx";
 import Constants from "../constants.ts";
 import styles from "../styles/Services.module.css";
 import { useTranslation } from "react-i18next";
-const ScrollIndicator = lazy(() => import("../components/general/ScrollIndicator.tsx"));
-const ServicesHeader = lazy(() => import("../components/services/ServicesHeader.tsx"));
 import { Helmet } from "react-helmet-async";
 import { 
+    getBaseUrlForHelmet,
     getCanonicalUrlForHelmet, 
     getKeywordsForHelmet, 
-    getPhotoUriForHelmet 
+    getPhotoUriForHelmet,
+    transitionToHash
 } from "../scripts/appWrapperScripts.ts";
 import Header from "../scripts/header.ts";
+import MicroMarkup from "../components/general/MicroMarkup.tsx";
+const ScrollIndicator = lazy(() => import("../components/general/ScrollIndicator.tsx"));
+const ServicesHeader = lazy(() => import("../components/services/ServicesHeader.tsx"));
 
 const Services: FC<IPageProps> = ({ id }) => {
 
     const { t } = useTranslation();
-
+ 
     const [modals, setModals] = useState<Record<string, boolean>>({
         service_1: false,
         service_2: false,
@@ -29,16 +32,18 @@ const Services: FC<IPageProps> = ({ id }) => {
         service_8: false,
     });
 
-    useEffect(() => { 
-        Header.ensureVisible();
-    }, []);
+    useEffect(() => { Header.ensureVisible() }, []);
 
-    const openModal = (serviceKey: string) => {
+    useEffect(() => { 
+        transitionToHash(window.location.hash, servicesCollection, "title")?.click();
+    }, [window.location.hash]);
+
+    const openModal = (serviceKey: string): void => {
         setModals(prev => Object.fromEntries(Object.keys(prev)
             .map(key => serviceKey === key ? [key, true] : [key, false])));
     };
 
-    const closeModal = () => {
+    const closeModal = (): void => {
         setModals(prev => Object.fromEntries(Object.keys(prev).map(key => [key, false])));
     };
 
@@ -135,7 +140,7 @@ const Services: FC<IPageProps> = ({ id }) => {
 
     return (
         <>
-            <Helmet>
+            <Helmet key={window.location.pathname}>
                 <title>{t("pages_helmet.services.title")}</title>
                 <link rel="canonical" href={getCanonicalUrlForHelmet(t("pages_helmet.services.canonicalPath"))} />
                 <meta name="description" content={t("pages_helmet.services.description")} />
@@ -149,9 +154,27 @@ const Services: FC<IPageProps> = ({ id }) => {
                 <meta property="og:image" content={getPhotoUriForHelmet(Constants.LOGO_IMAGE)} />
             </Helmet>
 
+            <MicroMarkup json={
+                JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Service",
+                    "name": t("pages_helmet.services.name"),
+                    "url": getCanonicalUrlForHelmet(t("pages_helmet.services.canonicalPath")),
+                    "logo": getPhotoUriForHelmet(Constants.LOGO_IMAGE),
+                    "description": t("pages_helmet.services.description"),
+                    "provider": {
+                        "@type": "Organization",
+                        "name": Constants.COMPANY_NAME,
+                        "url": getBaseUrlForHelmet()
+                    },
+                    "areaServed": Constants.COUNTRY_CODE,
+                    "serviceType": t("pages_helmet.services.keywords"),
+                    "availableLanguage": ["Ukrainian", "Russian", "English"]
+                })} />
+
             <div id={id}>
                 <ScrollIndicator />
-                
+                 
                 <ServicesHeader />  
 
                 <div className={styles.servicesContent}>

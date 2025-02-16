@@ -1,10 +1,12 @@
-import { IAppWrapperOnResizeArgs } from "../types.ts";
+import { IAppWrapperOnResizeArgs, IElementBase } from "../types.ts";
 import styles from "../styles/AppWrapper.module.css";
 import PCMenu from "../components/general/PCMenu.tsx";
 import MobileMenu from "../components/general/MobileMenu.tsx";
 import Constants from "../constants.ts";
 import { Dispatch, SetStateAction } from "react";
 import Header from "./header.ts";
+import Swal, { SweetAlertOptions } from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export const onResize = (args: IAppWrapperOnResizeArgs) => {
     const headerElement = document.getElementById(Constants.HEADER_ID);
@@ -26,8 +28,18 @@ export const onResize = (args: IAppWrapperOnResizeArgs) => {
     }
 }
 
+export const removeNewLineIfMobile = (text: string): string => {
+    if (window.innerWidth > 768) return text;
+
+    return text.replace(/\n/g, " ");
+}
+
 export const getStaticFile = (photoName: string): string => {
     return Constants.STATIC_FILES_PATH + photoName;
+}
+
+export const getPrivacyPolicyUrl = (): string => {
+    return Constants.BASE_URL + Constants.BASE_URL_UNDER_PATH + Constants.PRIVACY_POLICY;
 }
 
 export const getPhotoUriForHelmet = (photoName: string): string => {
@@ -38,7 +50,15 @@ export const getCanonicalUrlForHelmet = (path: string): string => {
     return Constants.BASE_URL + Constants.BASE_URL_UNDER_PATH + path;
 }
 
-export const getKeywordsForHelmet = (keywords: string) : string => {
+export const getFormattedPhoneNumberForHelmet = (phoneNumber: string): string => {
+    return phoneNumber.replace(/[\s()-]/g, "");
+}
+
+export const getBaseUrlForHelmet = (): string => {
+    return Constants.BASE_URL + Constants.BASE_URL_UNDER_PATH;
+}
+
+export const getKeywordsForHelmet = (keywords: string): string => {
     return (
         Constants.BASE_KEYWORDS_HELMET + 
         Constants.KEYWORDS_HELMET_UA + 
@@ -81,7 +101,7 @@ export const toggleMobileMenu: () => void = () => {
 
 export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");
 
-export const scrollToElement = (element: HTMLElement | null): Promise<void> => {
+const scrollToElement = (element: HTMLElement | null): Promise<void> => {
     return new Promise((resolve, reject) => {
         try {
             const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
@@ -123,7 +143,21 @@ export const scrollToElement = (element: HTMLElement | null): Promise<void> => {
             reject(e);
         }
     });
-};
+}
+
+export const transitionToElement = (element: HTMLElement | null) => {
+    if (!element) return;
+
+    setTimeout(async () => {
+        Header.setNoVisible();
+
+        Header.block();
+
+        await scrollToElement(element)
+            .catch((error) => console.error(error))
+            .finally(() => Header.unBlock());
+    }, 250);
+}
 
 export const transitionTo = (id: string) => {
     setTimeout(async () => {
@@ -155,6 +189,72 @@ export const transitionToTop = () => {
             Header.unBlock();
         }
     }, 50);
+}
+
+export function transitionToHash<T extends IElementBase>(
+    hash: string, 
+    itemCollection: T[], 
+    key: keyof T 
+): HTMLElement | null {
+    if (!hash) return null;
+    if (!itemCollection || itemCollection.length === 0) return null;
+    if (!key) return null;
+
+    var query = decodeURIComponent(window.location.hash.substring(1));
+
+    var index = Number(query);
+
+    var id: string | null = null;
+
+    Number.isNaN(index)
+        ? id = itemCollection.find((item) => item[key] === query)?.id || null
+        : id = itemCollection[index - 1]?.id || null;
+
+    if (!id) return null;
+
+    var element = document.getElementById(id);
+
+    if (!element) return null;
+    
+    transitionToElement(element);
+
+    return element;
+}
+
+export const copyToClipboard = async (hash :string, successMessage: SweetAlertOptions, errorMessage: SweetAlertOptions): Promise<void> => {
+
+    var lines = window.location.href.split("#");
+
+    if (lines.length < 1) return;
+
+    var url: string = lines[0] + `#${encodeURIComponent(hash)}`;
+
+    if (!url) return;
+
+    try {
+        await navigator.clipboard.writeText(url);
+    } catch (e) {
+        copyToClipboardOld(url, successMessage, errorMessage);
+
+        return;
+    }
+
+    withReactContent(Swal).fire(successMessage);
+}
+
+const copyToClipboardOld = (text: string, successMessage: SweetAlertOptions, errorMessage: SweetAlertOptions): void => {
+    try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+    } catch (e) {
+        withReactContent(Swal).fire(errorMessage);
+    }
+
+    withReactContent(Swal).fire(successMessage);
 }
 
 export class TranslateOnAxis {

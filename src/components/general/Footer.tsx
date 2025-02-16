@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import styles from "../../styles/AppWrapper.module.css";
 import { useTranslation } from "react-i18next";
 import Constants from "../../constants";
-import { formattingPhoneNumber, getStaticFile, onResizeFooter, transitionToTop } from "../../scripts/appWrapperScripts";
+import { formattingPhoneNumber, getPrivacyPolicyUrl, getStaticFile, onResizeFooter, transitionToTop } from "../../scripts/appWrapperScripts";
 import { Link } from "react-router";
 import { Facebook } from "./Svgs";
 
@@ -83,6 +83,14 @@ const Footer: FC = () => {
                     <a className={styles.footerContactAnchor} target="_blank" href={Constants.DEVELOPER_CONNECTION_URL}> 
                         <span className={styles.footerSpan}>{" " + Constants.DEVELOPER_NAME}</span>
                     </a>
+                </p>
+
+                <div className={styles.footerBottomLine}/>
+
+                <p className={styles.footerText}>
+                    <a className={styles.footerContactAnchor} target="_blank" href={getPrivacyPolicyUrl()}> 
+                        <span className={styles.footerSpan}>{t("appWrapper.privacy_policy")}</span>
+                    </a> 
                 </p>
             </div>
         </footer>

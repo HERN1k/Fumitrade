@@ -4,12 +4,20 @@ import { FC, useEffect, useState } from "react";
 import styles from "../../styles/Services.module.css";
 import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 import { Arrow, Close } from "../general/Svgs.tsx";
-import { addLineBreaks, onNextModalClick, onPreviousModalClick, onResizeModal, parseServiceDescription } from "../../scripts/servicesScripts.ts";
+import { 
+    addLineBreaks, 
+    onNextModalClick, 
+    onPreviousModalClick, 
+    onResizeModal, 
+    parseServiceDescription 
+} from "../../scripts/servicesScripts.ts";
 import { IServiceModalProps } from "../../types.ts";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
+import Constants from "../../constants.ts";
+import { copyToClipboard } from "../../scripts/appWrapperScripts.ts";
 
-const dropIn = {
+const dropIn = { 
     hidden: {
         y: "-100vh",
     },
@@ -41,17 +49,35 @@ const Modal: FC<IServiceModalProps> = (args) => {
         parseServiceDescription({ 
             description, 
             setMainDescription, 
-            setDescriptionItems 
+            setDescriptionItems  
         });
 
         onResizeModal(setModalButtonDisplayPropery);
 
         window.addEventListener("resize", () => onResizeModal(setModalButtonDisplayPropery));
         
-        return () => {
-            window.removeEventListener("resize", () => onResizeModal(setModalButtonDisplayPropery));
-        }; 
+        return () => window.removeEventListener("resize", () => onResizeModal(setModalButtonDisplayPropery));
     }, []);
+
+    const copyUrl = () => {
+        copyToClipboard(
+            args.title,
+            {
+                title: <p className={styles.swalTitle}>{t("servicesWindow.modal.swalSuccessTitle")}</p>,
+                icon: "success",
+                background: "var(--color-modal-bg)",
+                timer: 1250,
+                showConfirmButton: false
+            },
+            {
+                title: <p className={styles.swalTitle}>{t("servicesWindow.modal.swalErrorTitle")}</p>,
+                icon: "error",
+                background: "var(--color-modal-bg)",
+                timer: 1250,
+                showConfirmButton: false
+            }
+        );
+    }
 
     return (
         <AnimatePresence
@@ -77,7 +103,7 @@ const Modal: FC<IServiceModalProps> = (args) => {
                               display: args.nextModalOpen ? modalButtonDisplayPropery : "none",
                               right: "5%"
                           }}
-                          onClick={(e) => { e.stopPropagation();  onNextModalClick(args) }}>
+                          onClick={(e) => { e.stopPropagation(); onNextModalClick(args); }}>
                           <Arrow className={styles.nextModalArrowSvg} />
                       </div>
 
@@ -87,7 +113,7 @@ const Modal: FC<IServiceModalProps> = (args) => {
                           variants={dropIn}
                           initial="hidden"
                           animate="visible"
-                          exit="exit">
+                          exit="exit"> 
                           <Close onClick={args.handleClose} className={styles.modalCloseSvg} />
 
                           <div 
@@ -95,26 +121,49 @@ const Modal: FC<IServiceModalProps> = (args) => {
                               style={{ backgroundImage: `url(${getStaticFile(args.imgSrc)})` }} />
 
                           <div className={styles.modalContent}>
-                              <h1 className={styles.modalTitle}>
-                                  {addLineBreaks(args.title?.length > 0 ? args.title.trim() : "Null")}
-                              </h1>
-                              <p className={styles.modalDescription}>
-                                  {mainDescription}
-                              </p>
-                              <ul className={styles.modalDescriptionItemsContainer}>
-                                  {descriptionItems.map((item, index) => 
-                                      <li key={index} className={styles.modalDescriptionItem}>{item}</li>)}
-                              </ul>
+                                <h2 className={styles.modalCompanyName}>
+                                    {Constants.COMPANY_NAME}
+                                </h2>
+                                <h3 className={styles.modalTitle}>
+                                    {addLineBreaks(args.title?.length > 0 ? args.title.trim() : "Null")}
+                                </h3>
+                                <div className={styles.modalLine} />
+                                <p className={styles.modalDescription}>
+                                    {mainDescription}
+                                </p>
+                                <ul className={styles.modalDescriptionItemsContainer}>
+                                    {descriptionItems.map((item, index) => 
+                                        <li key={index} className={styles.modalDescriptionItem}>
+                                            <div 
+                                                className={styles.modalDescriptionItemSvg}
+                                                style={{ backgroundImage: `url(${getStaticFile(Constants.SERVICES_PAGE_STAR_SVG)})` }} />
+                                                
+                                            {item}
+                                        </li>)}
+                                </ul>
 
-                              <Link to="/">
-                                  <div className={styles.modalContactContainer}>
-                                      <div className={styles.modalContactButton}>
-                                          <Arrow className={styles.modalContactButtonArrowSvg} />
-                                      </div>
-                                      <h2 className={styles.modalContactText}>{t("servicesWindow.modal.order")}</h2>
-                                  </div> 
-                              </Link>
+                                <div className={styles.modalLinkContainer}>
+                                    <div
+                                        className={styles.modalShareSvg}
+                                        onClick={copyUrl}
+                                        style={{ backgroundImage: `url(${getStaticFile(Constants.SHARE_IMAGE)})` }} />
+
+                                    <Link to="/" className={styles.modalContactLink}>
+                                        <div className={styles.modalContactContainer}>
+                                            <div className={styles.modalContactButtonLine}>
+                                                <div className={styles.modalContactButton}>
+                                                    <Arrow className={styles.modalContactButtonArrowSvg} />
+                                                </div>
+                                            </div>
+                                            <h2 className={styles.modalContactText}>{t("servicesWindow.modal.order")}</h2>
+                                        </div> 
+                                    </Link>
+                                </div>
+
+                                
                           </div>
+
+                          <div className={styles.modalContainerShadow} />
                       </motion.div>
                     </>
                 </Backdrop>}

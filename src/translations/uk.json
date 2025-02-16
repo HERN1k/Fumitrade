@@ -2,10 +2,11 @@
     "appWrapper": {
         "lets_work_together": "Давайте працювати разом",
         "our_location": "Наше розташування",
-        "location": "м. Черкаси, Черкаська область, 18000",
+        "location": "м. Черкаси, Черкаська область, 18002",
         "call_us": "Зателефонуйте нам",
         "connect": "Підключіться",
         "created_with_love_by": "Created with love by",
+        "privacy_policy": "Privacy Policy",
         "documentTitles" : {
             "page_not_found": "Сторінку не знайдено",
             "main": "Fumitrade",
@@ -29,6 +30,12 @@
                 "fumigation_in_containers": "Фумігація контейнерів",
                 "ship_fumigation": "Фумігація суден"
             }
+        },
+        "popupCookie": {
+            "question": "Ми використовуємо файли cookie для аналізу відвідуваності сайту.\nВи погоджуєтеся з їх використанням?",
+            "learnMore": "Дізнайтися більше",
+            "accept": "Прийняти",
+            "reject": "Відхилити"
         }
     },
     "pages_helmet": {
@@ -36,42 +43,48 @@
             "title": "Fumitrade | Сторінку не знайдено",
             "description": "Сторінку не знайдено",
             "keywords": "Сторінку не знайдено",
-            "openGraphType": "website"
+            "openGraphType": "website",
+            "name": "Сторінку не знайдено"
         },
         "main": {
             "title": "Fumitrade | Головна",
             "canonicalPath": "",
             "description": "Професійна дезінсекція без компромісів! Fumitrade – понад 30 років досвіду у сфері дезінсекції, захисту агропродукції та фумігації зернових і олійних культур.",
             "keywords": "Головна, Головна сторінка",
-            "openGraphType": "website"
+            "openGraphType": "website",
+            "name": "Професійна дезінсекція без компромісів!"
         }, 
         "services": {
             "title": "Fumitrade | Послуги",
             "canonicalPath": "services",
             "description": "Послуги з фумігації та дезінсекції від Fumitrade. Захист агропродукції, боротьба зі шкідниками, аерозольна дезінсекція, фумігація елеваторів, складів, вагонів та контейнерів.",
             "keywords": "Послуги, Послуги з дезінсекції, Послуги з фумігації",
-            "openGraphType": "website"
+            "openGraphType": "website",
+            "name": "Послуги з фумігації та дезінсекції від Fumitrade."
         },
         "about_us": {
             "title": "Fumitrade | Про нас",
             "canonicalPath": "about-us",
             "description": "Fumitrade – експерти у сфері фумігації та дезінсекції. Понад 30 років досвіду, безпечні та ефективні методи боротьби зі шкідниками в аграрному секторі.",
             "keywords": "Про нас, ми",
-            "openGraphType": "website"
+            "openGraphType": "website",
+            "name": "Fumitrade – експерти у сфері фумігації та дезінсекції."
         },
         "knowledge_base": {
             "title": "Fumitrade | База знань",
             "canonicalPath": "knowledge-base",
             "description": "Корисна база знань про фумігацію, дезінсекцію та боротьбу зі шкідниками. Експертні поради, статті та корисна інформація від Fumitrade.",
             "keywords": "База знань, данні, знання",
-            "openGraphType": "website"
+            "openGraphType": "website",
+            "name": "Корисна база знань про фумігацію, дезінсекцію та боротьбу зі шкідниками."
         },
         "contacts": {
             "title": "Fumitrade | Контакти",
             "canonicalPath": "contacts",
             "description": "Зв’яжіться з Fumitrade! Ми допоможемо вам у питаннях фумігації та дезінсекції. Адреса, телефон, email – вся контактна інформація в одному місці.",
             "keywords": "Контакти, контакти, розташування, номер, номер телефону, карта",
-            "openGraphType": "website"
+            "openGraphType": "website",
+            "name": "Зв’яжіться з Fumitrade!"
         }
     },
     "notFoundWindow": {
@@ -122,7 +135,9 @@
         "reliable_solutions_for_your_business": "Надійні рішення для вашого бізнесу",
         "we_offer_comprehensive_pest_control_solutions": "Ми пропонуємо комплексні рішення щодо боротьби зі шкідниками. Виберіть послугу, яка вам потрібна:",
         "modal": {
-            "order": "Замовити"
+            "order": "Замовити\nконсультацію",
+            "swalSuccessTitle": "Посилання скопійоване",
+            "swalErrorTitle": "Посилання не скопійоване"
         },
         "services": {
             "service_1": {
@@ -157,6 +172,19 @@
                 "title": "Пастки\tдля гризунів",
                 "description": "Застосування пасток для гризунів є ефективним методом боротьби з мишами та щурами на промислових об'єктах, складах і зерносховищах. Використовуються механічні, електронні та клейові пастки, а також приманки у вигляді контейнерів з родентицидами. Пастки встановлюються в місцях активного пересування гризунів, а їх розташування контролюється та коригується для максимального ефекту. Переваги пасток нашої комапнії це:\tШвидке встановлення\tМаленький розмір\tПеріод між обслуговуванням становить 1 місяць"
             }
+        }
+    },
+    "contactsPage": {
+        "mainTitle": "Напишіть нам, і ми знайдемо рішення ваших проблем!",
+        "contactForm": {
+            "firstName": "Ім'я",
+            "lastName": "Прізвище",
+            "company": "Компанія",
+            "email": "Email",
+            "message": "Повідомлення",
+            "error": "Це поле є обов'язковим для заповнення",
+            "errorEmailPattern": "Некоректна електронна пошта",
+            "submit": "Надіслати"
         }
     }
 }

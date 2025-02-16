@@ -1,9 +1,8 @@
 import Typed from "typed.js";
 import styles from "../styles/MainPage.module.css";
-import { IChangeServicesWindowScrollProps, IChartData, ICreateTyped, ISlidesTrustUs } from "../types.tsx";
+import { IChangeServicesWindowScrollProps, ICreateTyped } from "../types.tsx";
 import Constants from "../constants.ts";
 import { Dispatch, SetStateAction } from "react";
-import Header from "./header.ts";
 
 export const getStaticFile: (name: string) => string = (name: string) => {
     return Constants.STATIC_FILES_PATH + name;
@@ -19,7 +18,7 @@ export const createTyped = (args: ICreateTyped) => {
             strings: args.strings,
             typeSpeed: 75,
             backSpeed: 75,
-            backDelay: 1000,
+            backDelay: 2000,
             loop: true,
             autoInsertCss: true,
             fadeOutDelay: 500,
@@ -176,102 +175,6 @@ export const onResizeForTrustUsWindow = (
 };
 
 export const halfArray = <T>(arr: T[]): T[] => arr.slice(0, Math.floor(arr.length / 2));
-
-export const chartData: IChartData[] = [
-    {
-        x: 2400,
-        y: 2400,
-    },
-    {
-        x: 1398,
-        y: 2210,
-    },
-    {
-        x: 5800,
-        y: 2290,
-    },
-    {
-        x: 3908,
-        y: 2000,
-    },
-    {
-        x: 4800,
-        y: 2181,
-    },
-    {
-        x: 3800,
-        y: 2500,
-    },
-    {
-        x: 2300,
-        y: 4300,
-    }
-];
-
-export const trustUsSlides: ISlidesTrustUs = {
-    data: [
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_AGROCO_LOGO_IMAGE),
-            url: "https://www.agroco.com.ua/",
-            alt: "Агроко"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_MAIS_LOGO_IMAGE),
-            url: "https://mais.ua/",
-            alt: "Mais"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_NEWELEVATOR_LOGO_IMAGE),
-            url: "https://new-elevator.com.ua/",
-            alt: "НОВИЙ ЕЛЕВАТОР ЛЛД"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_AGRODAR_LOGO_IMAGE),
-            url: "https://elevatorist.com/kompanii/264-agrodar-ltd/",
-            alt: "АГРОДАР ЛТД"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_HORS_LOGO_IMAGE),
-            url: "https://latifundist.com/kompanii/245-hors/",
-            alt: "Зернова компанія Хорс"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_NIBULON_LOGO_IMAGE),
-            url: "https://www.nibulon.com/",
-            alt: "НІБУЛОН"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_ALTERAAZTECA_LOGO_IMAGE),
-            url: "https://alteragruma.com/",
-            alt: "АЛЬТЕРА АЦТЕКА МІЛИНГ УКРАЇНА"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_DUNAGRARIAN_LOGO_IMAGE),
-            url: "https://dunagrarian.com/",
-            alt: "ДУНАЙСЬКИЙ АГРАРІЙ"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_PRODEXIM_LOGO_IMAGE),
-            url: "https://prodexim.com.ua/",
-            alt: "ПРОДЕКСІМ"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_KIVSHOVATA_LOGO_IMAGE),
-            url: "https://kivshovata-agro.com.ua/",
-            alt: "КІВШОВАТА АГРО"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_AGROTRADE_LOGO_IMAGE),
-            url: "https://at2000.com.ua/",
-            alt: "Агротрейд-2000"
-        },
-        {
-            imgSrc: getStaticFile(Constants.COMPANY_RAMBURS_LOGO_IMAGE),
-            url: "https://www.ramburs.com/", 
-            alt: "Рамбурс"
-        }
-    ]
-};
 
 export const lockServicesWindowScroll = ({ root, swiper }: IChangeServicesWindowScrollProps) => {
     if (window.innerWidth < 900) return;

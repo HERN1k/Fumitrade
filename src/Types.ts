@@ -42,8 +42,11 @@ export interface ICreateTyped {
     strings: string[];
 }
 
-export interface IServiceProps {
-    id: string;
+export interface IElementBase {
+    id: string
+}
+
+export interface IServiceProps extends IElementBase {
     imgSrc: string;
     title: string;
     description: string;
@@ -119,4 +122,30 @@ export interface IAppearanceAnimationProps {
     delay?: number;
     duration?: number;
     style?: any;
+}
+
+export interface IMicroMarkupProps {
+    json: string;
+}
+
+export interface IServiceModalBackdropProps {
+    children: JSX.Element; 
+    onClick: () => void;
+}
+
+export interface IPopupBackdropProps {
+    children: JSX.Element; 
+    onClick: () => void;
+}
+
+export interface IContactsWindowProps {
+    sticky?: boolean;
+}
+
+export interface IEmailInputs {
+    firstName: string;
+    lastName: string;
+    company: string;
+    email: string;
+    message: string;
 }

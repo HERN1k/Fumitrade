@@ -23,20 +23,57 @@
     background-color: var(--color-primary-transparent);
 }
 
+.mainVideoBGContainer {
+    display: block;
+    height: 100dvh;
+    width: 100dvw;
+    position: relative;
+}
+
+.mainVideoBGContainer::after {
+    content: "";
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary);
+    opacity: 0.5;
+}
+
+.mainVideoBG {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: -100;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .mainVideoBGContainer {
+        height: 80dvh;
+    }
+
+    .mainVideoBGContainer::after {
+        height: 80dvh;
+    }
+}
+
 .sloganText {
     display: block;
     position: absolute;
     z-index: 20;
-    /* top: 45dvh; */
     top: 45%;
     left: 10%;
     transform: translateY(-50%);
     font-family: "Roboto Condensed", serif;
-    font-size: 4.5rem;    
-    line-height: 5rem;
+    font-size: 5.5rem;    
+    line-height: 6.5rem;
     font-weight: 100;
     color: white;
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .aboutTextContainer {
@@ -1137,14 +1174,4 @@
     .servicesSwiperLastItem:hover .serviceSwiperLastItemButtonArrowSvg {
         fill: var(--color-primary);
     }
-}
-
-
-
-
-
-
-.quoteWindow {
-    justify-content: center;
-    position: relative;
 }

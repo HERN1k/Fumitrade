@@ -38,7 +38,7 @@
 }
 
 .logoImg {
-    display: block;
+    display: block; 
     width: auto;
     height: 4rem;
     object-fit: contain;

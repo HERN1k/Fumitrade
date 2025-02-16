@@ -18,11 +18,11 @@ import styles from "../../styles/MainPage.module.css";
 import "swiper/swiper-bundle.css";
 import "../../index.css";
 import { useTranslation } from "react-i18next";
-import { IServiceInMainPageProps } from "../../types.ts";
 import { Link } from "react-router";
 import { addLineBreaks, trimWithDots } from "../../scripts/servicesScripts.ts";
 import { Arrow } from "../general/Svgs.tsx";
 import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
+import { getServicesCollectionForMainPage } from "../../scripts/collections.ts";
 
 const ServicesWindow: FC = () => {
 
@@ -98,33 +98,6 @@ const ServicesWindow: FC = () => {
         }
     }
 
-    const servicesCollection: IServiceInMainPageProps[] = [
-        {
-            id: Constants.SERVICES_PAGE_SERVICE_1_ID,
-            imgSrc: Constants.SERVICES_PAGE_SERVICE_1_IMAGE,
-            title: t("servicesWindow.services.service_1.title"),
-            description: t("servicesWindow.services.service_1.description")
-        },
-        {
-            id: Constants.SERVICES_PAGE_SERVICE_3_ID,
-            imgSrc: Constants.SERVICES_PAGE_SERVICE_3_IMAGE,
-            title: t("servicesWindow.services.service_3.title"),
-            description: t("servicesWindow.services.service_3.description")
-        },
-        {
-            id: Constants.SERVICES_PAGE_SERVICE_6_ID,
-            imgSrc: Constants.SERVICES_PAGE_SERVICE_6_IMAGE,
-            title: t("servicesWindow.services.service_6.title"),
-            description: t("servicesWindow.services.service_6.description")
-        },
-        {
-            id: Constants.SERVICES_PAGE_SERVICE_8_ID,
-            imgSrc: Constants.SERVICES_PAGE_SERVICE_8_IMAGE,
-            title: t("servicesWindow.services.service_8.title"),
-            description: t("servicesWindow.services.service_8.description")
-        }
-    ];
-    
     return (
         <Window ref={ref} sticky id={Constants.SERVICES_WINDOW_MAIN_PAGE_ID} className={styles.servicesWindow}>
             <AppearanceAnimation 
@@ -157,7 +130,7 @@ const ServicesWindow: FC = () => {
                     }}
                     className={styles.servicesSwiper}>
 
-                    { servicesCollection.map((item, index) => (
+                    {getServicesCollectionForMainPage(t).map((item, index) => (
                         <SwiperSlide key={index} style={{ width: swiperSlideWidth }}>
                             <Link 
                                 to="/services" 
@@ -180,7 +153,7 @@ const ServicesWindow: FC = () => {
                                 </div>
                             </Link>
                         </SwiperSlide>
-                    )) }
+                    ))}
                     
                     <SwiperSlide style={{ width: swiperSlideWidth }}>
                         <Link 

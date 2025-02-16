@@ -2,9 +2,10 @@ import { FC, useEffect, useState } from "react";
 import styles from "../../styles/MainPage.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import { trustUsSlides, onResizeForTrustUsWindow } from "../../scripts/mainPageScripts.ts";
+import { onResizeForTrustUsWindow } from "../../scripts/mainPageScripts.ts";
 import "swiper/swiper-bundle.css";
 import "../../index.css";
+import { trustUsSlides } from "../../scripts/collections.ts";
 
 const SwiperTrustUs: FC = () => {
 

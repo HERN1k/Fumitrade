@@ -6,8 +6,9 @@ import styles from "../../styles/MainPage.module.css"
 import { useTranslation } from "react-i18next";
 import { LineChart, ResponsiveContainer, Line, CartesianGrid } from "recharts";
 import { useInView } from "react-intersection-observer";
-import { chartData, halfArray } from "../../scripts/mainPageScripts.ts";
+import { halfArray } from "../../scripts/mainPageScripts.ts";
 import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
+import { chartData } from "../../scripts/collections.ts";
 
 const CountersWindow: FC = () => {
 
@@ -36,7 +37,7 @@ const CountersWindow: FC = () => {
                         <Line type="monotone" dataKey="y" stroke="#dcb426" strokeWidth={1} />
                         <CartesianGrid strokeDasharray="3 3" />
                     </LineChart>
-                </ResponsiveContainer>
+                </ResponsiveContainer> 
             );
         } else {
             setCharts(null);

@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import Window from "../general/Window.tsx";
 import styles from "../../styles/MainPage.module.css";
 import { Link } from "react-router";
@@ -7,7 +7,6 @@ import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 import { useTranslation } from "react-i18next";
 import { Arrow } from "../general/Svgs.tsx";
 import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
-import Header from "../../scripts/header.ts";
 
 const DescriptionWindow: FC = () => {
 
@@ -47,7 +46,7 @@ const DescriptionWindow: FC = () => {
                     initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
                     delay={500} 
                     style={style}>
-                    <Link to="/about">
+                    <Link to="/about-us">
                         <div className={styles.learnMoreContainer}>
                             <div className={styles.learnMoreButton}>
                                 <Arrow className={styles.learnMoreButtonArrowSvg} />
