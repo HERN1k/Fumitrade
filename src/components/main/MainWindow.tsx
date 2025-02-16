@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef } from "react";
 import Constants from "../../constants.ts";
 import Window from "../general/Window.tsx";
 import styles from "../../styles/MainPage.module.css";
