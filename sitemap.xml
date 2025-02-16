@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+        <loc>https://dev.hern1k.xyz/Fumitrade/</loc>
+        <lastmod>2024-02-14</lastmod>
+        <priority>1.0</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+    <url>
+        <loc>https://dev.hern1k.xyz/Fumitrade/services</loc>
+        <lastmod>2024-02-14</lastmod>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+    <url>
+        <loc>https://dev.hern1k.xyz/Fumitrade/about-us</loc>
+        <lastmod>2024-02-14</lastmod>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+    <url>
+        <loc>https://dev.hern1k.xyz/Fumitrade/knowledge-base</loc>
+        <lastmod>2024-02-14</lastmod>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+    <url>
+        <loc>https://dev.hern1k.xyz/Fumitrade/contacts</loc>
+        <lastmod>2024-02-14</lastmod>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+</urlset> 

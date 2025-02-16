@@ -1,0 +1,1 @@
+import{r as n,j as e}from"./index-BLhW-kZ_.js";const s=({json:r})=>(n.useEffect(()=>{const t=document.createElement("script");return t.type="application/ld+json",t.textContent=r,document.head.appendChild(t),()=>t.remove()},[]),e.jsx(e.Fragment,{}));export{s as M};
