@@ -22,6 +22,6 @@ const AppearanceAnimation: FC<IAppearanceAnimationProps> = (args) => {
             { args.children }
         </animated.div>
     );
-}
+} 
 
 export default AppearanceAnimation;

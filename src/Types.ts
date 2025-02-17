@@ -1,4 +1,4 @@
-import { Dispatch, FC, MutableRefObject, ReactNode, SetStateAction } from "react";
+import { Dispatch, FC, JSX, MutableRefObject, ReactNode, SetStateAction } from "react";
 import { SwiperRef } from "swiper/react";
 import Typed from "typed.js";
 import { TranslateOnAxis } from "./scripts/appWrapperScripts.ts";

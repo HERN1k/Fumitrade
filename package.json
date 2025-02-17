@@ -1,7 +1,7 @@
 {
   "name": "fumitrade",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "homepage": "https://HERN1k.github.io/Fumitrade",
   "scripts": {
@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@react-spring/web": "^9.7.5",
-    "@react-three/fiber": "^8.17.14",
     "i18next": "^24.2.1",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.2",
@@ -25,19 +24,16 @@
     "react-i18next": "^15.4.0",
     "react-intersection-observer": "^9.14.1",
     "react-router": "^7.1.1",
-    "react-smoke": "^1.1.0",
     "recharts": "^2.15.1",
     "sweetalert2": "^11.17.1",
     "sweetalert2-react-content": "^5.1.0",
     "swiper": "^11.2.1",
-    "three": "^0.173.0",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "@types/three": "^0.172.0",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",

@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import Window from "./Window.tsx";
 import Constants from "../../constants.ts";
 import styles from "../../styles/Contacts.module.css"
 import { formattingPhoneNumber, getStaticFile } from "../../scripts/appWrapperScripts.ts";
 import { IContactsWindowProps } from "../../types.ts";
 import { useTranslation } from "react-i18next";
-import ContactForm from "../contacts/ContactForm.tsx";
+const ContactForm = lazy(() => import("../contacts/ContactForm.tsx"));
 
 const ContactsWindow: FC<IContactsWindowProps> = ({ sticky = true  }) => {
 

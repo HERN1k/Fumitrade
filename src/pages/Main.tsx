@@ -18,7 +18,7 @@ const DescriptionWindow = lazy(() => import("../components/main/DescriptionWindo
 const ServicesWindow = lazy(() => import("../components/main/ServicesWindow.tsx"));
 const CountersWindow = lazy(() => import("../components/main/CountersWindow.tsx"));
 const TrustUsWindow = lazy(() => import("../components/main/TrustUsWindow.tsx"));
-const QuoteWindow = lazy(() => import("../components/general/ContactsWindow.tsx"));
+const ContactsWindow = lazy(() => import("../components/general/ContactsWindow.tsx"));
 
 const Main: FC<IPageProps> = ({ id }) => {
 
@@ -73,7 +73,7 @@ const Main: FC<IPageProps> = ({ id }) => {
 
                 <TrustUsWindow />
 
-                <QuoteWindow />
+                <ContactsWindow />
             </div>
         </>
     );
