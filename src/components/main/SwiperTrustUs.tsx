@@ -34,7 +34,7 @@ const SwiperTrustUs: FC = () => {
             {trustUsSlides.data.map((item, index) => (
                 <SwiperSlide key={index} style={{ width: slideWidth }}>
                     <a className={styles.swiperItem} target="_blank" href={item.url}>
-                        <img src={item.imgSrc} alt={item.alt} className={styles.swiperImg} />
+                        <img loading="lazy" src={item.imgSrc} alt={item.alt} className={styles.swiperImg} />
                     </a>
                 </SwiperSlide>
             ))}

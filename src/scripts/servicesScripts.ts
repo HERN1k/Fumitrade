@@ -1,7 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 import Constants from "../constants.ts";
 import styles from "../styles/Services.module.css";
-import { IParseServiceDescriptionProps, IServiceModalProps } from "../types.ts";
+import { IEmailInputs, IParseServiceDescriptionProps, IServiceModalProps } from "../types.ts";
+import { send } from "@emailjs/browser";
+import Swal, { SweetAlertOptions } from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export const getStaticFile = (name: string) => Constants.STATIC_FILES_PATH + name;
 
@@ -103,5 +106,34 @@ export const onScrollServicesHeader = () => {
 
     if (element && rootElement) {
         element.style.transform = `translateY(-${rootElement.scrollTop / 2}px)`;
+    }
+}; 
+
+export const sendEmailAsync = async (data: IEmailInputs, successMessage: SweetAlertOptions, errorMessage: SweetAlertOptions) => {
+    try {
+        var res = await send(
+            Constants.EMAIL_SERVICE_ID, 
+            Constants.EMAIL_TEMPLATE_ID, 
+            { 
+                ...data, 
+                date: new Date().toLocaleString(),
+                recipient: Constants.EMAIL_RECIPIENT
+            },
+            { 
+                publicKey: Constants.EMAIL_PUBLIC_KEY 
+            }
+        );
+
+        if (res.status !== 200) {
+            throw new Error();
+        }
+
+        withReactContent(Swal).fire(successMessage);
+    } catch (error: any) {
+        console.warn(`[FAILED]\t${new Date().toLocaleString()}\t`, (error.text ? error.text : "Sending email"));
+
+        withReactContent(Swal).fire(errorMessage);
+
+        throw error;
     }
 };

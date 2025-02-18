@@ -36,6 +36,12 @@ export default class Constants {
     static readonly COOKIES_ACCEPT_KEY: string = ":COOKIES_ACCEPT_KEY:";
     static readonly PRIVACY_POLICY: string = "privacy-policy.html";
 
+    /*     EmailJs     */ 
+    static readonly EMAIL_SERVICE_ID: string = "service_qr99gvw";
+    static readonly EMAIL_TEMPLATE_ID: string = "template_629qh1b";
+    static readonly EMAIL_PUBLIC_KEY: string = "GVWhtF0nshDe6UB-Z";
+    static readonly EMAIL_RECIPIENT: string = "h1rnykvlad@gmail.com";
+
     /*     General images     */ 
     static readonly ICON_IMAGE: string = "general/ico.webp";
     static readonly LOGO_IMAGE: string = "general/logo.webp";
@@ -45,6 +51,7 @@ export default class Constants {
     /*     Main page images     */
     static readonly MAIN_PAGE_MAIN_IMAGE: string = "main-page/main_bg.webp";
     static readonly MAIN_PAGE_MAIN_VIDEO: string = "main-page/main-bg.mp4";
+    static readonly MAIN_PAGE_MAIN_VIDEO_POSTER: string = "main-page/main-bg-poster.webp";
     static readonly MAIN_PAGE_DESCRIPTION_IMAGE: string = "main-page/description_bg.webp";
     static readonly MAIN_PAGE_TRUST_US_IMAGE: string = "main-page/trust_us_bg.webp";
     static readonly COMPANY_AGROCO_LOGO_IMAGE: string = "main-page/companies/agroco.webp";

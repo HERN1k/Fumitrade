@@ -18,7 +18,7 @@ const AppearanceAnimation: FC<IAppearanceAnimationProps> = (args) => {
     });
 
     return (
-        <animated.div ref={ref} style={{ ...args.style, ...fadeInAnimation }}>
+        <animated.div ref={ref} style={{ ...args.style, ...fadeInAnimation }} className={args.className ? args.className : ""}>
             { args.children }
         </animated.div>
     );

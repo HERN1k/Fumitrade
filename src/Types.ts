@@ -122,6 +122,7 @@ export interface IAppearanceAnimationProps {
     delay?: number;
     duration?: number;
     style?: any;
+    className?: string;
 }
 
 export interface IMicroMarkupProps {
@@ -148,4 +149,5 @@ export interface IEmailInputs {
     company: string;
     email: string;
     message: string;
+    [key: string]: string;
 }

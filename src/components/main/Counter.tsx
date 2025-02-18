@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { useSpring, animated, easings } from "@react-spring/web";
 import { ICounterProps } from "../../types.ts";
 
-const Counter: FC<ICounterProps> = ({ min, max, textAfter, timeout = 500, className }) => {
+const Counter: FC<ICounterProps> = ({ min, max, textAfter, timeout = 250, className }) => {
 
     const { ref, inView } = useInView({
         triggerOnce: true,
@@ -13,7 +13,7 @@ const Counter: FC<ICounterProps> = ({ min, max, textAfter, timeout = 500, classN
     const [props, api] = useSpring(() => ({ 
         number: 0,
         from: { number: 0 }, 
-        config: { duration: 3000, easing: easings.easeInOutExpo }
+        config: { duration: 2500, easing: easings.easeInOutExpo }
     }), []);
 
     useEffect(() => {

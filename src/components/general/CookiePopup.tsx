@@ -17,7 +17,7 @@ const CookiePopup: FC = () => {
             if (!localStorage.getItem(Constants.COOKIES_ACCEPT_KEY)) {
                 setPopupOpen(true);
             }
-        }, 1000)
+        }, 1000);
     }
 
     const reject = (): void => {
@@ -50,7 +50,7 @@ const CookiePopup: FC = () => {
                         <p className={styles.question}>
                             {t("appWrapper.popupCookie.question")}
                         </p>
-
+ 
                         <div className={styles.interesticContainer}>
                             <a className={styles.learnMore} href={getPrivacyPolicyUrl()} target="_blank">
                                 <p className={styles.learnMoreText}>

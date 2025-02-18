@@ -12,6 +12,7 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@react-spring/web": "^9.7.5",
     "i18next": "^24.2.1",
     "i18next-browser-languagedetector": "^8.0.2",

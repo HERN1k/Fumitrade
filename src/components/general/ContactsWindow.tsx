@@ -2,9 +2,10 @@ import { FC, lazy } from "react";
 import Window from "./Window.tsx";
 import Constants from "../../constants.ts";
 import styles from "../../styles/Contacts.module.css"
-import { formattingPhoneNumber, getStaticFile } from "../../scripts/appWrapperScripts.ts";
+import { formattingPhoneNumber, getStaticFile, TranslateOnAxis } from "../../scripts/appWrapperScripts.ts";
 import { IContactsWindowProps } from "../../types.ts";
 import { useTranslation } from "react-i18next";
+import AppearanceAnimation from "./AppearanceAnimation.tsx";
 const ContactForm = lazy(() => import("../contacts/ContactForm.tsx"));
 
 const ContactsWindow: FC<IContactsWindowProps> = ({ sticky = true  }) => {
@@ -17,7 +18,10 @@ const ContactsWindow: FC<IContactsWindowProps> = ({ sticky = true  }) => {
                 className={styles.imageBG} 
                 style={{backgroundImage: `url(${getStaticFile(Constants.SERVICES_PAGE_SERVICE_2_IMAGE)})`}} />
 
-            <div className={styles.textConatiner}>
+            <AppearanceAnimation 
+                initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
+                delay={500} 
+                className={styles.textConatiner}>
                 <h2 className={styles.mainTitle}>
                     {t("contactsPage.mainTitle")}
                 </h2>
@@ -26,7 +30,7 @@ const ContactsWindow: FC<IContactsWindowProps> = ({ sticky = true  }) => {
                     <div className={styles.contactConatiner}>
                         <h3 className={styles.contactTitle}>
                             {t("appWrapper.our_location")}
-                        </h3>
+                        </h3> 
                         <a className={styles.contactAnchor} target="_blank" href={Constants.COMPANY_GOOGLE_MAPS_URL}>
                             <p className={styles.contactText}>
                                 {t("appWrapper.location")}
@@ -48,11 +52,15 @@ const ContactsWindow: FC<IContactsWindowProps> = ({ sticky = true  }) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </AppearanceAnimation>
 
-            <div className={styles.mailConatiner}>
+            <AppearanceAnimation 
+                initialPosition={new TranslateOnAxis(10, "rem", "X")}
+                delay={1000}
+                duration={0.4}
+                className={styles.mailConatiner}>
                 <ContactForm />
-            </div>
+            </AppearanceAnimation>
         </Window>
     );
 }

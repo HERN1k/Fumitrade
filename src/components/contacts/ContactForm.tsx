@@ -4,17 +4,42 @@ import { IEmailInputs } from "../../types.ts";
 import { useTranslation } from "react-i18next";
 import styles from "../../styles/Contacts.module.css";
 import { Arrow } from "../general/Svgs.tsx";
+import { sendEmailAsync } from "../../scripts/servicesScripts.ts";
 
 const ContactForm: FC = () => {
 
     const { t } = useTranslation();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<IEmailInputs>({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<IEmailInputs>({
         mode: "onChange"
     });
 
-    const onSubmit = (data: IEmailInputs) => {
-        console.log(data);
+    const onSubmit = async (data: IEmailInputs) => {
+        if (!data) return;
+
+        try {
+            await sendEmailAsync(
+                data,
+                {
+                    title: <p className={styles.swalTitle}>{t("contactsPage.modal.swalSuccessTitle")}</p>,
+                    icon: "success",
+                    background: "var(--color-modal-bg)",
+                    timer: 1250,
+                    showConfirmButton: false
+                },
+                {
+                    title: <p className={styles.swalTitle}>{t("contactsPage.modal.swalErrorTitle")}</p>,
+                    icon: "error",
+                    background: "var(--color-modal-bg)",
+                    timer: 1250,
+                    showConfirmButton: false
+                }
+            );
+        } catch (error: any) {
+            return;
+        }
+
+        reset();
     }
 
     return (

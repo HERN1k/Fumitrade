@@ -211,15 +211,18 @@
 }
 
 .inputSpan {
+    display: block;
     font-size: 1rem;
     font-family: "Montserrat", serif;
     font-weight: 400;
     color: #ff7979ce;
+    text-align: center;
+    margin-top: 0.25rem;
 }
 
 .input {
     display: block;
-    height: 2.25rem;
+    height: 2.15rem;
     padding: 0;
     width: 100%;
     padding: 0.25rem;
@@ -232,6 +235,8 @@
     border-bottom: solid 1px var(--color-text);
     caret-color: var(--color-text);
     color: var(--color-text);
+    border-radius: 0;
+    letter-spacing: 0.5px;
     transition: all 0.25s ease-in-out;
 }
 
@@ -254,6 +259,8 @@
     border-bottom: solid 1px var(--color-text);
     caret-color: var(--color-text);
     color: var(--color-text);
+    border-radius: 0;
+    letter-spacing: 0.5px;
     transition: all 0.25s ease-in-out;
 }
 
@@ -327,7 +334,7 @@
 @media (max-width: 769px) {
     .mailConatiner {
         width: 100%;
-        padding: 8rem 1rem;
+        padding: 4rem 1rem;
     }
     
     .inputContainer {
@@ -345,8 +352,6 @@
 
     .submitContainer {
         gap: 1.5rem;
-        width: 80dvw;
-        height: 80dvw;
         margin-top: 2rem;
     }
     
@@ -371,4 +376,11 @@
     .submitContainer:hover .submitText {
         color: var(--color-text);
     }
+}
+
+.swalTitle {
+    font-family: "Montserrat", serif;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    font-weight: 300;
 }

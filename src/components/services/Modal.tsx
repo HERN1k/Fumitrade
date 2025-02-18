@@ -15,7 +15,7 @@ import { IServiceModalProps } from "../../types.ts";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import Constants from "../../constants.ts";
-import { copyToClipboard } from "../../scripts/appWrapperScripts.ts";
+import { copyToClipboard, transitionToTop } from "../../scripts/appWrapperScripts.ts";
 
 const dropIn = { 
     hidden: {
@@ -60,7 +60,7 @@ const Modal: FC<IServiceModalProps> = (args) => {
     }, []);
 
     const copyUrl = () => {
-        copyToClipboard(
+        copyToClipboard( 
             args.title,
             {
                 title: <p className={styles.swalTitle}>{t("servicesWindow.modal.swalSuccessTitle")}</p>,
@@ -148,7 +148,10 @@ const Modal: FC<IServiceModalProps> = (args) => {
                                         onClick={copyUrl}
                                         style={{ backgroundImage: `url(${getStaticFile(Constants.SHARE_IMAGE)})` }} />
 
-                                    <Link to="/" className={styles.modalContactLink}>
+                                    <Link 
+                                        to="/contacts" 
+                                        className={styles.modalContactLink}
+                                        onClick={() => transitionToTop()}>
                                         <div className={styles.modalContactContainer}>
                                             <div className={styles.modalContactButtonLine}>
                                                 <div className={styles.modalContactButton}>

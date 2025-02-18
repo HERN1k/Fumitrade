@@ -14,7 +14,7 @@
 .popupContainer {
     padding: 1rem 2rem;
     background-color: var(--color-modal-bg);
-    border: solid 2px var(--color-popup-border);
+    border: solid 1px var(--color-popup-border);
     border-radius: 3px;
     color: azure;
     max-width: 75dvw;
@@ -30,7 +30,7 @@
 }
 
 .interesticContainer {
-    display: flex;
+    display: flex; 
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
@@ -38,7 +38,7 @@
 
 @media (max-width: 768px) {
     .popupContainer {
-        width: calc(100dvw - 2rem);
+        width: 80dvw;
         max-width: calc(100dvw - 2rem);
     }
 
@@ -105,7 +105,7 @@
     background-color: var(--color-secondary);
     border-radius: 2px;
     cursor: pointer;
-    color: var(--color-primary);
+    color: black;
     padding: 0.25rem 1rem;
     font-weight: 400;
 }

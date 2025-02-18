@@ -46,7 +46,9 @@ const MainWindow: FC = () => {
                         muted
                         loop
                         autoPlay
-                        playsInline>
+                        playsInline
+                        preload="none" 
+                        poster={getStaticFile(Constants.MAIN_PAGE_MAIN_VIDEO_POSTER)}>
                         <source src={getStaticFile(Constants.MAIN_PAGE_MAIN_VIDEO)} type="video/mp4" />
                     </video>
                 </div>
