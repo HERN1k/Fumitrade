@@ -39,7 +39,7 @@ const Main: FC<IPageProps> = ({ id }) => {
                 <meta property="og:site_name" content={Constants.COMPANY_NAME} />
                 <meta property="og:title" content={t("pages_helmet.main.title")} />
                 <meta property="og:description" content={t("pages_helmet.main.description")} />
-                <meta property="og:image" content={getPhotoUriForHelmet(Constants.LOGO_IMAGE)} />
+                <meta property="og:image" content={getPhotoUriForHelmet(Constants.ICON_IMAGE)} />
             </Helmet>
 
             <MicroMarkup json={
@@ -48,9 +48,9 @@ const Main: FC<IPageProps> = ({ id }) => {
                     "@type": "Organization",
                     "name": t("pages_helmet.main.name"),
                     "url": getBaseUrlForHelmet(),
-                    "logo": getPhotoUriForHelmet(Constants.LOGO_IMAGE),
+                    "logo": getPhotoUriForHelmet(Constants.ICON_IMAGE),
                     "description": t("pages_helmet.main.description"),
-                    "contactPoint": {
+                    "contactPoint": { 
                         "@type": "ContactPoint",
                         "telephone": getFormattedPhoneNumberForHelmet(Constants.COMPANY_FIRST_PHONE_NUMBER),
                         "contactType": "customer service",

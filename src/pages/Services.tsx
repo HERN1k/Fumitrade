@@ -32,11 +32,11 @@ const Services: FC<IPageProps> = ({ id }) => {
         service_8: false,
     });
 
-    useEffect(() => { Header.ensureVisible() }, []);
-
     useEffect(() => { 
+        Header.ensureVisible(); 
+
         transitionToHash(window.location.hash, servicesCollection, "title")?.click();
-    }, [window.location.hash]);
+    }, []);
 
     const openModal = (serviceKey: string): void => {
         setModals(prev => Object.fromEntries(Object.keys(prev)
@@ -151,7 +151,7 @@ const Services: FC<IPageProps> = ({ id }) => {
                 <meta property="og:site_name" content={Constants.COMPANY_NAME} />
                 <meta property="og:title" content={t("pages_helmet.services.title")} />
                 <meta property="og:description" content={t("pages_helmet.services.description")} />
-                <meta property="og:image" content={getPhotoUriForHelmet(Constants.LOGO_IMAGE)} />
+                <meta property="og:image" content={getPhotoUriForHelmet(Constants.ICON_IMAGE)} />
             </Helmet>
 
             <MicroMarkup json={
@@ -160,7 +160,7 @@ const Services: FC<IPageProps> = ({ id }) => {
                     "@type": "Service",
                     "name": t("pages_helmet.services.name"),
                     "url": getCanonicalUrlForHelmet(t("pages_helmet.services.canonicalPath")),
-                    "logo": getPhotoUriForHelmet(Constants.LOGO_IMAGE),
+                    "logo": getPhotoUriForHelmet(Constants.ICON_IMAGE),
                     "description": t("pages_helmet.services.description"),
                     "provider": {
                         "@type": "Organization",

@@ -151,7 +151,7 @@ a {
   --color-primary-transparent: rgba(15, 24, 34, 0.7);
   --color-secondary: #dcb426;
   --color-modal-bg: #111d29;
-  --color-popup-border: #ffffff42;
+  --color-popup-border: #ffffff42; 
 }
 
 .swiper .swiper-pagination-bullet {

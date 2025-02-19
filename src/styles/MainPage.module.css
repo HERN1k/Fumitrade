@@ -303,7 +303,7 @@
     font-size: 1rem;
     letter-spacing: 1px;
     color: var(--color-text);
-    transition: all 0.25s ease-in;
+    transition: all 0.25s ease-in; 
     text-transform: uppercase;
 }
 

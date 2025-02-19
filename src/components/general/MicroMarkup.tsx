@@ -9,7 +9,7 @@ const MicroMarkup: FC<IMicroMarkupProps> = ({ json }) => {
         script.textContent = json;
     
         document.head.appendChild(script);
-    
+     
         return () => script.remove();
     }, []);
 

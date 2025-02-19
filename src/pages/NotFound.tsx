@@ -36,7 +36,7 @@ const NotFound: FC<IPageProps> = ({ id }) => {
                 <meta property="og:site_name" content={Constants.COMPANY_NAME} />
                 <meta property="og:title" content={t("pages_helmet.page_not_found.title")} />
                 <meta property="og:description" content={t("pages_helmet.page_not_found.description")} />
-                <meta property="og:image" content={getPhotoUriForHelmet(Constants.LOGO_IMAGE)} />
+                <meta property="og:image" content={getPhotoUriForHelmet(Constants.ICON_IMAGE)} />
             </Helmet>
 
             <Window id={id}>

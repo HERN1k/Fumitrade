@@ -190,5 +190,8 @@
             "swalSuccessTitle": "Повідомлення успішно відправлено",
             "swalErrorTitle": "Повідомлення не відправлено"
         }
+    },
+    "knowledge_base_page": {
+        "title": "База знань"
     }
 }

@@ -8,6 +8,12 @@ import Header from "./header.ts";
 import Swal, { SweetAlertOptions } from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
+export const removeStaticMicroMarkup = (): void => {
+    document.head
+        .querySelectorAll('script[type="application/ld+json"]')
+        .forEach((script) => script.remove());
+}
+
 export const onResize = (args: IAppWrapperOnResizeArgs) => {
     const headerElement = document.getElementById(Constants.HEADER_ID);
 

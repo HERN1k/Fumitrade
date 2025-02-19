@@ -151,3 +151,9 @@ export interface IEmailInputs {
     message: string;
     [key: string]: string;
 }
+
+export interface IKnowledgeBaseItem {
+    id: number;
+    title: string;
+    text: string;
+}

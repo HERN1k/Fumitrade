@@ -4,8 +4,11 @@ import AppRoutes from "./components/general/Routes.tsx";
 import { HelmetProvider } from "react-helmet-async";
 import "./scripts/i18n.ts";
 import "./index.css";
+import { removeStaticMicroMarkup } from "./scripts/appWrapperScripts.ts";
 
-createRoot(document.getElementById('root')!).render(
+removeStaticMicroMarkup();
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <HelmetProvider>
       <AppRoutes />

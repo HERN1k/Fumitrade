@@ -79,6 +79,10 @@ export default class Constants {
     static readonly SERVICES_PAGE_SERVICE_7_IMAGE: string = "services/service_7.webp";
     static readonly SERVICES_PAGE_SERVICE_8_IMAGE: string = "services/service_8.webp";
 
+    /*     Knowledge base page images     */
+    static readonly KNOWLEDGE_BASE_PAGE_BG_IMAGE: string = "knowledge-base/library.webp";
+    static readonly KNOWLEDGE_BASE_PAGE_TRIANGLE_IMAGE: string = "knowledge-base/triangle.svg";
+
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
     static readonly SERVICES_PAGE_ID: string = ":SERVICES_PAGE_ID:";
