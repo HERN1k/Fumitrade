@@ -1,13 +1,18 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "../../styles/AppWrapper.module.css";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { transitionTo, transitionToTop } from "../../scripts/appWrapperScripts.ts";
 import Constants from "../../constants.ts";
+import { trimWithDots } from "../../scripts/servicesScripts.ts";
+import { IKnowledgeBaseItem } from "../../types.ts";
+import { getKnowledgeItemsCollection } from "../../scripts/knowledgeBaseScripts.ts";
 
 const PCMenu: FC = () => {
 
     const { t } = useTranslation();
+
+    const [knowledgeItemsCollection] = useState<IKnowledgeBaseItem[]>(getKnowledgeItemsCollection());
 
     return (
         <ul className={styles.menu}>
@@ -55,6 +60,13 @@ const PCMenu: FC = () => {
                     <h2 className={styles.menuText}>{t("appWrapper.menu.knowledge_base")}</h2>
                     <div className={styles.underline} />
                 </Link>
+
+                <div className={styles.menuItemDropDownContainer}>
+                    {knowledgeItemsCollection.map((item) => 
+                        <Link to={`/knowledge-base#section${item.id}`} viewTransition>
+                            <div className={styles.menuItemDropDownItem}>{trimWithDots(item.title, 20)}</div>
+                        </Link>)}
+                </div>
             </li>
             <li className={styles.menuItem}>
                 <Link to="/contacts" viewTransition onClick={transitionToTop}>

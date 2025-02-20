@@ -1,7 +1,7 @@
 import { TFunction } from "i18next";
-import Constants from "../constants.ts";
 import { IChartData, IServiceInMainPageProps, ISlidesTrustUs } from "../types.ts";
 import { getStaticFile } from "./mainPageScripts.ts";
+import Constants from "../constants.ts";
 
 export const getServicesCollectionForMainPage = (t: TFunction<"translation", undefined>): IServiceInMainPageProps[] => {
     return [

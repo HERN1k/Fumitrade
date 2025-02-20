@@ -138,7 +138,7 @@ a {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87); 
   background-color: #0f1822;
-
+ 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -152,6 +152,7 @@ a {
   --color-secondary: #dcb426;
   --color-modal-bg: #111d29;
   --color-popup-border: #ffffff42; 
+  --color-dark-transparent: #36363642; 
 }
 
 .swiper .swiper-pagination-bullet {
@@ -160,4 +161,20 @@ a {
 
 .swiper .swiper-pagination-bullet-active {
   background-color: var(--color-secondary) !important;
+}
+
+.span-color-secondary {
+  color: var(--color-secondary);
+}
+
+.span-font-weight-bold {
+  font-weight: bold; 
+}
+
+.span-italic {
+  font-style: italic;
+}
+
+.span-uppercase {
+  text-transform: uppercase;
 }

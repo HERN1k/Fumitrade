@@ -47,6 +47,7 @@ export default class Constants {
     static readonly LOGO_IMAGE: string = "general/logo.webp";
     static readonly NOT_FOUND_IMAGE: string = "general/not-found.svg";
     static readonly SHARE_IMAGE: string = "general/share.svg";
+    static readonly LINK_IMAGE: string = "general/link.svg";
 
     /*     Main page images     */
     static readonly MAIN_PAGE_MAIN_IMAGE: string = "main-page/main_bg.webp";

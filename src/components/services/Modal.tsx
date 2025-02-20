@@ -138,7 +138,7 @@ const Modal: FC<IServiceModalProps> = (args) => {
                                                 className={styles.modalDescriptionItemSvg}
                                                 style={{ backgroundImage: `url(${getStaticFile(Constants.SERVICES_PAGE_STAR_SVG)})` }} />
                                                 
-                                            {item}
+                                            {item} 
                                         </li>)}
                                 </ul>
 

@@ -1,4 +1,4 @@
-import { FC, lazy, useEffect } from "react";
+import { FC, lazy, useEffect, useState } from "react";
 import { IKnowledgeBaseItem, IPageProps } from "../types.ts";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
@@ -18,9 +18,14 @@ import { getStaticFile } from "../scripts/mainPageScripts.ts";
 import { trimWithDots } from "../scripts/servicesScripts.ts";
 import AppearanceAnimation from "../components/general/AppearanceAnimation.tsx";
 import { handleHashChange } from "../scripts/knowledgeBaseScripts.ts";
+import KnowledgeItem from "../components/knowledge-base/KnowledgeItem.tsx";
+import { getKnowledgeItemsCollection } from "../scripts/knowledgeBaseScripts.ts";
 const ScrollIndicator = lazy(() => import("../components/general/ScrollIndicator.tsx"));
 
 const KnowledgeBase: FC<IPageProps> = ({ id }) => {
+
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
+    const [itemsCollection] = useState<IKnowledgeBaseItem[]>(getKnowledgeItemsCollection());
 
     const { t } = useTranslation();
 
@@ -28,29 +33,14 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
         Header.ensureVisible();
 
         handleHashChange();
+
+        window.addEventListener("resize", onResize);
+        
+        return () => window.removeEventListener("resize", onResize);
     }, []);
 
-    const onClickLink = () => {
-        handleHashChange();
-    }
-
-    const textsCollection: IKnowledgeBaseItem[] = [
-        {
-            id: 1,
-            title: "Общие сведения",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-        },
-        {
-            id: 2,
-            title: "Процедура фумигации",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-        },
-        {
-            id: 3,
-            title: "Контроль качества",
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-        }
-    ];
+    const onClickLink = (): void => handleHashChange();
+    const onResize = (): void => setIsMobile(window.innerWidth <= 768);
 
     return (
         <>  
@@ -107,45 +97,34 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
                 </AppearanceAnimation>
 
                 <div className={styles.mainContainer}>
-                
-                    <AppearanceAnimation 
-                        initialPosition={new TranslateOnAxis(-3, "rem", "X")}
-                        delay={750} 
-                        duration={0.5}
-                        className={styles.navContainer}>
-                        <ul className={styles.ul}>
-
-                            {textsCollection.map((item) => (
-                                <li className={styles.li}>
-                                    <Link 
-                                        to={`#section${item.id}`}
-                                        onClick={onClickLink}
-                                        className={styles.link}>
-                                        {trimWithDots(item.title, 32)}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </AppearanceAnimation>
+                    {!isMobile 
+                        ? <AppearanceAnimation 
+                            initialPosition={new TranslateOnAxis(-3, "rem", "X")}
+                            delay={750} 
+                            duration={0.5}
+                            className={styles.navContainer}>
+                            <ul className={styles.ul}>
+                                {itemsCollection.map((item) => (
+                                    <li className={styles.li}>
+                                        <Link 
+                                            to={`#section${item.id}`}
+                                            onClick={onClickLink}
+                                            className={styles.link}>
+                                            {trimWithDots(item.title, 32)}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </AppearanceAnimation>
+                        : null }
                     
                     <AppearanceAnimation 
                         initialPosition={new TranslateOnAxis(-2, "rem", "Y")}
                         delay={1000} 
                         duration={0.5}
+                        threshold={0.01}
                         className={styles.contentContainer}>
-                        {textsCollection.map((item) => (
-                            <div 
-                                id={`#section${item.id}`} 
-                                key={item.id}
-                                style={{height: "50dvh"}}>
-                                <h2>
-                                    {item.title}
-                                </h2>
-                                <p>
-                                    {item.text}
-                                </p>
-                            </div>
-                        ))}
+                        {itemsCollection.map((item) => <KnowledgeItem args={item} />)}
                     </AppearanceAnimation>
                 </div>
             </Window>

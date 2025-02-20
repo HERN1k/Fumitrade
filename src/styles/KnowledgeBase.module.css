@@ -62,6 +62,18 @@
     gap: 10rem;
 }
 
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .mainContainer {
+        margin: 0 2rem;
+        margin-top: 7.5rem;
+        gap: 0rem;
+    }
+}
+
 .navContainer {
     display: flex;
     flex-direction: column;
@@ -131,12 +143,14 @@
     scale: 1.015;
 }
 
-.link:active {
-    scale: 0.995;
+@media (max-width: 768px) {
+    .link:hover {
+        scale: 1;
+    }
 }
 
-.linkActive {
-    color: var(--color-secondary);
+.link:active {
+    scale: 0.995;
 }
 
 .contentContainer {
@@ -146,7 +160,87 @@
     align-items: center;
     position: relative;
     width: 100%;
-    border: solid 1px salmon;
     overflow: hidden;
     gap: 2.5rem;
 }
+
+.itemContainer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 3rem;
+    background-color: var(--color-dark-transparent);
+    border-radius: 4px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .itemContainer {
+        padding: 1rem 2rem;
+    }
+}
+
+.itemTitle {
+    display: block;
+    position: relative;
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: left;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: whitesmoke;
+    padding-left: 3rem;
+    line-height: 2.5rem;
+}
+
+.shareSvg {
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 2rem;
+    width: 2rem;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.shareSvg:active {
+    transform: translateY(calc(-50% + 2px));
+}
+
+.shareSvg:hover {
+    opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+    .shareSvg:hover {
+        opacity: 0.5;
+    }
+}
+
+.swalTitle {
+    font-family: "Montserrat", serif;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    font-weight: 300;
+}
+
+.itemText {
+    display: block;
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: left;
+    letter-spacing: 0.1px;
+}
+
