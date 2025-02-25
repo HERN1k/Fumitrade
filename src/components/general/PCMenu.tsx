@@ -24,28 +24,28 @@ const PCMenu: FC = () => {
   
                 <div className={styles.menuItemDropDownContainer}>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_1_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.complex_processing")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.complex_processing"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_2_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.aerosol_disinfestation")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.aerosol_disinfestation"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_3_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.disinfection_of_granaries")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.disinfection_of_granaries"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_4_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_of_silos")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.fumigation_of_silos"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_5_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_of_wagons")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.fumigation_of_wagons"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_6_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.fumigation_in_containers")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.fumigation_in_containers"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_7_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.ship_fumigation")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.ship_fumigation"), 28)}</div>
                     </Link>
                     <Link to="/services" viewTransition onClick={() => transitionTo(Constants.SERVICES_PAGE_SERVICE_8_ID)}>
-                        <div className={styles.menuItemDropDownItem}>{t("appWrapper.menu.dropDown.rodent_traps")}</div>
+                        <div className={styles.menuItemDropDownItem}>{trimWithDots(t("appWrapper.menu.dropDown.rodent_traps"), 28)}</div>
                     </Link> 
                 </div>
             </li>
@@ -63,8 +63,10 @@ const PCMenu: FC = () => {
 
                 <div className={styles.menuItemDropDownContainer}>
                     {knowledgeItemsCollection.map((item) => 
-                        <Link to={`/knowledge-base#section${item.id}`} viewTransition>
-                            <div className={styles.menuItemDropDownItem}>{trimWithDots(item.title, 20)}</div>
+                        <Link to={`/knowledge-base#section${item.id}`} key={item.id} viewTransition onClick={() => {
+                            window.location.hash = `section${item.id}`;
+                        }}>
+                            <div className={styles.menuItemDropDownItem}>{trimWithDots(item.title, 28)}</div>
                         </Link>)}
                 </div>
             </li>

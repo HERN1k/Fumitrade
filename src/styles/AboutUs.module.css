@@ -1,0 +1,242 @@
+.window {
+    align-items: center;
+}
+
+.mainBG { 
+    width: 100dvw;
+    height: 100dvh;
+    z-index: -100;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mainBG::after {
+    content: "";
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--color-primary) 100%);
+}
+
+.mainBG::before {
+    content: "";
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary-transparent);
+}
+
+.mainContainer {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 90dvw;
+}
+
+.textContainer {
+    width: 50dvw;
+}
+
+.certificatesContainer {
+    width: 25dvw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 1440px) and (min-width: 769px) {
+    .mainContainer {
+        margin-top: 12.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        flex-direction: column;
+        margin-top: 15rem;
+        gap: 5rem;
+    }
+
+    .textContainer {
+        width: 100%;
+    }
+
+    .certificatesContainer {
+        width: 50%;
+    }
+}
+
+.certificate {
+    height: auto;
+    width: 15rem;
+    opacity: 0.9;
+    object-fit: cover;
+}
+
+.title {
+    font-family: "Montserrat", serif;
+    font-weight: 800;
+    font-size: 3.5rem;
+    line-height: 3.75rem;
+    text-align: left;
+    letter-spacing: 1px;
+    position: relative;
+    margin: 0;
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+.text {
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.85rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    margin: 0;
+    color: var(--color-text);
+    margin-top: 4rem;
+    text-align: justify;
+}
+
+@media (max-width: 1440px) and (min-width: 769px) {
+    .certificate {
+        width: 12.5rem;
+    }
+
+    .title {
+        font-size: 3rem;
+        line-height: 3.25rem;
+        letter-spacing: 1px;
+    }
+    
+    .text {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3.25rem;
+        line-height: 3.5rem;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    .text {
+        font-size: 1.4rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.5px;
+        text-align: center;
+    }
+}
+
+.founderWindow {
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.founderPortrait {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 50%;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+}
+
+.founderName {
+    font-family: "Montserrat", serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: var(--color-text);
+    margin-top: 1.5rem;
+}
+
+.founderTitle {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.25rem;
+    text-align: center;
+    color: var(--color-text);
+    margin-top: 0.75rem;
+    opacity: 0.9;
+}
+
+.quoteContainer {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.75rem;
+}
+
+.quotes {
+    height: auto;
+    width: 4rem;
+}
+
+.quoteText {
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.25px;
+    text-align: left;
+    max-width: 40rem;
+}
+
+@media (max-width: 1440px) and (min-width: 769px) {
+    .founderName {
+        font-size: 1.35rem;
+        line-height: 1.35rem;
+        letter-spacing: 0.5px;
+        margin-top: 1.35rem;
+    }
+    
+    .founderTitle {
+        font-size: 1rem;
+        line-height: 1rem;
+        margin-top: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .quoteContainer {
+        width: 85dvw;
+    }
+    
+    .quotes {
+        width: 3.5rem;
+    }
+    
+    .quoteText {
+        font-size: 1.4rem;
+        line-height: 1.65rem;
+        max-width: 90dvw;
+        
+    }
+}

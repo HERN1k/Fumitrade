@@ -11,7 +11,7 @@ const SwiperTrustUs: FC = () => {
 
     const [spaceBetween, setSpaceBetween] = useState<number>(75);
     const [slideWidth, setSlideWidth] = useState<string>("15rem");
-
+    
     useEffect(() => {
         onResize();
 
@@ -27,9 +27,9 @@ const SwiperTrustUs: FC = () => {
             slidesPerView={"auto"}
             spaceBetween={spaceBetween}
             centeredSlides={false}
+            modules={[Pagination]}
             loop={true}
             pagination={{ clickable: true }}
-            modules={[Pagination]}
             className={styles.swiper}>
             {trustUsSlides.data.map((item, index) => (
                 <SwiperSlide key={index} style={{ width: slideWidth }}>

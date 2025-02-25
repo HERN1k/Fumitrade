@@ -44,3 +44,11 @@ export const Close: FC<{className: string, onClick: () => void}> = ({ className,
         </svg>
     );
 }
+
+export const Quotes: FC<{className: string}> = ({className}) => {
+    return (
+        <svg className={className} width="49" height="27" viewBox="0 0 49 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.6 0.599994L18 26.5H0L11.6 0.599994H24.6ZM48.5 0.599994L41.9 26.5H23.9L35.5 0.599994H48.5Z" fill="#DCB426"></path>
+        </svg>
+    );
+}

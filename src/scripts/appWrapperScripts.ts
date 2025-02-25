@@ -107,7 +107,7 @@ export const toggleMobileMenu: () => void = () => {
 
 export const onResizeFooter = (setHyphen: Dispatch<SetStateAction<string>>) => window.innerWidth > 1440 ? setHyphen("一一") : setHyphen("\n");
 
-const scrollToElement = (element: HTMLElement | null): Promise<void> => {
+const scrollToElement = (element: HTMLElement | null, block: ScrollLogicalPosition | undefined = "center"): Promise<void> => {
     return new Promise((resolve, reject) => {
         try {
             const rootElement = document.getElementById(Constants.ROOT_CONTAINER_ID);
@@ -121,7 +121,7 @@ const scrollToElement = (element: HTMLElement | null): Promise<void> => {
             const targetPosition = elementPosition;
 
             const observer = new ResizeObserver(() => {
-                element.scrollIntoView({ behavior: "smooth", block: "center" });
+                element.scrollIntoView({ behavior: "smooth", block: block });
 
                 let iterations = 0;
 
@@ -151,7 +151,7 @@ const scrollToElement = (element: HTMLElement | null): Promise<void> => {
     });
 }
 
-export const transitionToElement = (element: HTMLElement | null) => {
+export const transitionToElement = (element: HTMLElement | null, block: ScrollLogicalPosition | undefined = "center") => {
     if (!element) return;
 
     setTimeout(async () => {
@@ -159,7 +159,7 @@ export const transitionToElement = (element: HTMLElement | null) => {
 
         Header.block();
 
-        await scrollToElement(element)
+        await scrollToElement(element, block)
             .catch((error) => console.error(error))
             .finally(() => Header.unBlock());
     }, 250);

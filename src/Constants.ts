@@ -84,6 +84,13 @@ export default class Constants {
     static readonly KNOWLEDGE_BASE_PAGE_BG_IMAGE: string = "knowledge-base/library.webp";
     static readonly KNOWLEDGE_BASE_PAGE_TRIANGLE_IMAGE: string = "knowledge-base/triangle.svg";
 
+    /*     About us page images     */
+    static readonly ABOUT_US_PAGE_BG_IMAGE: string = "about-us/main-bg.webp";
+    static readonly ABOUT_US_PAGE_ISO_IMAGE: string = "about-us/ISO-22000.svg";
+    static readonly ABOUT_US_PAGE_DSTU_IMAGE: string = "about-us/DSTU-22000.svg";
+    static readonly ABOUT_US_PAGE_HACCP_IMAGE: string = "about-us/HACCP.svg";
+    static readonly ABOUT_US_PAGE_PORTRAIT_IMAGE: string = "about-us/portrait.svg";
+
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
     static readonly SERVICES_PAGE_ID: string = ":SERVICES_PAGE_ID:";
@@ -108,4 +115,6 @@ export default class Constants {
     static readonly SERVICES_PAGE_SERVICE_6_ID: string = ":SERVICES_PAGE_SERVICE_6_ID:";
     static readonly SERVICES_PAGE_SERVICE_7_ID: string = ":SERVICES_PAGE_SERVICE_7_ID:";
     static readonly SERVICES_PAGE_SERVICE_8_ID: string = ":SERVICES_PAGE_SERVICE_8_ID:";
+    static readonly ABOUT_US_PAGE_MAIN_ID: string = ":ABOUT_US_PAGE_MAIN_ID:";
+    static readonly ABOUT_US_PAGE_SECOND_ID: string = ":ABOUT_US_PAGE_SECOND_ID:";
 };

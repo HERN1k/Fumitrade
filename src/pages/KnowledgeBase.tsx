@@ -35,8 +35,12 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
         handleHashChange();
 
         window.addEventListener("resize", onResize);
+        window.addEventListener("hashchange", handleHashChange);
         
-        return () => window.removeEventListener("resize", onResize);
+        return () => {
+            window.removeEventListener("resize", onResize);
+            window.removeEventListener("hashchange", handleHashChange);
+        }
     }, []);
 
     const onClickLink = (): void => handleHashChange();
@@ -105,7 +109,7 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
                             className={styles.navContainer}>
                             <ul className={styles.ul}>
                                 {itemsCollection.map((item) => (
-                                    <li className={styles.li}>
+                                    <li className={styles.li} key={item.id}>
                                         <Link 
                                             to={`#section${item.id}`}
                                             onClick={onClickLink}
@@ -124,7 +128,7 @@ const KnowledgeBase: FC<IPageProps> = ({ id }) => {
                         duration={0.5}
                         threshold={0.01}
                         className={styles.contentContainer}>
-                        {itemsCollection.map((item) => <KnowledgeItem args={item} />)}
+                        {itemsCollection.map((item) => <KnowledgeItem args={item} key={item.id} />)}
                     </AppearanceAnimation>
                 </div>
             </Window>

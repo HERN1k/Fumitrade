@@ -7,6 +7,7 @@ import { getStaticFile } from "../../scripts/mainPageScripts.ts";
 import { useTranslation } from "react-i18next";
 import { Arrow } from "../general/Svgs.tsx";
 import AppearanceAnimation from "../general/AppearanceAnimation.tsx";
+import { transitionToTop } from "../../scripts/appWrapperScripts.ts";
 
 const DescriptionWindow: FC = () => {
 
@@ -45,8 +46,8 @@ const DescriptionWindow: FC = () => {
                 <AppearanceAnimation 
                     initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
                     delay={500} 
-                    style={style}>
-                    <Link to="/about-us">
+                    style={style}> 
+                    <Link to="/about-us" viewTransition onClick={transitionToTop}>
                         <div className={styles.learnMoreContainer}>
                             <div className={styles.learnMoreButton}>
                                 <Arrow className={styles.learnMoreButtonArrowSvg} />

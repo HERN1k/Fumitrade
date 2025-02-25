@@ -1,14 +1,14 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Constants from "../../constants.ts";
 import AppWrapper from "./AppWrapper.tsx";
 import Loading from "../general/Loading.tsx";
-const NotFound        = lazy(() => import("../../pages/NotFound.tsx"));
-const Main            = lazy(() => import("../../pages/Main.tsx"));
-const Services        = lazy(() => import("../../pages/Services.tsx"));
-const AboutUs         = lazy(() => import("../../pages/AboutUs.tsx"));
-const KnowledgeBase   = lazy(() => import("../../pages/KnowledgeBase.tsx"));
-const Contacts        = lazy(() => import("../../pages/Contacts.tsx"));
+import NotFound from "../../pages/NotFound.tsx";
+import Main from "../../pages/Main.tsx";
+import Services from "../../pages/Services.tsx";
+import AboutUs from "../../pages/AboutUs.tsx";
+import KnowledgeBase from "../../pages/KnowledgeBase.tsx";
+import Contacts from "../../pages/Contacts.tsx";
 
 const AppRoutes = () => {
   const router = createBrowserRouter(

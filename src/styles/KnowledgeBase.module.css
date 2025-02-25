@@ -3,7 +3,7 @@
     justify-content: flex-start !important;
 }
 
-.mainBG {
+.mainBG { 
     width: 100dvw;
     height: 100dvh;
     z-index: -100;
