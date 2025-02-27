@@ -55,7 +55,7 @@ const MainWindow: FC = () => {
 
                 <div className={styles.sloganText}>
                     <span ref={typedRef} />
-                </div> 
+                </div>  
 
                 <AboutMain />
             </div>

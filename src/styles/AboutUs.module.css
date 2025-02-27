@@ -145,13 +145,13 @@
         line-height: 1.75rem;
         letter-spacing: 0.5px;
         text-align: center;
-    }
+    } 
 }
 
 .founderWindow {
     align-items: center;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 0rem;
 }
 
 .founderPortrait {
@@ -161,6 +161,32 @@
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.founderPortrait::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ffebb6, var(--color-secondary), #ffebb6);
+    background-size: 200% 200%;
+    z-index: -1;
+    animation: rotateBorder 2s infinite linear;
+}
+
+@keyframes rotateBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .founderName {
@@ -239,4 +265,9 @@
         max-width: 90dvw;
         
     }
+}
+
+.galleryWindow {
+    display: block;
+    margin-top: 10dvw;
 }

@@ -14,9 +14,11 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@react-spring/web": "^9.7.5",
+    "flickr-justified-gallery": "^2.2.0",
     "i18next": "^24.2.1",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.2",
+    "lightgallery": "^2.8.2",
     "motion": "^12.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

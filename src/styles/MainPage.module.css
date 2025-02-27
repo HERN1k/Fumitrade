@@ -69,8 +69,8 @@
     left: 10%;
     transform: translateY(-50%);
     font-family: "Roboto Condensed", serif;
-    font-size: 5.5rem;    
-    line-height: 6.5rem;
+    font-size: 4rem;    
+    line-height: 5rem;
     font-weight: 100;
     color: white;
     opacity: 0.85;
@@ -114,6 +114,17 @@
     overflow-wrap: break-word;
     word-break: break-word;
     letter-spacing: 1px;
+    color: var(--color-text);
+}
+
+.aboutTextTitle:hover {
+    color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+    .aboutTextTitle:hover {
+        color: var(--color-text);
+    }
 }
 
 .zipper {
@@ -153,13 +164,13 @@
     color: var(--color-text);
 }
 
-@media (min-width: 1440px) {
+@media (max-width: 1440px) and (min-width: 769px) {
     .aboutTextTitle {
         font-size: 1.75rem;
     }
     
     .aboutTextItemText {
-        font-size: 1.35rem;
+        font-size: 1.05rem;
     }
 }
 
@@ -343,10 +354,26 @@
 }
 
 @media (max-width: 1440px) and (min-width: 769px) {
+    .sloganText {
+        font-size: 2.75rem;
+        line-height: 4rem;
+        width: 900%;
+        top: 45dvh;
+        font-weight: 200;
+    }
+
+    .aboutTextContainer {
+        height: 7.5rem;
+    }
+
+    .aboutTextTitle {
+        font-size: 1.25rem;
+    }
+
     .descriptionTitle {
         font-size: 2rem;
         line-height: 2.5rem;
-        width: 45dvw;
+        width: 45dvw; 
     }
 
     .descriptionText {
@@ -385,7 +412,7 @@
         align-items: center;
         gap: 3rem;
     }
-    
+
     .descriptionTitle {
         font-size: 1.75rem;
         line-height: 2rem;

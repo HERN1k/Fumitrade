@@ -7,17 +7,14 @@ import {
     getCanonicalUrlForHelmet, 
     getFormattedPhoneNumberForHelmet, 
     getKeywordsForHelmet, 
-    getPhotoUriForHelmet, 
-    TranslateOnAxis
+    getPhotoUriForHelmet
 } from "../scripts/appWrapperScripts.ts";
 import Constants from "../constants.ts";
 import Header from "../scripts/header.ts";
 import MicroMarkup from "../components/general/MicroMarkup.tsx";
-import Window from "../components/general/Window.tsx";
-import styles from "../styles/AboutUs.module.css";
-import { getStaticFile } from "../scripts/servicesScripts.ts";
-import AppearanceAnimation from "../components/general/AppearanceAnimation.tsx";
-import { Quotes } from "../components/general/Svgs.tsx";
+import AboutUsText from "../components/about-us/AboutUsText.tsx";
+import AboutUsBestEmployee from "../components/about-us/AboutUsBestEmployee.tsx";
+import AboutUsGallery from "../components/about-us/AboutUsGallery.tsx";
 const ScrollIndicator = lazy(() => import("../components/general/ScrollIndicator.tsx"));
 
 const AboutUs: FC<IPageProps> = ({ id }) => {
@@ -65,88 +62,11 @@ const AboutUs: FC<IPageProps> = ({ id }) => {
 
             <ScrollIndicator />
 
-            <Window id={Constants.ABOUT_US_PAGE_MAIN_ID} className={styles.window}>
-                <div 
-                    className={styles.mainBG} 
-                    style={{backgroundImage: `url(${getStaticFile(Constants.ABOUT_US_PAGE_BG_IMAGE)})`}} />
+            <AboutUsText />
 
-                <div className={styles.mainContainer}>
-                    <div className={styles.textContainer}>
-                        <AppearanceAnimation
-                            initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
-                            delay={500}>
-                                <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: t("about-us.title")}} />
-                        </AppearanceAnimation>
+            <AboutUsBestEmployee />
 
-                        <AppearanceAnimation
-                            initialPosition={new TranslateOnAxis(-3, "rem", "X")}
-                            duration={0.5}
-                            delay={750}>
-                            <p className={styles.text} dangerouslySetInnerHTML={{ __html: t("about-us.text")}} />
-                        </AppearanceAnimation>
-                    </div>
-
-                    <div className={styles.certificatesContainer}>
-                        <AppearanceAnimation
-                            initialPosition={new TranslateOnAxis(-3, "rem", "Y")}
-                            duration={0.5}
-                            delay={1000}>
-                            <img 
-                                src={getStaticFile(Constants.ABOUT_US_PAGE_HACCP_IMAGE)} 
-                                alt="HACCP"
-                                className={styles.certificate} />
-
-                            <img 
-                                src={getStaticFile(Constants.ABOUT_US_PAGE_ISO_IMAGE)} 
-                                alt="ISO"
-                                className={styles.certificate} />
-
-                            <img 
-                                src={getStaticFile(Constants.ABOUT_US_PAGE_DSTU_IMAGE)} 
-                                alt="DSTU"
-                                className={styles.certificate} />
-                        </AppearanceAnimation>
-                    </div>
-                </div>
-            </Window>
-
-            <Window id={Constants.ABOUT_US_PAGE_SECOND_ID} className={styles.founderWindow}>
-                <AppearanceAnimation
-                    initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
-                    delay={500}>
-                    <div 
-                        className={styles.founderPortrait} 
-                        style={{backgroundImage: `url(${getStaticFile(Constants.ABOUT_US_PAGE_PORTRAIT_IMAGE)})`}} />
-                </AppearanceAnimation>
-
-                <AppearanceAnimation
-                    initialPosition={new TranslateOnAxis(-3, "rem", "X")}
-                    duration={0.5}
-                    delay={750}>
-                    <p className={styles.founderName}>
-                        {t("about-us.founderName")}
-                    </p>
-                </AppearanceAnimation>
-                
-                <AppearanceAnimation
-                    initialPosition={new TranslateOnAxis(-3, "rem", "X")}
-                    duration={0.5}
-                    delay={750}>
-                    <p className={styles.founderTitle}>
-                        {t("about-us.founderTitle")}
-                    </p>
-                </AppearanceAnimation>
-                
-                <AppearanceAnimation
-                    initialPosition={new TranslateOnAxis(3, "rem", "X")}
-                    duration={0.5}
-                    delay={1000}
-                    className={styles.quoteContainer}>
-                    <Quotes className={styles.quotes} />
-                    
-                    <p className={styles.quoteText}  dangerouslySetInnerHTML={{ __html: t("about-us.quote")}} />
-                </AppearanceAnimation>
-            </Window>
+            <AboutUsGallery />
         </div>
     );
 }

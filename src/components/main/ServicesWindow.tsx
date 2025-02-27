@@ -29,43 +29,14 @@ const ServicesWindow: FC = () => {
     const rootElementRef = useRef<HTMLDivElement | null>(null);
     const swiperElementRef = useRef<SwiperRef | null>(null);
 
-    const [isFirstSlide, setIsFirstSlide] = useState<boolean>(true);
-    const [isLastSlide, setIsLastSlide] = useState<boolean>(false);
     const [spaceBetween, setSpaceBetween] = useState<number>(50);
     const [swiperSlideWidth, setSwiperSlideWidth] = useState<string>("25dvw");
     
-    const { ref, inView } = useInView({
-        triggerOnce: false,
-        threshold: 0.75
-    });
-
     const { t } = useTranslation();
 
     useEffect(() => {
         rootElementRef.current = document.getElementById(Constants.ROOT_CONTAINER_ID) as HTMLDivElement | null;
     }, []);
-
-    useEffect(() => { 
-        if (window.innerWidth > 768) {
-            if (isFirstSlide || isLastSlide) {
-                unlockServicesWindowScroll({
-                    root: rootElementRef,
-                    swiper: swiperElementRef
-                });
-            }
-        }
-    }, [isFirstSlide, isLastSlide, inView]);
-
-    useEffect(() => { 
-        if (inView) {
-            if (window.innerWidth > 768) {
-                lockServicesWindowScroll({
-                    root: rootElementRef,
-                    swiper: swiperElementRef
-                });
-            }
-        }
-    }, [inView]);
 
     useEffect(() => {
         const onResize = () => {
@@ -86,11 +57,6 @@ const ServicesWindow: FC = () => {
     }, []);
 
     const navigateTo = (id?: string) => {
-        unlockServicesWindowScroll({
-            root: rootElementRef,
-            swiper: swiperElementRef
-        }); 
-
         if (id) {
             transitionTo(id);
         } else {
@@ -99,7 +65,7 @@ const ServicesWindow: FC = () => {
     }
 
     return (
-        <Window ref={ref} sticky id={Constants.SERVICES_WINDOW_MAIN_PAGE_ID} className={styles.servicesWindow}>
+        <Window sticky id={Constants.SERVICES_WINDOW_MAIN_PAGE_ID} className={styles.servicesWindow}>
             <AppearanceAnimation 
                 initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
                 delay={500} 
@@ -119,15 +85,9 @@ const ServicesWindow: FC = () => {
                     direction={"horizontal"}
                     slidesPerView={"auto"}
                     spaceBetween={spaceBetween}
-                    mousewheel
                     centeredSlides
                     watchSlidesProgress
                     initialSlide={window.innerWidth > 768 ? 1 : 0}
-                    modules={[Mousewheel]}
-                    onSlideChange={(swiper) => {
-                        setIsFirstSlide(swiper.isBeginning);
-                        setIsLastSlide(swiper.isEnd);
-                    }}
                     className={styles.servicesSwiper}>
 
                     {getServicesCollectionForMainPage(t).map((item, index) => (

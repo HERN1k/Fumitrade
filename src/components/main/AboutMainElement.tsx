@@ -20,7 +20,7 @@ const AboutMainElement: FC = () => {
 
     return (
         <div className={styles.aboutTextItemsContainer}>
-            <AppearanceAnimation 
+            <AppearanceAnimation  
                 initialPosition={Constants.BASE_APPEARANCE_ANIMATION.clone()}
                 delay={window.innerWidth > 768 ? 1250 : 500} 
                 style={style}>

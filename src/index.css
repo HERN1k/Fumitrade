@@ -178,3 +178,19 @@ a {
 .span-uppercase {
   text-transform: uppercase;
 }
+
+.gallery {
+  display: block;
+  max-width: 90dvw;
+  margin: 0 auto;
+}
+
+.gallery__item {
+  width: 100%;
+}
+
+.gallery__img {
+  width: 100%;
+  background-color: var(--color-primary-light);
+  cursor: zoom-in;
+}

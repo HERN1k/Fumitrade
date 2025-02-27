@@ -89,7 +89,7 @@ export default class Constants {
     static readonly ABOUT_US_PAGE_ISO_IMAGE: string = "about-us/ISO-22000.svg";
     static readonly ABOUT_US_PAGE_DSTU_IMAGE: string = "about-us/DSTU-22000.svg";
     static readonly ABOUT_US_PAGE_HACCP_IMAGE: string = "about-us/HACCP.svg";
-    static readonly ABOUT_US_PAGE_PORTRAIT_IMAGE: string = "about-us/portrait.svg";
+    static readonly ABOUT_US_PAGE_PORTRAIT_IMAGE: string = "about-us/best-employee.webp";
 
     /*     Pages     */ 
     static readonly MAIN_PAGE_ID: string = ":MAIN_PAGE_ID:";
@@ -116,5 +116,6 @@ export default class Constants {
     static readonly SERVICES_PAGE_SERVICE_7_ID: string = ":SERVICES_PAGE_SERVICE_7_ID:";
     static readonly SERVICES_PAGE_SERVICE_8_ID: string = ":SERVICES_PAGE_SERVICE_8_ID:";
     static readonly ABOUT_US_PAGE_MAIN_ID: string = ":ABOUT_US_PAGE_MAIN_ID:";
-    static readonly ABOUT_US_PAGE_SECOND_ID: string = ":ABOUT_US_PAGE_SECOND_ID:";
+    static readonly ABOUT_US_PAGE_BEST_EMPLOYEE_ID: string = ":ABOUT_US_PAGE_BEST_EMPLOYEE_ID:";
+    static readonly ABOUT_US_PAGE_GALLERY_ID: string = ":ABOUT_US_PAGE_GALLERY_ID:";
 };
